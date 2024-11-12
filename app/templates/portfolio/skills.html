@@ -1,0 +1,37 @@
+<!-- portfolio_project/app/templates/portfolio/skills.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills - Khribech Bouchaib</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    {% include 'portfolio/navbar.html' %}
+
+    <!-- Main Content Wrapper -->
+    <div class="main-content">
+        <div class="container mt-5">
+            <h1 class="text-center mb-4">My Skills</h1>
+            <div class="row">
+                {% for skill in skills %}
+                <div class="col-md-4 mb-4">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ skill.name }}</h5>
+                            <p><strong>Proficiency:</strong> {{ skill.proficiency }}</p>
+                            <p class="card-text">{{ skill.description }}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    {% include 'portfolio/footer.html' %}
+</body>
+</html>

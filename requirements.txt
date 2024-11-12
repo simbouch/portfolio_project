@@ -1,2 +1,20 @@
-flask
-flask_sqlalchemy
+# Flask framework
+Flask==2.3.2
+
+# Database dependencies
+Flask-SQLAlchemy==3.0.4
+SQLAlchemy==2.0.19
+
+# Bootstrap and other frontend utilities
+Flask-Bootstrap==3.3.7.1
+
+# Environment variables
+python-dotenv==1.0.0
+
+# Optional dependencies for development and testing
+pytest==7.4.0      # For unit testing
+pytest-flask==1.2.0
+
+# Optional: For styling and linting
+black==23.7.0      # Code formatting
+flake8==6.1.0      # Code linting

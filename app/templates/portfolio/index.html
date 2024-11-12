@@ -1,1 +1,30 @@
-<!-- Main portfolio page -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome - Khribech Bouchaib's Portfolio</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    {% include 'portfolio/navbar.html' %}
+
+    <!-- Main Content Wrapper -->
+    <div class="main-content">
+        <!-- Hero Section -->
+        <div class="jumbotron jumbotron-fluid text-center bg-primary text-white">
+            <div class="container">
+                <h1 class="display-4">Welcome to My Portfolio</h1>
+                <p class="lead">Hello, I'm Khribech Bouchaib, an AI Developer and Data Scientist.</p>
+                <a href="{{ url_for('portfolio.projects') }}" class="btn btn-light btn-lg mr-2">Projects</a>
+                <a href="{{ url_for('portfolio.skills') }}" class="btn btn-light btn-lg mr-2">Skills</a>
+                <a href="{{ url_for('portfolio.experience') }}" class="btn btn-light btn-lg">Experience</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    {% include 'portfolio/footer.html' %}
+</body>
+</html>
