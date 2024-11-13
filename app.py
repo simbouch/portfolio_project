@@ -1,16 +1,10 @@
 # portfolio_project/run.py
 
-from app import create_app
-import webbrowser
-from threading import Timer
+from flask import Flask
 
-app = create_app()
+app = Flask(__name__)
 
-def open_browser():
-    """Open the default web browser on the localhost."""
-    webbrowser.open_new("http://127.0.0.1:5000/")
+# Define your routes here
 
-if __name__ == '__main__':
-    # Start a timer to open the browser after Flask starts
-    Timer(1, open_browser).start()
+if __name__ == "__main__":
     app.run()
