@@ -1,3 +1,4 @@
+
 # portfolio_project/app/controllers/portfolio_controller.py
 from flask import Blueprint, render_template
 from app.models.project import WebProject, DataScienceProject
