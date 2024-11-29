@@ -1,10 +1,17 @@
 {% extends "base.html" %}
 
+{% block title %}Projects{% endblock %}
+
 {% block content %}
-<h1>Projects</h1>
+<h1>My Projects</h1>
 <ul>
-    <li>Portfolio Website - A simple Flask-based portfolio.</li>
-    <li>Nutri-Score Prediction - Machine learning project for predicting food scores.</li>
-    <li>Web Scraping Project - Automated scraping of job listings.</li>
+    <li>
+        <h3><a href="https://github.com/simbouch/nutriscore_prediction_app">NutriScore Prediction App</a></h3>
+        <p>A web app to predict NutriScore grades for food products using ML.</p>
+    </li>
+    <li>
+        <h3><a href="https://github.com/simbouch/portfolio_project">Portfolio Website</a></h3>
+        <p>A personal portfolio showcasing my projects and skills.</p>
+    </li>
 </ul>
 {% endblock %}
