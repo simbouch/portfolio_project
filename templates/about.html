@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}About - Bouchaib Khribech{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-4 text-center">
+        <img src="{{ url_for('static', filename='images/profile.jpg') }}" class="rounded-circle mb-3" alt="Bouchaib Khribech" width="200" height="200">
+        <h3>Bouchaib KHRIBECH</h3>
+        <p>Nancy, Grand Est, France</p>
+        <p>
+            <a href="mailto:khribech.chouaib@gmail.com" class="text-dark">khribech.chouaib@gmail.com</a><br>
+            <a href="https://www.linkedin.com/in/khbouchaib" target="_blank">LinkedIn</a>
+        </p>
+    </div>
+    <div class="col-md-8">
+        <h2>Summary</h2>
+        <p>Data-driven innovator and AI enthusiast. After 15 years in forensic sciences, I transitioned to data science, blending precision with creativity. Trained at Simplon (Microsoft AI School), I specialize in Python, Docker, Power BI, and Azure Machine Learning. Currently in an alternance at CHRU, I develop innovative health solutions with a focus on UX. Passionate about combining data and humanity, I aim to uncover meaningful insights and drive impactful change.</p>
+        
+        <h2>Top Skills</h2>
+        <ul class="list-inline">
+            <li class="list-inline-item badge badge-primary p-2">PySpark</li>
+            <li class="list-inline-item badge badge-primary p-2">Redis</li>
+            <li class="list-inline-item badge badge-primary p-2">Docker</li>
+        </ul>
+        
+        <h2>Languages</h2>
+        <ul class="list-inline">
+            <li class="list-inline-item badge badge-secondary p-2">Spanish (Professional Working)</li>
+            <li class="list-inline-item badge badge-secondary p-2">English (Professional Working)</li>
+            <li class="list-inline-item badge badge-secondary p-2">French (Professional Working)</li>
+        </ul>
+    </div>
+</div>
+{% endblock %}

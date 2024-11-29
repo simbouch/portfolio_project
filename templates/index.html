@@ -1,8 +1,12 @@
 {% extends "base.html" %}
 
-{% block title %}Home - Portfolio{% endblock %}
+{% block title %}Home - Bouchaib Khribech{% endblock %}
 
 {% block content %}
-<h1>Welcome to My Portfolio</h1>
-<p>Hello! I'm Bouchaib Khribech, an AI Developer and Data Scientist. Explore my projects, skills, and experiences.</p>
+<div class="text-center">
+    <img src="{{ url_for('static', filename='images/profile.jpg') }}" class="rounded-circle mb-4" alt="Bouchaib Khribech" width="200" height="200">
+    <h1 class="mb-3">Welcome to My Portfolio</h1>
+    <p class="lead">Hello! I'm Bouchaib Khribech, an AI Developer and Data Scientist. Explore my projects, skills, and experiences.</p>
+    <a href="{{ url_for('projects') }}" class="btn btn-primary mt-3">View My Projects</a>
+</div>
 {% endblock %}
