@@ -1,32 +1,132 @@
+/* General Styling for the Page */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f8f9fa;
+    font-family: 'Comic Sans MS', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fff7e6; /* Soft Peach Background */
+    margin: 0;
+    padding: 0;
+    color: #333333;
 }
 
-.navbar-brand {
-    font-weight: bold;
+/* Container Styling */
+.container {
+    margin: 20px auto;
+    max-width: 1200px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-h1, h2, h3, h4 {
-    color: #343a40;
+/* Headings */
+h2, h4 {
+    color: #ff9800; /* Orange */
+    margin-bottom: 15px;
+    font-family: 'Pacifico', cursive;
 }
 
-.card {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
+/* Badge Styling */
 .badge {
-    font-size: 0.9em;
+    font-size: 0.85em;
+    padding: 0.6em 1.2em;
+    margin: 8px;
+    border-radius: 20px;
+    display: inline-block;
+    color: #ffffff;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+    animation: pop-in 0.3s ease;
 }
 
+/* Colorful Badge Variants */
+.badge-info {
+    background-color: #42a5f5; /* Sky Blue */
+}
+
+.badge-warning {
+    background-color: #ffb74d; /* Light Orange */
+}
+
+.badge-success {
+    background-color: #66bb6a; /* Light Green */
+}
+
+.badge-secondary {
+    background-color: #ba68c8; /* Lavender Purple */
+}
+
+.badge-dark {
+    background-color: #ef5350; /* Coral Red */
+}
+
+/* Footer Link Styling */
 footer a {
     text-decoration: none;
+    color: #ff9800;
+    font-weight: bold;
 }
 
 footer a:hover {
     text-decoration: underline;
+    color: #e65100;
 }
 
-img.rounded-circle {
-    border: 4px solid #343a40;
+/* Button Styling */
+button {
+    margin-top: 15px;
+    padding: 12px 24px;
+    font-size: 1em;
+    border: none;
+    background-color: #ff9800;
+    color: #ffffff;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(255, 152, 0, 0.5);
+}
+
+button:hover {
+    background-color: #f57c00;
+    box-shadow: 0 6px 12px rgba(245, 124, 0, 0.7);
+}
+
+/* Responsive Grid for Skills */
+ul.list-inline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+/* Animations */
+@keyframes pop-in {
+    0% {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 768px) {
+    ul.list-inline {
+        gap: 8px;
+    }
+
+    .badge {
+        font-size: 0.75em;
+        padding: 0.5em 1em;
+    }
+
+    h2 {
+        font-size: 1.6em;
+    }
+
+    button {
+        font-size: 0.9em;
+        padding: 10px 20px;
+    }
 }
