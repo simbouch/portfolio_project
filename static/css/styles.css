@@ -1,10 +1,10 @@
 /* General Styling for the Page */
 body {
-    font-family: 'Comic Sans MS', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #fff7e6; /* Soft Peach Background */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #121212; /* Dark Background */
     margin: 0;
     padding: 0;
-    color: #333333;
+    color: #e0e0e0; /* Light Gray Text */
 }
 
 /* Container Styling */
@@ -12,16 +12,67 @@ body {
     margin: 20px auto;
     max-width: 1200px;
     padding: 20px;
-    background-color: #ffffff;
+    background-color: #252525; /* Slightly Lighter Dark */
     border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    border: 1px solid #333333; /* Subtle Border */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+}
+
+/* Card Grid */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+/* Card Styling */
+.card {
+    background-color: #1e1e1e; /* Slightly Darker Background */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    padding: 20px;
+    color: #e0e0e0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.8);
+}
+
+.card h3 {
+    font-size: 1.4em;
+    color: #ffcc00; /* Bright Yellow */
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.card p {
+    font-size: 0.9em;
+    line-height: 1.5;
+    color: #cccccc; /* Softer Gray */
+}
+
+.card a {
+    text-decoration: none;
+    color: #2196f3; /* Bright Blue */
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 15px;
+    transition: color 0.3s ease;
+}
+
+.card a:hover {
+    color: #64b5f6; /* Lighter Blue */
 }
 
 /* Headings */
 h2, h4 {
-    color: #ff9800; /* Orange */
+    color: #ffcc00; /* Bright Yellow */
     margin-bottom: 15px;
     font-family: 'Pacifico', cursive;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 /* Badge Styling */
@@ -31,42 +82,49 @@ h2, h4 {
     margin: 8px;
     border-radius: 20px;
     display: inline-block;
-    color: #ffffff;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+    color: #ffffff; /* White Text */
+    background-color: #444444; /* Dark Gray */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
     animation: pop-in 0.3s ease;
 }
 
 /* Colorful Badge Variants */
 .badge-info {
-    background-color: #42a5f5; /* Sky Blue */
+    background-color: #2196f3; /* Bright Blue */
+    color: #ffffff; /* White */
 }
 
 .badge-warning {
-    background-color: #ffb74d; /* Light Orange */
+    background-color: #ff5722; /* Vivid Orange */
+    color: #ffffff; /* White */
 }
 
 .badge-success {
-    background-color: #66bb6a; /* Light Green */
+    background-color: #4caf50; /* Vibrant Green */
+    color: #ffffff; /* White */
 }
 
 .badge-secondary {
-    background-color: #ba68c8; /* Lavender Purple */
+    background-color: #673ab7; /* Deep Purple */
+    color: #ffffff; /* White */
 }
 
 .badge-dark {
-    background-color: #ef5350; /* Coral Red */
+    background-color: #f44336; /* Bright Red */
+    color: #ffffff; /* White */
 }
 
 /* Footer Link Styling */
 footer a {
     text-decoration: none;
-    color: #ff9800;
+    color: #ffcc00; /* Bright Yellow */
     font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 footer a:hover {
     text-decoration: underline;
-    color: #e65100;
+    color: #ffc107; /* Light Amber */
 }
 
 /* Button Styling */
@@ -75,17 +133,17 @@ button {
     padding: 12px 24px;
     font-size: 1em;
     border: none;
-    background-color: #ff9800;
-    color: #ffffff;
+    background-color: #ffcc00; /* Bright Yellow */
+    color: #121212; /* Dark Background */
     border-radius: 25px;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 10px rgba(255, 152, 0, 0.5);
+    box-shadow: 0 6px 15px rgba(255, 204, 0, 0.5);
 }
 
 button:hover {
-    background-color: #f57c00;
-    box-shadow: 0 6px 12px rgba(245, 124, 0, 0.7);
+    background-color: #ffc107; /* Light Amber */
+    box-shadow: 0 8px 20px rgba(255, 193, 7, 0.7);
 }
 
 /* Responsive Grid for Skills */
@@ -112,8 +170,8 @@ ul.list-inline {
 
 /* Responsive Design for Smaller Screens */
 @media (max-width: 768px) {
-    ul.list-inline {
-        gap: 8px;
+    .card-grid {
+        grid-template-columns: 1fr;
     }
 
     .badge {
@@ -129,4 +187,32 @@ ul.list-inline {
         font-size: 0.9em;
         padding: 10px 20px;
     }
+}
+.text-dark {
+    color: #e0e0e0; /* Light Gray for dark backgrounds */
+    text-decoration: none;
+}
+
+.text-dark:hover {
+    color: #64b5f6; /* Light Blue on hover */
+    text-decoration: underline;
+}
+a[href^="mailto:"] {
+    color: #ffcc00; /* Bright Yellow for visibility */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a[href^="mailto:"]:hover {
+    color: #ffc107; /* Light Amber on hover */
+    text-decoration: underline;
+}
+.text-dark {
+    color: #e0e0e0; /* Light Gray for dark backgrounds */
+    text-decoration: none;
+}
+
+.text-dark:hover {
+    color: #64b5f6; /* Light Blue on hover */
+    text-decoration: underline;
 }
