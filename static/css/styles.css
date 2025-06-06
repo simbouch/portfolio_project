@@ -207,12 +207,3 @@ a[href^="mailto:"]:hover {
     color: #ffc107; /* Light Amber on hover */
     text-decoration: underline;
 }
-.text-dark {
-    color: #e0e0e0; /* Light Gray for dark backgrounds */
-    text-decoration: none;
-}
-
-.text-dark:hover {
-    color: #64b5f6; /* Light Blue on hover */
-    text-decoration: underline;
-}
