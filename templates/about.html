@@ -3,46 +3,156 @@
 {% block title %}About - Bouchaib Khribech{% endblock %}
 
 {% block content %}
-<div class="row mt-5">
-    <div class="col-md-4 text-center">
-        <img src="{{ url_for('static', filename='images/profile.jpg') }}" class="rounded-circle mb-3" alt="Bouchaib Khribech" width="200" height="200">
-        <h3 class="text-warning">Bouchaib KHRIBECH</h3>
-        <p class="text-muted">Nancy, Grand Est, France</p>
-        <div>
-            <a href="mailto:khribech.chouaib@gmail.com" class="text-primary d-block mb-2">khribech.chouaib@gmail.com</a>
-            <a href="https://www.linkedin.com/in/khbouchaib" target="_blank" class="text-info">LinkedIn</a>
+<div class="text-center mb-5">
+    <h1 class="display-4 section-title">About Me</h1>
+    <p class="lead">AI Developer, Data Scientist & Data Analyst</p>
+</div>
+
+<div class="row">
+    <div class="col-lg-4 mb-4">
+        <div class="card text-center h-100">
+            <div class="card-body">
+                <img src="{{ url_for('static', filename='images/profile.jpg') }}" 
+                     class="rounded-circle mb-3 profile-image" 
+                     alt="Bouchaib Khribech" 
+                     style="width: 180px; height: 180px; object-fit: cover;"
+                     onerror="this.src='https://via.placeholder.com/180x180/007bff/ffffff?text=BK'">
+                <h3 class="text-primary">Bouchaib KHRIBECH</h3>
+                <p class="text-muted mb-3">
+                    <i class="fas fa-map-marker-alt mr-2"></i>Nancy, France
+                </p>
+                <p class="text-muted mb-3">
+                    <i class="fas fa-briefcase mr-2"></i>AI Developer Trainee at Simplon Microsoft Program
+                </p>
+                <div class="contact-info">
+                    <a href="mailto:simplonbouchaib@gmail.com" class="btn btn-outline-primary btn-sm mb-2 d-block">
+                        <i class="fas fa-envelope mr-2"></i>simplonbouchaib@gmail.com
+                    </a>
+                    <a href="https://www.linkedin.com/in/khbouchaib" target="_blank" class="btn btn-outline-info btn-sm d-block">
+                        <i class="fab fa-linkedin mr-2"></i>LinkedIn Profile
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="col-md-8">
-        <h2 class="text-warning">Summary</h2>
-        <p class="text-light">
-            I am a highly motivated and detail-oriented AI developer and data scientist with a passion for solving complex problems through technology and innovation. My journey began as a biomedical engineer, where I developed a deep understanding of analytical thinking and problem-solving. Later, I pursued a Master's degree in Forensics, honing my skills in precision and critical analysis over 15 years of experience in forensic sciences. Building on this foundation, I transitioned into the field of data science, earning a Master’s degree in Data Science and further expanding my expertise.
-        </p>
-        <p class="text-light">
-            Trained at Simplon (Microsoft AI School), I specialize in Python, Docker, Power BI, and Azure Machine Learning. I have a strong focus on developing scalable solutions, creating intuitive user interfaces, and designing machine learning models to uncover actionable insights from data. My projects range from building AI-powered chatbots to developing advanced diagnostic tools and interactive web applications. I aim to combine data-driven strategies with human-centered design to create impactful solutions.
-        </p>
-        <p class="text-light">
-            Currently, I am contributing to innovative health solutions at CHRU, focusing on UX-driven applications. I thrive in collaborative environments and constantly seek opportunities to learn and apply new technologies. With a blend of creativity, technical expertise, and leadership, I aim to make a meaningful difference in the world of AI and data science.
-        </p>
+    
+    <div class="col-lg-8">
+        <div class="card mb-4">
+            <div class="card-body">
+                <h3 class="card-title text-primary">
+                    <i class="fas fa-user mr-2"></i>Professional Summary
+                </h3>
+                <p class="card-text">
+                    I am a highly motivated AI developer and data scientist with a unique background combining 15+ years of analytical expertise in biomedical engineering and forensic sciences with cutting-edge AI and machine learning technologies. Currently training at Simplon Microsoft AI Program in Nancy, France, I specialize in developing intelligent solutions using Python, machine learning, and modern web technologies.
+                </p>
+                <p class="card-text">
+                    My expertise spans from traditional data analysis to advanced AI applications including Large Language Models (LLM), computer vision, and AI agent development. I have successfully delivered projects ranging from RPA systems for document processing to full-stack applications with OCR capabilities and deep learning models for medical image analysis.
+                </p>
+                <p class="card-text">
+                    I thrive in collaborative environments and am passionate about applying AI technologies to solve real-world problems, particularly in healthcare and automation domains. My goal is to bridge the gap between complex AI technologies and practical business solutions.
+                </p>
+            </div>
+        </div>
 
-        <h2 class="text-warning">Top Skills</h2>
-        <ul class="list-inline">
-            <li class="list-inline-item badge bg-primary text-light p-2">Python</li>
-            <li class="list-inline-item badge bg-primary text-light p-2">Java</li>
-            <li class="list-inline-item badge bg-primary text-light p-2">Deep learning</li>
-            <li class="list-inline-item badge bg-primary text-light p-2">Machine Learning</li>
-            <li class="list-inline-item badge bg-primary text-light p-2">Data Visualization</li>
-            <li class="list-inline-item badge bg-primary text-light p-2">SQL</li>
-        </ul>
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">
+                            <i class="fas fa-graduation-cap mr-2"></i>Education & Training
+                        </h4>
+                        <ul class="list-unstyled">
+                            <li class="mb-2">
+                                <strong>AI Developer Training</strong><br>
+                                <small class="text-muted">Simplon Microsoft Program, Nancy (2024-Present)</small>
+                            </li>
+                            <li class="mb-2">
+                                <strong>Master's in Data Science</strong><br>
+                                <small class="text-muted">Specialized in ML and AI</small>
+                            </li>
+                            <li class="mb-2">
+                                <strong>Master's in Forensic Sciences</strong><br>
+                                <small class="text-muted">15+ years experience</small>
+                            </li>
+                            <li>
+                                <strong>Biomedical Engineering</strong><br>
+                                <small class="text-muted">Foundation in analytical thinking</small>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">
+                            <i class="fas fa-globe mr-2"></i>Languages
+                        </h4>
+                        <div class="language-skills">
+                            <div class="mb-3">
+                                <div class="d-flex justify-content-between">
+                                    <span>Arabic</span>
+                                    <span class="badge badge-success">Native</span>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <div class="d-flex justify-content-between">
+                                    <span>French</span>
+                                    <span class="badge badge-primary">Professional</span>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <div class="d-flex justify-content-between">
+                                    <span>English</span>
+                                    <span class="badge badge-primary">Professional</span>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <div class="d-flex justify-content-between">
+                                    <span>Spanish</span>
+                                    <span class="badge badge-info">Professional</span>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="d-flex justify-content-between">
+                                    <span>Italian</span>
+                                    <span class="badge badge-secondary">Beginner</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        <h2 class="text-warning">Languages</h2>
-        <ul class="list-inline">
-            <li class="list-inline-item badge bg-secondary text-light p-2">Arabic (Native)</li>
-            <li class="list-inline-item badge bg-secondary text-light p-2">French (Professional Working)</li>
-            <li class="list-inline-item badge bg-secondary text-light p-2">English (Professional Working)</li>
-            <li class="list-inline-item badge bg-secondary text-light p-2">Italian (Beginner)</li>
-            <li class="list-inline-item badge bg-secondary text-light p-2">Spanish (Professional Working)</li>
-        </ul>
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title text-primary">
+                    <i class="fas fa-star mr-2"></i>Core Competencies
+                </h4>
+                <div class="row">
+                    <div class="col-md-6">
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success mr-2"></i>Large Language Models (LLM)</li>
+                            <li><i class="fas fa-check text-success mr-2"></i>Computer Vision & Deep Learning</li>
+                            <li><i class="fas fa-check text-success mr-2"></i>OCR Technologies</li>
+                            <li><i class="fas fa-check text-success mr-2"></i>AI Agent Development</li>
+                            <li><i class="fas fa-check text-success mr-2"></i>Machine Learning & Data Science</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success mr-2"></i>Full-Stack Web Development</li>
+                            <li><i class="fas fa-check text-success mr-2"></i>FastAPI & Django</li>
+                            <li><i class="fas fa-check text-success mr-2"></i>Vue.js & Modern Frontend</li>
+                            <li><i class="fas fa-check text-success mr-2"></i>Data Analysis & Visualization</li>
+                            <li><i class="fas fa-check text-success mr-2"></i>RPA & Automation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %}

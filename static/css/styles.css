@@ -1,44 +1,179 @@
 /* General Styling for the Page */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #121212; /* Dark Background */
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
     margin: 0;
     padding: 0;
-    color: #e0e0e0; /* Light Gray Text */
+    color: #212529;
+    min-height: 100vh;
+    line-height: 1.6;
 }
 
-/* Container Styling */
-.container {
-    margin: 20px auto;
-    max-width: 1200px;
-    padding: 20px;
-    background-color: #252525; /* Slightly Lighter Dark */
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(135deg, #007bff, #6610f2);
+    color: white;
     border-radius: 15px;
-    border: 1px solid #333333; /* Subtle Border */
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 123, 255, 0.3);
 }
 
-/* Card Grid */
-.card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
+.profile-image {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border: 4px solid white;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.profile-image:hover {
+    transform: scale(1.05);
+}
+
+.hero-buttons .btn {
+    margin: 0.5rem;
+    font-weight: 600;
+    padding: 12px 30px;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+.hero-buttons .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
 /* Card Styling */
 .card {
-    background-color: #1e1e1e; /* Slightly Darker Background */
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    background: white;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
     overflow: hidden;
-    padding: 20px;
-    color: #e0e0e0;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.8);
+    transform: translateY(-5px);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15);
+}
+
+.project-card .card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+.skill-item {
+    padding: 1rem;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.skill-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.skill-icon {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Additional Professional Styling */
+.section-title {
+    color: #2c3e50;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(135deg, #007bff, #6610f2);
+    border-radius: 2px;
+}
+
+.skill-card {
+    border: none;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    background: white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.skill-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.progress {
+    background-color: #e9ecef;
+    border-radius: 10px;
+}
+
+.progress-bar {
+    border-radius: 10px;
+    background: linear-gradient(135deg, #007bff, #6610f2);
+}
+
+/* Experience Cards */
+.experience-card {
+    border-left: 4px solid #007bff;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+.experience-card:hover {
+    transform: translateX(5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* Contact Form Styling */
+.contact-form {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+}
+
+.form-control {
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    padding: 12px 15px;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Responsive Typography */
+@media (max-width: 768px) {
+    .display-4 {
+        font-size: 2.5rem;
+    }
+
+    .hero-section {
+        text-align: center;
+    }
+
+    .hero-buttons .btn {
+        display: block;
+        width: 100%;
+        margin: 0.5rem 0;
+    }
 }
 
 .card h3 {
