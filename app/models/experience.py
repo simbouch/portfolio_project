@@ -58,14 +58,14 @@ class Experience(db.Model):
 
         sample_experiences = [
             Experience(
-                title="AI Developer Trainee",
-                company="Simplon Microsoft Program",
+                title="AI Developer - Alternance/Apprentissage",
+                company="CHRU & Simplon.com",
                 location="Nancy, France",
                 start_date=date(2024, 9, 1),
                 end_date=None,  # Current position
-                description="Intensive AI development training program focusing on machine learning, deep learning, and AI agent development. Working on real-world projects including RPA systems, OCR applications, and LLM integration.",
-                technologies="Python, TensorFlow, PyTorch, FastAPI, LLM, OCR, AI Agents, Azure ML",
-                achievements="• Developed RPA POC for PDF information extraction\n• Built full-stack flashcards platform with OCR\n• Created audio analysis toolkit with Librosa\n• Implemented malaria detection with CNN"
+                description="Work-study program (alternance/apprentissage) combining practical AI development at CHRU (University Hospital) with intensive training at Simplon Microsoft AI Program. Developing healthcare AI solutions while mastering cutting-edge technologies including machine learning, deep learning, and AI agent development.",
+                technologies="Python, TensorFlow, PyTorch, FastAPI, LLM, OCR, AI Agents, Azure ML, Docker, MLflow",
+                achievements="• Developing AI solutions for healthcare at CHRU\n• Built RPA POC for PDF information extraction\n• Created full-stack flashcards platform with OCR\n• Implemented malaria detection with CNN\n• Deployed ML models with Docker and MLflow"
             ),
             Experience(
                 title="Data Scientist & Analyst",

@@ -118,16 +118,30 @@ class Skill(db.Model):
                   description="Convolutional Neural Networks for image processing",
                   icon="fas fa-network-wired"),
 
-            # Tools & Technologies
-            Skill(name="Git", category="Tools", proficiency=88,
+            # DevOps & Tools
+            Skill(name="Docker", category="DevOps & Tools", proficiency=82,
+                  description="Containerization, Dockerfile creation, and deployment",
+                  icon="fab fa-docker", featured=True),
+            Skill(name="GitHub Actions", category="DevOps & Tools", proficiency=78,
+                  description="CI/CD pipelines and automated workflows",
+                  icon="fab fa-github"),
+            Skill(name="Git", category="DevOps & Tools", proficiency=88,
                   description="Version control and collaborative development",
                   icon="fab fa-git-alt"),
-            Skill(name="Docker", category="Tools", proficiency=75,
-                  description="Containerization and deployment",
-                  icon="fab fa-docker"),
-            Skill(name="Linux", category="Tools", proficiency=78,
+            Skill(name="Linux", category="DevOps & Tools", proficiency=78,
                   description="Linux system administration and command line",
                   icon="fab fa-linux"),
+
+            # Monitoring & ML Operations
+            Skill(name="Grafana", category="Monitoring & MLOps", proficiency=75,
+                  description="Monitoring dashboards and data visualization",
+                  icon="fas fa-chart-area"),
+            Skill(name="Prometheus", category="Monitoring & MLOps", proficiency=72,
+                  description="Metrics collection and monitoring",
+                  icon="fas fa-server"),
+            Skill(name="MLflow", category="Monitoring & MLOps", proficiency=80,
+                  description="ML lifecycle management and experiment tracking",
+                  icon="fas fa-flask", featured=True),
 
             # Databases
             Skill(name="PostgreSQL", category="Databases", proficiency=82,
