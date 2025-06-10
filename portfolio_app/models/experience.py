@@ -58,14 +58,14 @@ class Experience(db.Model):
 
         sample_experiences = [
             Experience(
-                title="AI Developer - TT2S Program (Alternance/Apprentissage)",
-                company="CHRU Nancy & Simplon Microsoft AI School",
+                title="AI Developer (Alternance/Apprentissage)",
+                company="CHRU de Nancy & Simplon Microsoft AI School",
                 location="Nancy, France",
                 start_date=date(2024, 9, 1),
                 end_date=None,  # Current position
-                description="Comprehensive TT2S (Titre Technique de Niveau 2 Supérieur) program combining 3-month intensive AI training with 16-month work-study at CHRU Nancy. Developing healthcare AI solutions with focus on automated robotics, OCR tools, and LLM/NLP applications. Emphasizing ethics and human impact in AI development for healthcare environments.",
-                technologies="Python, TensorFlow, PyTorch, FastAPI, LLM/NLP, OCR (Tesseract, EasyOCR), AI Agents, Azure ML, Docker, MLflow, Automated Robotics",
-                achievements="• Developing automated robotics systems for CHRU Nancy\n• Building advanced OCR tools for medical document processing\n• Implementing LLM/NLP solutions for healthcare applications\n• Created RPA POC for PDF information extraction\n• Focusing on AI ethics and human-centered design\n• Deployed ML models with Docker and MLflow in healthcare environment"
+                description="Work-study program combining intensive AI training with practical application at CHRU de Nancy. Developing healthcare AI solutions with focus on automated robotics, OCR tools, and LLM/NLP applications. Emphasizing ethics and human impact in AI development for healthcare environments.",
+                technologies="Python, TensorFlow, PyTorch, FastAPI, LLM/NLP, OCR (Tesseract, EasyOCR), AI Agents, Azure ML, Docker, MLflow, Automated Robotics, Django, Streamlit",
+                achievements="• Developing automated robotics systems for CHRU de Nancy\n• Building advanced OCR tools for medical document processing\n• Implementing LLM/NLP solutions for healthcare applications\n• Created malaria detection system using CNN and Django\n• Developed TRAQ diagnostic tool for behavioral disorders\n• Built educational AI tools with LangChain and local LLMs\n• Focusing on AI ethics and human-centered design"
             ),
             Experience(
                 title="Data Scientist & Analyst",

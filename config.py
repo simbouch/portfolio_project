@@ -16,7 +16,7 @@ class Config:
     MAIL_USE_TLS = os.environ.get('MAIL_USE_TLS', 'true').lower() in ['true', 'on', '1']
     MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
-    CONTACT_EMAIL = os.environ.get('CONTACT_EMAIL', 'simplonbouchaib@gmail.com')
+    CONTACT_EMAIL = os.environ.get('CONTACT_EMAIL', 'khribech.chouaib@gmail.com')
 
 class DevelopmentConfig(Config):
     """Development environment configuration."""

@@ -1,0 +1,171 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Bouchaib Khribech{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section text-center">
+    <div class="container">
+        <div class="row align-items-center min-vh-100 py-5">
+            <div class="col-lg-6 mb-5 mb-lg-0">
+                <div class="hero-content">
+                    <h1 class="display-4 mb-4 text-white">
+                        Hello, I'm <span class="text-gradient">Bouchaib KHRIBECH</span>
+                    </h1>
+                    <h2 class="h3 mb-4 text-white-50">
+                        <span class="typing-effect">AI Developer</span>
+                    </h2>
+                    <p class="lead mb-5 text-white-75">
+                        AI Developer at CHRU de Nancy & Simplon Microsoft AI School, specializing in healthcare AI, automated robotics, and ethical AI solutions.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="{{ url_for('projects') }}" class="btn btn-primary btn-lg me-3 mb-3">
+                            <i class="fas fa-laptop-code me-2"></i>View Projects
+                        </a>
+                        <a href="{{ url_for('contact') }}" class="btn btn-outline-light btn-lg mb-3">
+                            <i class="fas fa-envelope me-2"></i>Get In Touch
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="hero-image text-center">
+                    <img src="{{ url_for('static', filename='images/profile.jpg') }}"
+                         class="profile-image"
+                         alt="Bouchaib Khribech"
+                         onerror="this.src='https://via.placeholder.com/300x300/3498db/ffffff?text=BK'">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Preview Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center mb-5">
+                <h2 class="section-title">About Me</h2>
+                <p class="lead text-muted">
+                    Currently working as an AI Developer at CHRU de Nancy and Simplon Microsoft AI School in Nancy, France. 
+                    This comprehensive work-study program (alternance/apprentissage) combines intensive AI training with practical 
+                    application at CHRU de Nancy, where I develop healthcare AI solutions with a strong focus on ethics and human impact.
+                </p>
+                <p class="text-muted">
+                    I specialize in automated robotics systems, advanced OCR tools, and LLM/NLP applications for healthcare environments. 
+                    My work combines 15+ years of analytical expertise from biomedical engineering and forensic sciences with cutting-edge 
+                    AI technologies, always prioritizing ethical considerations and human-centered design in healthcare AI development.
+                </p>
+                <a href="{{ url_for('about') }}" class="btn btn-outline-primary">
+                    <i class="fas fa-user me-2"></i>Learn More About Me
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Projects Section -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center mb-5">
+                <h2 class="section-title">Featured Projects</h2>
+                <p class="lead text-muted">Some of my recent work in AI and healthcare technology</p>
+            </div>
+        </div>
+        <div class="row">
+            {% for project in featured_projects[:3] %}
+            <div class="col-lg-4 mb-4">
+                <div class="card project-card h-100 loading">
+                    <div class="card-body">
+                        <div class="project-type-badge project-type-{{ project.project_type }}">
+                            {{ project.project_type.replace('_', ' ').title() }}
+                        </div>
+                        <h5 class="card-title mt-4">{{ project.title }}</h5>
+                        <p class="card-text text-muted">{{ project.description[:100] }}...</p>
+                        <div class="mb-3">
+                            {% for tech in project.technology_used.split(', ')[:3] %}
+                                <span class="badge bg-secondary me-1">{{ tech }}</span>
+                            {% endfor %}
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <a href="{{ project.github_url }}" target="_blank" class="btn btn-outline-primary btn-sm">
+                                <i class="fab fa-github me-1"></i>View Code
+                            </a>
+                            {% if project.demo_url %}
+                            <a href="{{ project.demo_url }}" target="_blank" class="btn btn-primary btn-sm">
+                                <i class="fas fa-external-link-alt me-1"></i>Live Demo
+                            </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="row">
+            <div class="col-12 text-center mt-4">
+                <a href="{{ url_for('projects') }}" class="btn btn-primary btn-lg">
+                    <i class="fas fa-laptop-code me-2"></i>View All Projects
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Skills Preview Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center mb-5">
+                <h2 class="section-title">Core Skills</h2>
+                <p class="lead text-muted">Technologies and tools I work with</p>
+            </div>
+        </div>
+        <div class="row">
+            {% for skill in top_skills[:6] %}
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="skill-item loading">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <h6 class="mb-0">{{ skill.name }}</h6>
+                        <span class="text-muted">{{ skill.proficiency }}%</span>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar" 
+                             role="progressbar" 
+                             style="width: {{ skill.proficiency }}%"
+                             data-width="{{ skill.proficiency }}%">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="row">
+            <div class="col-12 text-center mt-4">
+                <a href="{{ url_for('skills') }}" class="btn btn-outline-primary btn-lg">
+                    <i class="fas fa-cogs me-2"></i>View All Skills
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact CTA Section -->
+<section class="py-5 bg-primary text-white">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center">
+                <h2 class="mb-4">Let's Work Together</h2>
+                <p class="lead mb-4">
+                    Interested in collaborating on AI projects or discussing healthcare technology solutions? 
+                    I'd love to hear from you!
+                </p>
+                <a href="{{ url_for('contact') }}" class="btn btn-light btn-lg">
+                    <i class="fas fa-envelope me-2"></i>Get In Touch
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

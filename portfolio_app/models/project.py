@@ -89,6 +89,51 @@ class Project(db.Model):
                 project_type="machine_learning",
                 github_url="https://github.com/simbouch/nutriscore_prediction_app",
                 demo_url="https://nutriscore-prediction.herokuapp.com"
+            ),
+            Project(
+                title="KinePasLoin - Movie Ticket Booking",
+                description="Personal project for a simple movie ticket booking application. Integrates with OMDB API to fetch and display movie details, allows users to calculate ticket costs, and manages bookings.",
+                technology_used="HTML, JavaScript, API Integration, OMDB API",
+                duration="2 weeks",
+                project_type="web",
+                github_url="https://github.com/simbouch/kinepasloin",
+                featured=False
+            ),
+            Project(
+                title="Reverso - Business Management System",
+                description="Java-based solution for managing clients, contracts, and related business entities within a database. Built on robust object-oriented principles.",
+                technology_used="Java, Database Management, OOP, SQL",
+                duration="4 weeks",
+                project_type="enterprise",
+                github_url="https://github.com/simbouch/reverso",
+                featured=False
+            ),
+            Project(
+                title="TRAQ Diagnostic Tool",
+                description="Streamlit-based tool for diagnosing behavioral and attention-related disorders using the TRAQ questionnaire. Computes key scores and provides diagnostic insights.",
+                technology_used="Python, Streamlit, Healthcare Analytics, Data Analysis",
+                duration="3 weeks",
+                project_type="healthcare",
+                github_url="https://github.com/simbouch/traq_diagnostic",
+                featured=True
+            ),
+            Project(
+                title="Malaria Detection Django App",
+                description="Django web application for malaria detection from medical images using a pre-trained CNN model for real-time classification.",
+                technology_used="Django, JavaScript, CNN, Computer Vision, Medical AI, TensorFlow",
+                duration="4 weeks",
+                project_type="deep_learning",
+                github_url="https://github.com/simbouch/malaria_project_django",
+                featured=True
+            ),
+            Project(
+                title="LangChain Learning App 2025",
+                description="Educational tool powered by LangChain and Streamlit that transforms course notes into interactive flashcards using local language model (Ollama + Phi) with no external API dependencies.",
+                technology_used="LangChain, Streamlit, Ollama, Phi, NLP, Educational AI, Local LLM",
+                duration="5 weeks",
+                project_type="ai_education",
+                github_url="https://github.com/simbouch/langchain_learning_app_2025",
+                featured=True
             )
         ]
 
