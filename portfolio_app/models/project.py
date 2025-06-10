@@ -35,7 +35,7 @@ class Project(db.Model):
                 technology_used="Python, OCR (Tesseract, EasyOCR, PaddleOCR), AI Agents, FastAPI, TensorFlow",
                 duration="4 weeks",
                 project_type="ai_automation",
-                github_url="https://github.com/simbouch/rpa-pdf-extraction",
+                github_url="https://github.com/simbouch/rpa_1_poc",
                 featured=True
             ),
             Project(
@@ -44,7 +44,7 @@ class Project(db.Model):
                 technology_used="FastAPI, Vue.js, OCR, French LLM, Python, JavaScript, PostgreSQL",
                 duration="6 weeks",
                 project_type="web",
-                github_url="https://github.com/simbouch/flashcards-platform",
+                github_url="https://github.com/simbouch/flashcards-projet",
                 featured=True
             ),
             Project(
@@ -57,12 +57,21 @@ class Project(db.Model):
                 featured=True
             ),
             Project(
+                title="Doggy and Cat Adventure Game",
+                description="Interactive adventure game featuring dogs and cats. A fun project showcasing game development skills and creative programming.",
+                technology_used="Python, Game Development, Interactive Design",
+                duration="2 weeks",
+                project_type="game",
+                github_url="https://github.com/simbouch/Doggy-and-Cat-adventure",
+                featured=False
+            ),
+            Project(
                 title="Boston Housing ML Comparison",
                 description="Comprehensive machine learning project comparing multiple algorithms for Boston housing price prediction. Includes feature engineering, model evaluation, and performance comparison analysis.",
                 technology_used="Python, Scikit-learn, Pandas, Matplotlib, Seaborn, Jupyter",
                 duration="2 weeks",
                 project_type="machine_learning",
-                github_url="https://github.com/simbouch/boston-housing-ml"
+                github_url="https://github.com/simbouch/boston-housing-ml-comparison"
             ),
             Project(
                 title="Malaria Detection Application",

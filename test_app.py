@@ -58,6 +58,14 @@ def test_contact_route():
         assert response.status_code == 200
         assert b'Contact' in response.data
 
+def test_interests_route():
+    """Test the interests route"""
+    app = create_app('config.DevelopmentConfig')
+    with app.test_client() as client:
+        response = client.get('/interests')
+        assert response.status_code == 200
+        assert b'Interests' in response.data
+
 if __name__ == '__main__':
     # Run basic tests
     print("Testing Flask application...")
@@ -83,7 +91,10 @@ if __name__ == '__main__':
         
         test_contact_route()
         print("✓ Contact route test passed")
-        
+
+        test_interests_route()
+        print("✓ Interests route test passed")
+
         print("\n🎉 All tests passed! The application is working correctly.")
         
     except Exception as e:

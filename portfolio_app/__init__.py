@@ -129,6 +129,10 @@ def create_app(config_class="config.DevelopmentConfig"):
 
         return render_template("contact.html")
 
+    @app.route("/interests")
+    def interests():
+        return render_template("interests.html")
+
     # Register blueprints if they exist
     try:
         from .controllers import portfolio_controller
