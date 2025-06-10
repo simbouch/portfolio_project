@@ -17,10 +17,10 @@ def format_date(value, format="%Y"):
     return value.strftime(format)
 
 def create_app(config_class="config.DevelopmentConfig"):
-    # Configure Flask to use templates and static files from the root directory
+    # Configure Flask to use templates and static files from the portfolio_app directory
     app = Flask(__name__,
-                template_folder='../templates',
-                static_folder='../static')
+                template_folder='templates',
+                static_folder='static')
     app.config.from_object(config_class)
 
     # Initialize plugins

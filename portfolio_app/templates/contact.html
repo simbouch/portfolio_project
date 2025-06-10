@@ -1,0 +1,299 @@
+{% extends "base.html" %}
+
+{% block title %}Contact - Bouchaib Khribech{% endblock %}
+
+{% block content %}
+<div class="container py-5 mt-5">
+    <div class="text-center mb-5">
+        <h1 class="display-4 section-title">Get In Touch</h1>
+        <p class="lead">Let's discuss AI projects, healthcare technology, or collaboration opportunities</p>
+    </div>
+
+    <div class="row">
+        <!-- Contact Information -->
+        <div class="col-lg-4 mb-4">
+            <div class="card h-100 loading">
+                <div class="card-body text-center">
+                    <div class="profile-avatar profile-avatar-contact mb-4"
+                         role="img"
+                         aria-label="Profile picture of Bouchaib Khribech">
+                        BK
+                    </div>
+
+                    <h4 class="text-primary mb-4">Contact Information</h4>
+
+                    <div class="contact-item mb-3">
+                        <i class="fas fa-envelope fa-lg text-primary mb-2"></i>
+                        <p class="mb-0">
+                            <strong>Email:</strong><br>
+                            <a href="mailto:khribech.chouaib@gmail.com" class="text-decoration-none">
+                                khribech.chouaib@gmail.com
+                            </a>
+                        </p>
+                    </div>
+
+                    <div class="contact-item mb-3">
+                        <i class="fab fa-linkedin fa-lg text-primary mb-2"></i>
+                        <p class="mb-0">
+                            <strong>LinkedIn:</strong><br>
+                            <a href="https://www.linkedin.com/in/khbouchaib" target="_blank" class="text-decoration-none">
+                                linkedin.com/in/khbouchaib
+                            </a>
+                        </p>
+                    </div>
+
+                    <div class="contact-item mb-3">
+                        <i class="fab fa-github fa-lg text-primary mb-2"></i>
+                        <p class="mb-0">
+                            <strong>GitHub:</strong><br>
+                            <a href="https://github.com/simbouch" target="_blank" class="text-decoration-none">
+                                github.com/simbouch
+                            </a>
+                        </p>
+                    </div>
+
+                    <div class="contact-item mb-3">
+                        <i class="fas fa-map-marker-alt fa-lg text-primary mb-2"></i>
+                        <p class="mb-0">
+                            <strong>Location:</strong><br>
+                            Nancy, France
+                        </p>
+                    </div>
+
+                    <div class="contact-item">
+                        <i class="fas fa-briefcase fa-lg text-primary mb-2"></i>
+                        <p class="mb-0">
+                            <strong>Current Role:</strong><br>
+                            AI Developer<br>
+                            <small class="text-muted">CHRU de Nancy & Simplon Microsoft AI School</small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="col-lg-8">
+            <div class="card loading">
+                <div class="card-body">
+                    <h4 class="text-primary mb-4">
+                        <i class="fas fa-paper-plane me-2"></i>Send Me a Message
+                    </h4>
+                    <p class="text-muted mb-4">
+                        Whether you're interested in collaboration, have a project in mind, or just want to connect, 
+                        I'd love to hear from you. Fill out the form below and I'll get back to you as soon as possible.
+                    </p>
+
+                    <form method="POST" action="{{ url_for('contact') }}" id="contact-form">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label for="name" class="form-label fw-bold">
+                                        <i class="fas fa-user me-2"></i>Name <span class="text-danger">*</span>
+                                    </label>
+                                    <input type="text" class="form-control" id="name" name="name"
+                                           placeholder="Your Full Name" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label for="email" class="form-label fw-bold">
+                                        <i class="fas fa-envelope me-2"></i>Email <span class="text-danger">*</span>
+                                    </label>
+                                    <input type="email" class="form-control" id="email" name="email"
+                                           placeholder="your.email@example.com" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="subject" class="form-label fw-bold">
+                                <i class="fas fa-tag me-2"></i>Subject
+                            </label>
+                            <select class="form-control" id="subject" name="subject">
+                                <option value="">Select a topic...</option>
+                                <option value="collaboration">Collaboration Opportunity</option>
+                                <option value="project">Project Discussion</option>
+                                <option value="job">Job Opportunity</option>
+                                <option value="consultation">Technical Consultation</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <label for="message" class="form-label fw-bold">
+                                <i class="fas fa-comment me-2"></i>Message <span class="text-danger">*</span>
+                            </label>
+                            <textarea class="form-control" id="message" name="message" rows="6"
+                                      placeholder="Tell me about your project, opportunity, or just say hello..." required></textarea>
+                        </div>
+
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary btn-lg px-5">
+                                <i class="fas fa-paper-plane me-2"></i>Send Message
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Areas of Interest -->
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="card bg-light loading">
+                <div class="card-body">
+                    <h3 class="text-primary text-center mb-4">Areas of Interest</h3>
+                    <div class="row">
+                        <div class="col-md-3 mb-3">
+                            <div class="text-center">
+                                <i class="fas fa-heartbeat fa-3x text-danger mb-3"></i>
+                                <h5>Healthcare AI</h5>
+                                <p class="text-muted small">
+                                    Medical image analysis, diagnostic tools, patient care optimization
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <div class="text-center">
+                                <i class="fas fa-robot fa-3x text-primary mb-3"></i>
+                                <h5>Automation & Robotics</h5>
+                                <p class="text-muted small">
+                                    Intelligent automation, process optimization, robotic systems
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <div class="text-center">
+                                <i class="fas fa-brain fa-3x text-success mb-3"></i>
+                                <h5>AI Research</h5>
+                                <p class="text-muted small">
+                                    LLM applications, computer vision, natural language processing
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <div class="text-center">
+                                <i class="fas fa-graduation-cap fa-3x text-warning mb-3"></i>
+                                <h5>Education Technology</h5>
+                                <p class="text-muted small">
+                                    AI-powered learning tools, educational platforms, knowledge systems
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Response Time & Availability -->
+    <div class="row mt-5">
+        <div class="col-md-6 mb-4">
+            <div class="card border-success loading">
+                <div class="card-body text-center">
+                    <i class="fas fa-clock fa-3x text-success mb-3"></i>
+                    <h5 class="text-success">Response Time</h5>
+                    <p class="mb-0">
+                        I typically respond to messages within <strong>24-48 hours</strong>. 
+                        For urgent matters, please mention it in your message.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mb-4">
+            <div class="card border-info loading">
+                <div class="card-body text-center">
+                    <i class="fas fa-calendar-check fa-3x text-info mb-3"></i>
+                    <h5 class="text-info">Availability</h5>
+                    <p class="mb-0">
+                        Currently available for <strong>freelance projects</strong> and 
+                        <strong>collaboration opportunities</strong> alongside my current role.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Social Media Links -->
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="card bg-primary text-white text-center loading">
+                <div class="card-body py-4">
+                    <h4 class="mb-3">Connect on Social Media</h4>
+                    <p class="mb-4">Follow my work and stay updated with my latest projects</p>
+                    <div class="social-links">
+                        <a href="mailto:khribech.chouaib@gmail.com" class="btn btn-light btn-lg me-3 mb-2">
+                            <i class="fas fa-envelope me-2"></i>Email
+                        </a>
+                        <a href="https://www.linkedin.com/in/khbouchaib" target="_blank" class="btn btn-light btn-lg me-3 mb-2">
+                            <i class="fab fa-linkedin me-2"></i>LinkedIn
+                        </a>
+                        <a href="https://github.com/simbouch" target="_blank" class="btn btn-light btn-lg mb-2">
+                            <i class="fab fa-github me-2"></i>GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.contact-item {
+    padding: 1rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.contact-item:hover {
+    background: rgba(52, 152, 219, 0.05);
+    transform: translateY(-2px);
+}
+
+.contact-item i {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.form-control {
+    border-radius: 8px;
+    border: 2px solid #e9ecef;
+    padding: 12px 15px;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
+}
+
+.btn-primary {
+    border-radius: 25px;
+    padding: 12px 30px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+}
+
+#contact-form {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+</style>
+{% endblock %}

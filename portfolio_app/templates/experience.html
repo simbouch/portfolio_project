@@ -1,0 +1,298 @@
+{% extends "base.html" %}
+
+{% block title %}Experience - Bouchaib Khribech{% endblock %}
+
+{% block content %}
+<div class="container py-5 mt-5">
+    <div class="text-center mb-5">
+        <h1 class="display-4 section-title">Professional Experience</h1>
+        <p class="lead">My journey in AI development and healthcare technology</p>
+    </div>
+
+    <!-- Experience Timeline -->
+    <div class="row">
+        <div class="col-12">
+            <div class="timeline">
+                {% for experience in experiences %}
+                <div class="timeline-item loading">
+                    <div class="timeline-marker">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-start mb-3">
+                                    <div>
+                                        <h5 class="text-primary mb-1">{{ experience.title }}</h5>
+                                        <h6 class="text-muted mb-2">{{ experience.company }}</h6>
+                                        <p class="text-muted mb-0">
+                                            <i class="fas fa-map-marker-alt me-2"></i>{{ experience.location }}
+                                        </p>
+                                    </div>
+                                    <div class="text-end">
+                                        <span class="badge bg-primary">
+                                            {{ experience.start_date.strftime('%b %Y') }} - 
+                                            {% if experience.end_date %}
+                                                {{ experience.end_date.strftime('%b %Y') }}
+                                            {% else %}
+                                                Present
+                                            {% endif %}
+                                        </span>
+                                        {% if not experience.end_date %}
+                                        <br><small class="text-success">Current Position</small>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                
+                                <p class="card-text mb-3">{{ experience.description }}</p>
+                                
+                                <!-- Technologies Used -->
+                                <div class="mb-3">
+                                    <h6 class="text-primary mb-2">Technologies & Tools:</h6>
+                                    <div class="d-flex flex-wrap gap-1">
+                                        {% for tech in experience.technologies.split(', ') %}
+                                            <span class="badge bg-secondary">{{ tech }}</span>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                                
+                                <!-- Key Achievements -->
+                                {% if experience.achievements %}
+                                <div class="mb-3">
+                                    <h6 class="text-primary mb-2">Key Achievements:</h6>
+                                    <ul class="list-unstyled">
+                                        {% for achievement in experience.achievements.split('\n') %}
+                                        {% if achievement.strip() %}
+                                        <li class="mb-1">
+                                            <i class="fas fa-check-circle text-success me-2"></i>
+                                            {{ achievement.strip().lstrip('• ') }}
+                                        </li>
+                                        {% endif %}
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Skills & Expertise Summary -->
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="card bg-light loading">
+                <div class="card-body">
+                    <h3 class="text-primary text-center mb-4">Core Expertise Areas</h3>
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="expertise-item">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="expertise-icon bg-primary text-white me-3">
+                                        <i class="fas fa-heartbeat"></i>
+                                    </div>
+                                    <h5 class="mb-0">Healthcare AI</h5>
+                                </div>
+                                <p class="text-muted">
+                                    Developing AI solutions for healthcare environments with focus on ethics, 
+                                    patient care improvement, and medical workflow optimization.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="expertise-item">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="expertise-icon bg-success text-white me-3">
+                                        <i class="fas fa-robot"></i>
+                                    </div>
+                                    <h5 class="mb-0">Automated Robotics</h5>
+                                </div>
+                                <p class="text-muted">
+                                    Building intelligent automation systems for healthcare and business processes, 
+                                    focusing on efficiency and human-centered design.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="expertise-item">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="expertise-icon bg-info text-white me-3">
+                                        <i class="fas fa-eye"></i>
+                                    </div>
+                                    <h5 class="mb-0">Computer Vision & OCR</h5>
+                                </div>
+                                <p class="text-muted">
+                                    Advanced document processing, medical image analysis, and optical character 
+                                    recognition for healthcare and business applications.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="expertise-item">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="expertise-icon bg-warning text-white me-3">
+                                        <i class="fas fa-brain"></i>
+                                    </div>
+                                    <h5 class="mb-0">LLM/NLP Applications</h5>
+                                </div>
+                                <p class="text-muted">
+                                    Natural language processing solutions using large language models for 
+                                    healthcare, education, and business intelligence applications.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Professional Values -->
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="card border-primary loading">
+                <div class="card-body text-center py-5">
+                    <h3 class="text-primary mb-4">Professional Values & Approach</h3>
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <i class="fas fa-shield-alt fa-3x text-primary mb-3"></i>
+                            <h5>Ethical AI Development</h5>
+                            <p class="text-muted">
+                                Prioritizing responsible AI practices and ensuring human-centered design 
+                                in all technology solutions.
+                            </p>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <i class="fas fa-users fa-3x text-primary mb-3"></i>
+                            <h5>Collaborative Innovation</h5>
+                            <p class="text-muted">
+                                Working effectively in multidisciplinary teams to deliver innovative 
+                                solutions that make a real impact.
+                            </p>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <i class="fas fa-lightbulb fa-3x text-primary mb-3"></i>
+                            <h5>Continuous Learning</h5>
+                            <p class="text-muted">
+                                Staying current with the latest AI advancements and continuously 
+                                improving skills and knowledge.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Call to Action -->
+    <div class="row mt-5">
+        <div class="col-12 text-center">
+            <div class="card bg-primary text-white loading">
+                <div class="card-body py-4">
+                    <h4 class="mb-3">Let's Discuss Opportunities</h4>
+                    <p class="lead mb-4">
+                        Interested in my experience and expertise? I'd love to discuss how I can 
+                        contribute to your team or project.
+                    </p>
+                    <div class="d-flex justify-content-center gap-3">
+                        <a href="{{ url_for('contact') }}" class="btn btn-light btn-lg">
+                            <i class="fas fa-envelope me-2"></i>Get In Touch
+                        </a>
+                        <a href="{{ url_for('projects') }}" class="btn btn-outline-light btn-lg">
+                            <i class="fas fa-laptop-code me-2"></i>View My Work
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.timeline {
+    position: relative;
+    padding-left: 3rem;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 1.5rem;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 3rem;
+}
+
+.timeline-marker {
+    position: absolute;
+    left: -3rem;
+    top: 1rem;
+    width: 3rem;
+    height: 3rem;
+    background: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+    box-shadow: 0 0 0 4px white, 0 0 0 6px var(--primary-color);
+}
+
+.timeline-content {
+    margin-left: 2rem;
+}
+
+.expertise-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+.expertise-item {
+    height: 100%;
+    padding: 1rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.expertise-item:hover {
+    background: rgba(0, 123, 255, 0.05);
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .timeline {
+        padding-left: 2rem;
+    }
+    
+    .timeline::before {
+        left: 1rem;
+    }
+    
+    .timeline-marker {
+        left: -2rem;
+        width: 2rem;
+        height: 2rem;
+        font-size: 1rem;
+    }
+    
+    .timeline-content {
+        margin-left: 1rem;
+    }
+}
+</style>
+{% endblock %}

@@ -1,0 +1,221 @@
+{% extends "base.html" %}
+
+{% block title %}Projects - Bouchaib Khribech{% endblock %}
+
+{% block content %}
+<div class="container py-5 mt-5">
+    <div class="text-center mb-5">
+        <h1 class="display-4 section-title">My Projects</h1>
+        <p class="lead">A showcase of my work in AI, machine learning, and healthcare technology</p>
+    </div>
+
+    <!-- Project Filters -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="text-center">
+                <div class="btn-group" role="group" aria-label="Project filters">
+                    <button type="button" class="btn btn-outline-primary filter-btn active" data-filter="all">
+                        <i class="fas fa-th me-2"></i>All Projects
+                    </button>
+                    <button type="button" class="btn btn-outline-primary filter-btn" data-filter="healthcare">
+                        <i class="fas fa-heartbeat me-2"></i>Healthcare AI
+                    </button>
+                    <button type="button" class="btn btn-outline-primary filter-btn" data-filter="deep_learning">
+                        <i class="fas fa-brain me-2"></i>Deep Learning
+                    </button>
+                    <button type="button" class="btn btn-outline-primary filter-btn" data-filter="web">
+                        <i class="fas fa-globe me-2"></i>Web Apps
+                    </button>
+                    <button type="button" class="btn btn-outline-primary filter-btn" data-filter="ai_education">
+                        <i class="fas fa-graduation-cap me-2"></i>AI Education
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="row">
+        {% for project in projects %}
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card project-card h-100 loading" data-type="{{ project.project_type }}">
+                <div class="card-body position-relative">
+                    <!-- Project Type Badge -->
+                    <div class="project-type-badge project-type-{{ project.project_type }}">
+                        {{ project.project_type.replace('_', ' ').title() }}
+                    </div>
+                    
+                    <!-- Project Content -->
+                    <h5 class="card-title mt-4 mb-3">{{ project.title }}</h5>
+                    <p class="card-text text-muted mb-3">{{ project.description }}</p>
+                    
+                    <!-- Technologies -->
+                    <div class="mb-3">
+                        <h6 class="text-primary mb-2">Technologies:</h6>
+                        <div class="d-flex flex-wrap gap-1">
+                            {% for tech in project.technology_used.split(', ') %}
+                                <span class="badge bg-secondary">{{ tech }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    
+                    <!-- Project Duration -->
+                    <div class="mb-3">
+                        <small class="text-muted">
+                            <i class="fas fa-clock me-1"></i>Duration: {{ project.duration }}
+                        </small>
+                    </div>
+                    
+                    <!-- Action Buttons -->
+                    <div class="d-flex justify-content-between align-items-center mt-auto">
+                        <a href="{{ project.github_url }}" target="_blank" class="btn btn-outline-primary btn-sm">
+                            <i class="fab fa-github me-1"></i>View Code
+                        </a>
+                        {% if project.demo_url %}
+                        <a href="{{ project.demo_url }}" target="_blank" class="btn btn-primary btn-sm">
+                            <i class="fas fa-external-link-alt me-1"></i>Live Demo
+                        </a>
+                        {% else %}
+                        <span class="badge bg-info">
+                            <i class="fas fa-code me-1"></i>Code Available
+                        </span>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Featured Projects Section -->
+    {% if projects|selectattr("featured")|list %}
+    <div class="row mt-5">
+        <div class="col-12">
+            <h2 class="section-title text-center mb-5">Featured Projects</h2>
+        </div>
+    </div>
+    <div class="row">
+        {% for project in projects if project.featured %}
+        <div class="col-lg-6 mb-4">
+            <div class="card project-card h-100 border-primary loading">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start mb-3">
+                        <h5 class="card-title text-primary">
+                            <i class="fas fa-star me-2"></i>{{ project.title }}
+                        </h5>
+                        <span class="badge bg-warning text-dark">Featured</span>
+                    </div>
+                    <p class="card-text">{{ project.description }}</p>
+                    
+                    <!-- Detailed Technology Stack -->
+                    <div class="mb-3">
+                        <h6 class="text-primary mb-2">Technology Stack:</h6>
+                        <div class="row">
+                            {% for tech in project.technology_used.split(', ') %}
+                            <div class="col-auto mb-1">
+                                <span class="badge bg-primary">{{ tech }}</span>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    
+                    <!-- Project Highlights -->
+                    <div class="mb-3">
+                        <h6 class="text-primary mb-2">Key Features:</h6>
+                        <ul class="list-unstyled">
+                            {% if 'healthcare' in project.project_type.lower() %}
+                            <li><i class="fas fa-check text-success me-2"></i>Healthcare-focused AI solution</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Ethical AI implementation</li>
+                            {% endif %}
+                            {% if 'django' in project.technology_used.lower() %}
+                            <li><i class="fas fa-check text-success me-2"></i>Full-stack web application</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Real-time processing capabilities</li>
+                            {% endif %}
+                            {% if 'cnn' in project.technology_used.lower() %}
+                            <li><i class="fas fa-check text-success me-2"></i>Deep learning model integration</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Computer vision implementation</li>
+                            {% endif %}
+                            {% if 'langchain' in project.technology_used.lower() %}
+                            <li><i class="fas fa-check text-success me-2"></i>Local LLM integration</li>
+                            <li><i class="fas fa-check text-success me-2"></i>No external API dependencies</li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                    
+                    <div class="d-flex justify-content-between align-items-center">
+                        <a href="{{ project.github_url }}" target="_blank" class="btn btn-primary">
+                            <i class="fab fa-github me-2"></i>Explore Code
+                        </a>
+                        {% if project.demo_url %}
+                        <a href="{{ project.demo_url }}" target="_blank" class="btn btn-outline-primary">
+                            <i class="fas fa-external-link-alt me-2"></i>Live Demo
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- Call to Action -->
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="card bg-gradient text-white text-center loading">
+                <div class="card-body py-5">
+                    <h3 class="mb-3">Interested in Collaboration?</h3>
+                    <p class="lead mb-4">
+                        I'm always open to discussing new projects, innovative ideas, and opportunities 
+                        to work together on AI and healthcare technology solutions.
+                    </p>
+                    <div class="d-flex justify-content-center gap-3">
+                        <a href="{{ url_for('contact') }}" class="btn btn-light btn-lg">
+                            <i class="fas fa-envelope me-2"></i>Get In Touch
+                        </a>
+                        <a href="https://github.com/simbouch" target="_blank" class="btn btn-outline-light btn-lg">
+                            <i class="fab fa-github me-2"></i>View GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.bg-gradient {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)) !important;
+}
+
+.project-type-healthcare { 
+    background: linear-gradient(135deg, #e74c3c, #c0392b); 
+    color: white; 
+}
+
+.project-type-deep_learning { 
+    background: linear-gradient(135deg, #9b59b6, #8e44ad); 
+    color: white; 
+}
+
+.project-type-web { 
+    background: linear-gradient(135deg, #3498db, #2980b9); 
+    color: white; 
+}
+
+.project-type-ai_education { 
+    background: linear-gradient(135deg, #f39c12, #e67e22); 
+    color: white; 
+}
+
+.project-type-enterprise { 
+    background: linear-gradient(135deg, #27ae60, #229954); 
+    color: white; 
+}
+
+.project-type-machine_learning { 
+    background: linear-gradient(135deg, #667eea, #764ba2); 
+    color: white; 
+}
+</style>
+{% endblock %}

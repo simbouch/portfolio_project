@@ -1,0 +1,254 @@
+{% extends "base.html" %}
+
+{% block title %}Skills - Bouchaib Khribech{% endblock %}
+
+{% block content %}
+<div class="container py-5 mt-5">
+    <div class="text-center mb-5">
+        <h1 class="display-4 section-title">Technical Skills</h1>
+        <p class="lead">Technologies, tools, and frameworks I work with</p>
+    </div>
+
+    <!-- Skills by Category -->
+    {% for category, skills in skills_by_category.items() %}
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card loading">
+                <div class="card-body">
+                    <h3 class="text-primary mb-4">
+                        {% if category == 'Programming Languages' %}
+                            <i class="fas fa-code me-2"></i>
+                        {% elif category == 'AI/ML Frameworks' %}
+                            <i class="fas fa-brain me-2"></i>
+                        {% elif category == 'Web Development' %}
+                            <i class="fas fa-globe me-2"></i>
+                        {% elif category == 'Databases' %}
+                            <i class="fas fa-database me-2"></i>
+                        {% elif category == 'DevOps & Tools' %}
+                            <i class="fas fa-tools me-2"></i>
+                        {% elif category == 'Monitoring & MLOps' %}
+                            <i class="fas fa-chart-line me-2"></i>
+                        {% else %}
+                            <i class="fas fa-cog me-2"></i>
+                        {% endif %}
+                        {{ category }}
+                    </h3>
+                    
+                    <div class="row">
+                        {% for skill in skills %}
+                        <div class="col-lg-6 col-md-12 mb-4">
+                            <div class="skill-item">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <h6 class="mb-0 fw-bold">{{ skill.name }}</h6>
+                                    <span class="badge bg-primary">{{ skill.proficiency }}%</span>
+                                </div>
+                                <div class="progress mb-2">
+                                    <div class="progress-bar" 
+                                         role="progressbar" 
+                                         style="width: {{ skill.proficiency }}%"
+                                         data-width="{{ skill.proficiency }}%">
+                                    </div>
+                                </div>
+                                {% if skill.description %}
+                                <p class="text-muted small mb-0">{{ skill.description }}</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+    <!-- Skills Summary -->
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="card bg-primary text-white loading">
+                <div class="card-body text-center py-5">
+                    <h3 class="mb-4">Skills Overview</h3>
+                    <div class="row">
+                        <div class="col-md-3 mb-3">
+                            <div class="skill-summary">
+                                <i class="fas fa-robot fa-3x mb-3"></i>
+                                <h5>AI & Machine Learning</h5>
+                                <p class="mb-0">Advanced expertise in developing AI solutions for healthcare</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <div class="skill-summary">
+                                <i class="fas fa-code fa-3x mb-3"></i>
+                                <h5>Full-Stack Development</h5>
+                                <p class="mb-0">Proficient in modern web technologies and frameworks</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <div class="skill-summary">
+                                <i class="fas fa-database fa-3x mb-3"></i>
+                                <h5>Data Science</h5>
+                                <p class="mb-0">Expert in data analysis, visualization, and modeling</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <div class="skill-summary">
+                                <i class="fas fa-cloud fa-3x mb-3"></i>
+                                <h5>DevOps & MLOps</h5>
+                                <p class="mb-0">Experienced in deployment, monitoring, and automation</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Certifications & Learning -->
+    <div class="row mt-5">
+        <div class="col-lg-6 mb-4">
+            <div class="card h-100 loading">
+                <div class="card-body">
+                    <h5 class="text-primary mb-3">
+                        <i class="fas fa-certificate me-2"></i>Certifications & Training
+                    </h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-3">
+                            <div class="d-flex align-items-start">
+                                <i class="fas fa-award text-warning me-3 mt-1"></i>
+                                <div>
+                                    <strong>AI Developer Program</strong><br>
+                                    <small class="text-muted">Simplon Microsoft AI School - 2024</small>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="mb-3">
+                            <div class="d-flex align-items-start">
+                                <i class="fas fa-award text-warning me-3 mt-1"></i>
+                                <div>
+                                    <strong>Healthcare AI Specialization</strong><br>
+                                    <small class="text-muted">CHRU de Nancy - 2024</small>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="mb-3">
+                            <div class="d-flex align-items-start">
+                                <i class="fas fa-award text-warning me-3 mt-1"></i>
+                                <div>
+                                    <strong>Biomedical Engineering</strong><br>
+                                    <small class="text-muted">15+ years experience</small>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-6 mb-4">
+            <div class="card h-100 loading">
+                <div class="card-body">
+                    <h5 class="text-primary mb-3">
+                        <i class="fas fa-book me-2"></i>Continuous Learning
+                    </h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-3">
+                            <div class="d-flex align-items-start">
+                                <i class="fas fa-graduation-cap text-info me-3 mt-1"></i>
+                                <div>
+                                    <strong>Advanced LLM Applications</strong><br>
+                                    <small class="text-muted">LangChain, Ollama, Local Models</small>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="mb-3">
+                            <div class="d-flex align-items-start">
+                                <i class="fas fa-graduation-cap text-info me-3 mt-1"></i>
+                                <div>
+                                    <strong>Computer Vision in Healthcare</strong><br>
+                                    <small class="text-muted">Medical Image Analysis, CNN Models</small>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="mb-3">
+                            <div class="d-flex align-items-start">
+                                <i class="fas fa-graduation-cap text-info me-3 mt-1"></i>
+                                <div>
+                                    <strong>MLOps & Model Deployment</strong><br>
+                                    <small class="text-muted">Docker, MLflow, Monitoring Systems</small>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Call to Action -->
+    <div class="row mt-5">
+        <div class="col-12 text-center">
+            <div class="card border-primary loading">
+                <div class="card-body py-4">
+                    <h4 class="text-primary mb-3">Ready to Collaborate?</h4>
+                    <p class="lead mb-4">
+                        Let's discuss how my skills can contribute to your next AI or healthcare technology project.
+                    </p>
+                    <div class="d-flex justify-content-center gap-3">
+                        <a href="{{ url_for('contact') }}" class="btn btn-primary btn-lg">
+                            <i class="fas fa-envelope me-2"></i>Contact Me
+                        </a>
+                        <a href="{{ url_for('projects') }}" class="btn btn-outline-primary btn-lg">
+                            <i class="fas fa-laptop-code me-2"></i>View Projects
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.skill-summary {
+    padding: 1rem;
+}
+
+.skill-summary i {
+    opacity: 0.9;
+}
+
+.skill-summary h5 {
+    color: rgba(255, 255, 255, 0.95);
+    margin-bottom: 0.5rem;
+}
+
+.skill-summary p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+}
+
+.progress {
+    height: 10px;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.progress-bar {
+    border-radius: 5px;
+    transition: width 1.5s ease-in-out;
+}
+
+.skill-item {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.skill-item:hover {
+    background: rgba(255, 255, 255, 1);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+</style>
+{% endblock %}

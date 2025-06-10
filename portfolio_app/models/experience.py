@@ -57,6 +57,7 @@ class Experience(db.Model):
         from datetime import date
 
         sample_experiences = [
+            # Current Position
             Experience(
                 title="AI Developer (Alternance/Apprentissage)",
                 company="CHRU de Nancy & Simplon Microsoft AI School",
@@ -67,25 +68,51 @@ class Experience(db.Model):
                 technologies="Python, TensorFlow, PyTorch, FastAPI, LLM/NLP, OCR (Tesseract, EasyOCR), AI Agents, Azure ML, Docker, MLflow, Automated Robotics, Django, Streamlit",
                 achievements="• Developing automated robotics systems for CHRU de Nancy\n• Building advanced OCR tools for medical document processing\n• Implementing LLM/NLP solutions for healthcare applications\n• Created malaria detection system using CNN and Django\n• Developed TRAQ diagnostic tool for behavioral disorders\n• Built educational AI tools with LangChain and local LLMs\n• Focusing on AI ethics and human-centered design"
             ),
+
+            # Recent Experience
             Experience(
-                title="Data Scientist & Analyst",
-                company="Freelance Projects",
+                title="Data Scientist/Analyst",
+                company="CLINICOG",
                 location="Nancy, France",
-                start_date=date(2023, 1, 1),
-                end_date=date(2024, 8, 31),
-                description="Developed machine learning models and data analysis solutions for various clients. Specialized in predictive modeling, computer vision, and web application development.",
-                technologies="Python, Scikit-learn, Pandas, Django, Flask, Streamlit, Vue.js",
-                achievements="• Built NutriScore prediction ML model\n• Created clustering web application with PCA\n• Developed Boston housing price comparison tool\n• Delivered 10+ data science projects"
+                start_date=date(2024, 4, 1),
+                end_date=date(2024, 7, 31),
+                description="Designed and deployed machine learning models and neural networks using Python for healthcare data analysis. Created Streamlit applications to assist clinical psychologists with diagnostic tools, focusing on high-performance and intuitive user interfaces.",
+                technologies="Python, Machine Learning, Neural Networks, Streamlit, Healthcare Data Analytics, Clinical Psychology Tools",
+                achievements="• Developed clinical diagnostic tools for psychologists\n• Improved workflow efficiency for healthcare professionals\n• Deployed production-ready ML applications\n• Created intuitive user interfaces for complex data analysis"
             ),
+
             Experience(
-                title="Biomedical Engineer & Forensic Scientist",
-                company="Various Healthcare & Forensic Institutions",
-                location="Morocco & France",
-                start_date=date(2008, 1, 1),
-                end_date=date(2022, 12, 31),
-                description="15+ years of analytical expertise in biomedical engineering and forensic sciences. Specialized in complex problem-solving, data analysis, and scientific research methodologies.",
-                technologies="Laboratory Equipment, Statistical Analysis, Research Methodologies, Data Collection",
-                achievements="• 15+ years of analytical experience\n• Expert in complex problem-solving\n• Strong foundation in scientific methodology\n• Transitioned expertise to data science"
+                title="Data Scientist",
+                company="DBCALL | Réseau DEF",
+                location="Roubaix, France",
+                start_date=date(2023, 11, 1),
+                end_date=date(2023, 12, 31),
+                description="Developed machine learning models in Python, created APIs for data integration, utilized PL/SQL for database operations, and integrated Microsoft ecosystem tools for business intelligence and data management.",
+                technologies="Python, Machine Learning, API Development, PL/SQL, Power BI, Microsoft Dataverse, Azure, Business Intelligence",
+                achievements="• Built scalable ML models for business intelligence\n• Created robust data integration APIs\n• Implemented comprehensive BI solutions\n• Integrated Microsoft ecosystem tools for data management"
+            ),
+
+            Experience(
+                title="Application Developer/Designer",
+                company="RegiePub",
+                location="Nancy, France",
+                start_date=date(2023, 6, 1),
+                end_date=date(2023, 8, 31),
+                description="Designed, developed, and deployed a complete web application using modern PHP frameworks. Implemented full-stack solution with Symfony backend and responsive frontend integration.",
+                technologies="PHP, Symfony Framework, Full-Stack Development, Web Application Design, Responsive Design",
+                achievements="• Delivered complete web application from concept to deployment\n• Implemented modern PHP architecture with Symfony\n• Created responsive user interfaces\n• Established best practices for full-stack development"
+            ),
+
+            # Long-term Previous Experience
+            Experience(
+                title="Director of Scientific and Technical Police Laboratory",
+                company="National Police Laboratory",
+                location="France",
+                start_date=date(2006, 1, 1),
+                end_date=date(2021, 12, 31),
+                description="Led scientific and technical operations for forensic investigations, managed laboratory operations, and supervised analytical processes for criminal investigations. Applied advanced analytical techniques and maintained quality standards for forensic evidence processing.",
+                technologies="Forensic Analysis, Laboratory Management, Scientific Investigation, Quality Control, Analytical Chemistry",
+                achievements="• Managed forensic laboratory operations for 15+ years\n• Supervised complex criminal investigations\n• Maintained high-quality standards for evidence processing\n• Led team of forensic scientists and technicians"
             )
         ]
 
