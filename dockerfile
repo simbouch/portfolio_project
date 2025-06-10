@@ -13,5 +13,5 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Expose port 80 to the outside world
 EXPOSE 80
 
-# Command to run the app
-CMD ["python", "app.py"]
+# Command to run the app with Gunicorn
+CMD ["gunicorn", "wsgi:app", "--bind", "0.0.0.0:80"]

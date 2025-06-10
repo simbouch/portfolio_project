@@ -113,7 +113,7 @@ def create_app(config_class="config.DevelopmentConfig"):
                 if app.config.get('MAIL_SERVER'):
                     msg = Message("New Contact Form Submission",
                                   sender=app.config.get('MAIL_USERNAME', email),
-                                  recipients=[app.config.get('CONTACT_EMAIL', 'khribech.chouaib@gmail.com')])
+                                  recipients=[app.config.get('CONTACT_EMAIL', 'simplonbouchaib@gmail.com')])
                     msg.body = f"Name: {name}\nEmail: {email}\n\nMessage:\n{message}"
                     mail.send(msg)
                     flash("Your message has been sent successfully!", "success")

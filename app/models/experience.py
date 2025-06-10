@@ -58,14 +58,14 @@ class Experience(db.Model):
 
         sample_experiences = [
             Experience(
-                title="AI Developer - Alternance/Apprentissage",
-                company="CHRU & Simplon.com",
+                title="AI Developer - TT2S Program (Alternance/Apprentissage)",
+                company="CHRU Nancy & Simplon Microsoft AI School",
                 location="Nancy, France",
                 start_date=date(2024, 9, 1),
                 end_date=None,  # Current position
-                description="Work-study program (alternance/apprentissage) combining practical AI development at CHRU (University Hospital) with intensive training at Simplon Microsoft AI Program. Developing healthcare AI solutions while mastering cutting-edge technologies including machine learning, deep learning, and AI agent development.",
-                technologies="Python, TensorFlow, PyTorch, FastAPI, LLM, OCR, AI Agents, Azure ML, Docker, MLflow",
-                achievements="• Developing AI solutions for healthcare at CHRU\n• Built RPA POC for PDF information extraction\n• Created full-stack flashcards platform with OCR\n• Implemented malaria detection with CNN\n• Deployed ML models with Docker and MLflow"
+                description="Comprehensive TT2S (Titre Technique de Niveau 2 Supérieur) program combining 3-month intensive AI training with 16-month work-study at CHRU Nancy. Developing healthcare AI solutions with focus on automated robotics, OCR tools, and LLM/NLP applications. Emphasizing ethics and human impact in AI development for healthcare environments.",
+                technologies="Python, TensorFlow, PyTorch, FastAPI, LLM/NLP, OCR (Tesseract, EasyOCR), AI Agents, Azure ML, Docker, MLflow, Automated Robotics",
+                achievements="• Developing automated robotics systems for CHRU Nancy\n• Building advanced OCR tools for medical document processing\n• Implementing LLM/NLP solutions for healthcare applications\n• Created RPA POC for PDF information extraction\n• Focusing on AI ethics and human-centered design\n• Deployed ML models with Docker and MLflow in healthcare environment"
             ),
             Experience(
                 title="Data Scientist & Analyst",

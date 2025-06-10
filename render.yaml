@@ -3,9 +3,11 @@ services:
     name: portfolio
     env: python
     buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn wsgi:app
+    startCommand: chmod +x start.sh && ./start.sh
     envVars:
       - key: SECRET_KEY
         generateValue: true
       - key: FLASK_CONFIG
         value: config.ProductionConfig
+      - key: PORT
+        value: 10000
