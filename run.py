@@ -3,7 +3,7 @@
 Local development server runner
 """
 import os
-from app import create_app
+from portfolio_app import create_app
 
 if __name__ == '__main__':
     # Use development configuration for local testing

@@ -3,7 +3,7 @@
 Simple test script to verify the Flask application works correctly
 """
 import pytest
-from app import create_app
+from portfolio_app import create_app
 
 def test_app_creation():
     """Test that the app can be created successfully"""

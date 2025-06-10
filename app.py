@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-WSGI entry point for production deployment
-Alternative entry point to avoid naming conflicts
+Simple app.py that creates the Flask app for deployment
+This file exists to satisfy Render's auto-detection of 'gunicorn app:app'
 """
 import os
 import sys
@@ -15,10 +15,8 @@ sys.path.insert(0, str(project_root))
 from portfolio_app import create_app
 
 # Create the Flask application instance for production
-application = create_app(os.environ.get('FLASK_CONFIG', 'config.ProductionConfig'))
-
-# Also create 'app' for compatibility
-app = application
+app = create_app(os.environ.get('FLASK_CONFIG', 'config.ProductionConfig'))
 
 if __name__ == '__main__':
-    application.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))
+    # For local development, run the app directly
+    app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)), debug=False)
