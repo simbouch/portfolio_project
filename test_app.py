@@ -66,6 +66,14 @@ def test_interests_route():
         assert response.status_code == 200
         assert b'Interests' in response.data
 
+def test_gallery_route():
+    """Test the gallery route"""
+    app = create_app('config.DevelopmentConfig')
+    with app.test_client() as client:
+        response = client.get('/gallery')
+        assert response.status_code == 200
+        assert b'Gallery' in response.data
+
 if __name__ == '__main__':
     # Run basic tests
     print("Testing Flask application...")
@@ -94,6 +102,9 @@ if __name__ == '__main__':
 
         test_interests_route()
         print("✓ Interests route test passed")
+
+        test_gallery_route()
+        print("✓ Gallery route test passed")
 
         print("\n🎉 All tests passed! The application is working correctly.")
         

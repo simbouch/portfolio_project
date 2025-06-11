@@ -133,6 +133,10 @@ def create_app(config_class="config.DevelopmentConfig"):
     def interests():
         return render_template("interests.html")
 
+    @app.route("/gallery")
+    def gallery():
+        return render_template("gallery.html")
+
     # Register blueprints if they exist
     try:
         from .controllers import portfolio_controller
