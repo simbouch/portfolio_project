@@ -111,6 +111,100 @@
                 </div>
             </div>
         </div>
+
+        <!-- Beekeeping & Apiculture -->
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100 interest-card loading">
+                <div class="card-img-container">
+                    <img src="{{ url_for('static', filename='images/image7.jpg') }}"
+                         class="card-img-top interest-image"
+                         alt="Beekeeping and apiculture - hive management and honey production">
+                    <div class="card-img-overlay-gradient"></div>
+                    <div class="card-img-overlay-icon">
+                        <i class="fas fa-leaf fa-2x text-white" style="position: absolute; top: 15px; right: 15px; opacity: 0.8;"></i>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title text-primary">
+                        <i class="fas fa-leaf me-2"></i>Beekeeping & Apiculture
+                    </h5>
+                    <p class="card-text">
+                        A peaceful and meditative hobby involving bee hive management, honey production, and deep
+                        connection with nature's rhythms. Beekeeping teaches patience, systematic observation,
+                        and understanding of complex ecosystems - invaluable skills for AI development and project management.
+                    </p>
+                    <div class="interest-skills mb-3">
+                        <span class="badge bg-success me-1">Patience & Observation</span>
+                        <span class="badge bg-info me-1">Systematic Approach</span>
+                        <span class="badge bg-warning">Ecosystem Understanding</span>
+                    </div>
+                    <div class="external-links">
+                        <a href="https://www.youtube.com/@world_of_bees_official"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="btn btn-outline-primary btn-sm">
+                            <i class="fab fa-youtube me-1"></i>World of Bees Official
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Beekeeping Gallery Section -->
+    <div class="row mt-5">
+        <div class="col-12">
+            <h3 class="text-center text-primary mb-4">
+                <i class="fas fa-leaf me-2"></i>Beekeeping Journey
+            </h3>
+        </div>
+    </div>
+    <div class="row beekeeping-gallery">
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100 loading">
+                <div class="card-body text-center">
+                    <img src="{{ url_for('static', filename='images/image8.jpg') }}"
+                         class="img-fluid rounded mb-3"
+                         alt="Bee hive inspection and management"
+                         style="max-height: 200px; width: 100%; object-fit: cover;">
+                    <h6 class="text-primary">Hive Inspection & Management</h6>
+                    <p class="text-muted small">
+                        Regular hive inspections require systematic approach and attention to detail,
+                        developing skills directly applicable to debugging and monitoring AI systems.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100 loading">
+                <div class="card-body text-center">
+                    <img src="{{ url_for('static', filename='images/image9.jpg') }}"
+                         class="img-fluid rounded mb-3"
+                         alt="Honey harvesting and production process"
+                         style="max-height: 200px; width: 100%; object-fit: cover;">
+                    <h6 class="text-primary">Honey Production Process</h6>
+                    <p class="text-muted small">
+                        Understanding the complete honey production cycle teaches patience and
+                        long-term thinking essential for complex AI project development.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100 loading">
+                <div class="card-body text-center">
+                    <img src="{{ url_for('static', filename='images/image10.jpg') }}"
+                         class="img-fluid rounded mb-3"
+                         alt="Connection with nature and ecosystem understanding"
+                         style="max-height: 200px; width: 100%; object-fit: cover;">
+                    <h6 class="text-primary">Nature Connection</h6>
+                    <p class="text-muted small">
+                        Deep connection with natural ecosystems provides perspective and balance,
+                        enhancing creativity and holistic thinking in technology solutions.
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Additional Interests -->
@@ -165,27 +259,35 @@
                 <div class="card-body text-center py-5">
                     <h3 class="text-primary mb-4">How Interests Enhance Professional Growth</h3>
                     <div class="row">
-                        <div class="col-md-4 mb-3">
+                        <div class="col-md-3 mb-3">
                             <i class="fas fa-brain fa-3x text-primary mb-3"></i>
                             <h5>Creative Problem Solving</h5>
                             <p class="text-muted">
-                                Adventure sports require quick thinking and creative solutions, 
+                                Adventure sports require quick thinking and creative solutions,
                                 skills directly applicable to AI development challenges.
                             </p>
                         </div>
-                        <div class="col-md-4 mb-3">
+                        <div class="col-md-3 mb-3">
                             <i class="fas fa-users fa-3x text-primary mb-3"></i>
                             <h5>Cultural Intelligence</h5>
                             <p class="text-muted">
-                                Travel experiences enhance understanding of diverse user needs, 
+                                Travel experiences enhance understanding of diverse user needs,
                                 crucial for developing inclusive AI solutions.
                             </p>
                         </div>
-                        <div class="col-md-4 mb-3">
+                        <div class="col-md-3 mb-3">
+                            <i class="fas fa-leaf fa-3x text-success mb-3"></i>
+                            <h5>Systematic Thinking</h5>
+                            <p class="text-muted">
+                                Beekeeping develops patience, systematic observation, and understanding
+                                of complex ecosystems - essential for AI project management.
+                            </p>
+                        </div>
+                        <div class="col-md-3 mb-3">
                             <i class="fas fa-balance-scale fa-3x text-primary mb-3"></i>
                             <h5>Work-Life Balance</h5>
                             <p class="text-muted">
-                                Maintaining physical and mental wellness through outdoor activities 
+                                Maintaining physical and mental wellness through nature connection
                                 ensures sustained creativity and productivity.
                             </p>
                         </div>
@@ -202,7 +304,7 @@
                 <div class="card-body py-4">
                     <h4 class="mb-3">Let's Connect Over Shared Interests</h4>
                     <p class="lead mb-4">
-                        Whether you share a passion for adventure sports, travel, or simply want to discuss 
+                        Whether you share a passion for adventure sports, travel, beekeeping, or simply want to discuss
                         how diverse experiences can enhance professional collaboration, I'd love to connect!
                     </p>
                     <div class="d-flex justify-content-center gap-3">
@@ -265,6 +367,43 @@
     .card-img-container {
         height: 200px;
     }
+}
+
+/* Beekeeping specific styles */
+.card-img-overlay-icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 15px;
+    z-index: 2;
+}
+
+.external-links .btn {
+    transition: all 0.3s ease;
+}
+
+.external-links .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Beekeeping gallery hover effects */
+.beekeeping-gallery .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.beekeeping-gallery .card {
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.beekeeping-gallery .card img {
+    transition: transform 0.3s ease;
+}
+
+.beekeeping-gallery .card:hover img {
+    transform: scale(1.02);
 }
 </style>
 {% endblock %}
