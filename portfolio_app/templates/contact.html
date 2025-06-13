@@ -215,6 +215,52 @@
         </div>
     </div>
 
+    <!-- Support My Work -->
+    <div class="row mt-5">
+        <div class="col-md-6 mb-4">
+            <div class="card border-warning loading">
+                <div class="card-body text-center">
+                    <i class="fas fa-heart fa-3x text-warning mb-3"></i>
+                    <h5 class="text-warning">Support My Work</h5>
+                    <p class="text-muted mb-4">
+                        If you find my projects helpful or would like to support my open-source contributions
+                        and AI research, consider making a small donation.
+                    </p>
+                    <a href="https://www.paypal.com/paypalme/Khribech"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="btn btn-warning btn-lg">
+                        <i class="fab fa-paypal me-2"></i>Support via PayPal
+                    </a>
+                    <p class="small text-muted mt-3">
+                        <i class="fas fa-lock me-1"></i>Secure payment through PayPal
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mb-4">
+            <div class="card border-success loading">
+                <div class="card-body text-center">
+                    <i class="fas fa-code fa-3x text-success mb-3"></i>
+                    <h5 class="text-success">Open Source Contributions</h5>
+                    <p class="text-muted mb-4">
+                        All my portfolio projects are open source and available on GitHub.
+                        Feel free to explore, fork, and contribute to any of them.
+                    </p>
+                    <a href="https://github.com/simbouch"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="btn btn-success btn-lg">
+                        <i class="fab fa-github me-2"></i>View on GitHub
+                    </a>
+                    <p class="small text-muted mt-3">
+                        <i class="fas fa-star me-1"></i>Star repositories you find useful
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Social Media Links -->
     <div class="row mt-5">
         <div class="col-12">
@@ -226,10 +272,16 @@
                         <a href="mailto:khribech.chouaib@gmail.com" class="btn btn-light btn-lg me-3 mb-2">
                             <i class="fas fa-envelope me-2"></i>Email
                         </a>
-                        <a href="https://www.linkedin.com/in/khbouchaib" target="_blank" class="btn btn-light btn-lg me-3 mb-2">
+                        <a href="https://www.linkedin.com/in/khbouchaib"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="btn btn-light btn-lg me-3 mb-2">
                             <i class="fab fa-linkedin me-2"></i>LinkedIn
                         </a>
-                        <a href="https://github.com/simbouch" target="_blank" class="btn btn-light btn-lg mb-2">
+                        <a href="https://github.com/simbouch"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="btn btn-light btn-lg mb-2">
                             <i class="fab fa-github me-2"></i>GitHub
                         </a>
                     </div>
@@ -293,6 +345,60 @@
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+/* PayPal and Support Section Styling */
+.btn-warning {
+    background: linear-gradient(45deg, #ffc107, #ffb300);
+    border: none;
+    color: #212529;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-warning:hover {
+    background: linear-gradient(45deg, #ffb300, #ff8f00);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 193, 7, 0.4);
+    color: #212529;
+}
+
+.btn-success {
+    background: linear-gradient(45deg, #28a745, #20c997);
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-success:hover {
+    background: linear-gradient(45deg, #20c997, #17a2b8);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(40, 167, 69, 0.4);
+}
+
+.card.border-warning:hover,
+.card.border-success:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.fab.fa-paypal {
+    color: #0070ba;
+}
+
+.btn-warning .fab.fa-paypal {
+    color: #0070ba;
+}
+
+/* Enhanced social links */
+.social-links .btn {
+    transition: all 0.3s ease;
+    margin: 0.25rem;
+}
+
+.social-links .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 }
 </style>
 {% endblock %}

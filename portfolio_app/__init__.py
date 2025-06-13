@@ -101,29 +101,80 @@ def create_app(config_class="config.DevelopmentConfig"):
         if request.method == "POST":
             name = request.form.get("name")
             email = request.form.get("email")
+            subject = request.form.get("subject", "General Inquiry")
             message = request.form.get("message")
 
             # Validate form data
             if not name or not email or not message:
-                flash("Please fill in all fields.", "danger")
+                flash("Please fill in all required fields.", "danger")
+                return redirect(url_for("contact"))
+
+            # Validate email format
+            import re
+            email_pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+            if not re.match(email_pattern, email):
+                flash("Please enter a valid email address.", "danger")
                 return redirect(url_for("contact"))
 
             # Try to send email if configured
             try:
-                if app.config.get('MAIL_SERVER'):
-                    msg = Message("New Contact Form Submission",
-                                  sender=app.config.get('MAIL_USERNAME', email),
-                                  recipients=[app.config.get('CONTACT_EMAIL', 'khribech.chouaib@gmail.com')])
-                    msg.body = f"Name: {name}\nEmail: {email}\n\nMessage:\n{message}"
+                if app.config.get('MAIL_SERVER') and app.config.get('MAIL_USERNAME'):
+                    # Create email subject with proper formatting
+                    email_subject = f"Portfolio Contact: {subject}" if subject else "Portfolio Contact: General Inquiry"
+
+                    msg = Message(
+                        subject=email_subject,
+                        sender=app.config.get('MAIL_USERNAME'),
+                        recipients=[app.config.get('CONTACT_EMAIL', 'khribech.chouaib@gmail.com')],
+                        reply_to=email
+                    )
+
+                    # Create formatted email body
+                    msg.body = f"""New contact form submission from your portfolio website:
+
+Name: {name}
+Email: {email}
+Subject: {subject if subject else 'General Inquiry'}
+
+Message:
+{message}
+
+---
+This message was sent from your portfolio contact form.
+Reply directly to this email to respond to {name}."""
+
+                    msg.html = f"""
+                    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+                        <h2 style="color: #3498db;">New Portfolio Contact</h2>
+                        <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                            <p><strong>Name:</strong> {name}</p>
+                            <p><strong>Email:</strong> <a href="mailto:{email}">{email}</a></p>
+                            <p><strong>Subject:</strong> {subject if subject else 'General Inquiry'}</p>
+                        </div>
+                        <div style="background: white; padding: 20px; border-left: 4px solid #3498db;">
+                            <h3>Message:</h3>
+                            <p style="line-height: 1.6;">{message.replace(chr(10), '<br>')}</p>
+                        </div>
+                        <hr style="margin: 30px 0;">
+                        <p style="color: #666; font-size: 14px;">
+                            This message was sent from your portfolio contact form.<br>
+                            Reply directly to this email to respond to {name}.
+                        </p>
+                    </div>
+                    """
+
                     mail.send(msg)
-                    flash("Your message has been sent successfully!", "success")
+                    flash("Your message has been sent successfully! I'll get back to you soon.", "success")
+                    app.logger.info(f"Email sent successfully to {app.config.get('CONTACT_EMAIL')} from {email}")
                 else:
-                    # Log the message for now (in production, you might want to save to database)
-                    app.logger.info(f"Contact form submission - Name: {name}, Email: {email}, Message: {message}")
-                    flash("Your message has been received! I'll get back to you soon.", "success")
+                    # Log the message when email is not configured
+                    app.logger.info(f"Contact form submission (Email not configured) - Name: {name}, Email: {email}, Subject: {subject}, Message: {message}")
+                    flash("Your message has been received! I'll get back to you soon.", "info")
+
             except Exception as e:
-                app.logger.error(f"Error sending email: {e}")
-                flash("Thank you for your message! I'll get back to you soon.", "success")
+                app.logger.error(f"Error sending email: {str(e)}")
+                # Still show success to user for security reasons, but log the error
+                flash("Your message has been received! I'll get back to you soon.", "info")
 
             return redirect(url_for("contact"))
 

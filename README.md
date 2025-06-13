@@ -202,8 +202,39 @@ portfolio_project/
    - Explore all 9 pages: Home, About, Projects, Skills, Experience, Interests, Gallery, Contact
 
 ### **Environment Configuration**
+
+#### **Email Setup (Optional but Recommended)**
+To enable contact form email functionality:
+
+1. **Copy environment template**
+   ```bash
+   cp .env.example .env
+   ```
+
+2. **Configure email settings in `.env`**
+   ```bash
+   # Gmail Configuration (Recommended)
+   MAIL_SERVER=smtp.gmail.com
+   MAIL_PORT=587
+   MAIL_USE_TLS=true
+   MAIL_USERNAME=your-email@gmail.com
+   MAIL_PASSWORD=your-app-password
+   CONTACT_EMAIL=khribech.chouaib@gmail.com
+   ```
+
+3. **For Gmail users:**
+   - Enable 2-factor authentication
+   - Generate an App Password for this application
+   - Use the App Password (not your regular password)
+
+4. **Test email configuration**
+   ```bash
+   python test_email.py
+   ```
+
+#### **Basic Configuration**
 ```bash
-# Optional: Set environment variables
+# Optional: Set additional environment variables
 export FLASK_ENV=development
 export SECRET_KEY=your-secret-key
 export DATABASE_URL=sqlite:///portfolio.db
