@@ -27,6 +27,12 @@ def create_app(config_class="config.DevelopmentConfig"):
     db.init_app(app)
     mail.init_app(app)
 
+    # Log email configuration status
+    if app.config.get('MAIL_CONFIGURED', False):
+        app.logger.info(f"✅ Email configured: {app.config.get('MAIL_USERNAME')} -> {app.config.get('CONTACT_EMAIL')}")
+    else:
+        app.logger.warning("⚠️ Email not configured - messages will be logged only")
+
     # Register the custom filter
     app.jinja_env.filters['date'] = format_date
 
@@ -116,9 +122,28 @@ def create_app(config_class="config.DevelopmentConfig"):
                 flash("Please enter a valid email address.", "danger")
                 return redirect(url_for("contact"))
 
+            # CRITICAL: Always log the message first to ensure no data loss
+            import datetime
+            timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+            # Log message to application logs (this ensures no message is ever lost)
+            contact_log = f"""
+=== PORTFOLIO CONTACT FORM SUBMISSION ===
+Timestamp: {timestamp}
+Name: {name}
+Email: {email}
+Subject: {subject if subject else 'General Inquiry'}
+Message: {message}
+IP Address: {request.environ.get('REMOTE_ADDR', 'Unknown')}
+User Agent: {request.environ.get('HTTP_USER_AGENT', 'Unknown')}
+==========================================
+"""
+            app.logger.info(contact_log)
+
             # Try to send email if configured
+            email_sent = False
             try:
-                if app.config.get('MAIL_SERVER') and app.config.get('MAIL_USERNAME'):
+                if app.config.get('MAIL_CONFIGURED', False):
                     # Create email subject with proper formatting
                     email_subject = f"Portfolio Contact: {subject}" if subject else "Portfolio Contact: General Inquiry"
 
@@ -132,6 +157,7 @@ def create_app(config_class="config.DevelopmentConfig"):
                     # Create formatted email body
                     msg.body = f"""New contact form submission from your portfolio website:
 
+Timestamp: {timestamp}
 Name: {name}
 Email: {email}
 Subject: {subject if subject else 'General Inquiry'}
@@ -141,12 +167,17 @@ Message:
 
 ---
 This message was sent from your portfolio contact form.
-Reply directly to this email to respond to {name}."""
+Reply directly to this email to respond to {name}.
+
+Technical Details:
+IP: {request.environ.get('REMOTE_ADDR', 'Unknown')}
+User Agent: {request.environ.get('HTTP_USER_AGENT', 'Unknown')}"""
 
                     msg.html = f"""
                     <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
                         <h2 style="color: #3498db;">New Portfolio Contact</h2>
                         <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                            <p><strong>Timestamp:</strong> {timestamp}</p>
                             <p><strong>Name:</strong> {name}</p>
                             <p><strong>Email:</strong> <a href="mailto:{email}">{email}</a></p>
                             <p><strong>Subject:</strong> {subject if subject else 'General Inquiry'}</p>
@@ -160,20 +191,26 @@ Reply directly to this email to respond to {name}."""
                             This message was sent from your portfolio contact form.<br>
                             Reply directly to this email to respond to {name}.
                         </p>
+                        <div style="background: #f8f9fa; padding: 10px; margin-top: 20px; font-size: 12px; color: #666;">
+                            <strong>Technical Details:</strong><br>
+                            IP: {request.environ.get('REMOTE_ADDR', 'Unknown')}<br>
+                            User Agent: {request.environ.get('HTTP_USER_AGENT', 'Unknown')}
+                        </div>
                     </div>
                     """
 
                     mail.send(msg)
+                    email_sent = True
+                    app.logger.info(f"✅ Email sent successfully to {app.config.get('CONTACT_EMAIL')} from {email}")
                     flash("Your message has been sent successfully! I'll get back to you soon.", "success")
-                    app.logger.info(f"Email sent successfully to {app.config.get('CONTACT_EMAIL')} from {email}")
-                else:
-                    # Log the message when email is not configured
-                    app.logger.info(f"Contact form submission (Email not configured) - Name: {name}, Email: {email}, Subject: {subject}, Message: {message}")
-                    flash("Your message has been received! I'll get back to you soon.", "info")
 
             except Exception as e:
-                app.logger.error(f"Error sending email: {str(e)}")
-                # Still show success to user for security reasons, but log the error
+                app.logger.error(f"❌ Error sending email: {str(e)}")
+                email_sent = False
+
+            # If email failed or not configured, still confirm receipt to user
+            if not email_sent:
+                app.logger.warning(f"⚠️ Email not sent, but message logged for: {email}")
                 flash("Your message has been received! I'll get back to you soon.", "info")
 
             return redirect(url_for("contact"))

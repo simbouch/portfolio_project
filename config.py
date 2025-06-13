@@ -10,7 +10,7 @@ class Config:
     TESTING = False
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
-    # Mail configuration
+    # Mail configuration with fallback for production
     MAIL_SERVER = os.environ.get('MAIL_SERVER', 'smtp.gmail.com')
     MAIL_PORT = int(os.environ.get('MAIL_PORT', 587))
     MAIL_USE_TLS = os.environ.get('MAIL_USE_TLS', 'true').lower() in ['true', 'on', '1']
@@ -22,6 +22,9 @@ class Config:
 
     # Mail configuration validation
     MAIL_CONFIGURED = bool(MAIL_SERVER and MAIL_USERNAME and MAIL_PASSWORD)
+
+    # Backup email logging when email service is not configured
+    ENABLE_EMAIL_LOGGING = True
 
 class DevelopmentConfig(Config):
     """Development environment configuration."""
