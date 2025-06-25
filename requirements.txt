@@ -1,9 +1,9 @@
 # Flask framework
-Flask==2.3.2
+Flask==3.0.0
 
 # Database dependencies
-Flask-SQLAlchemy==3.0.4
-SQLAlchemy==2.0.19
+Flask-SQLAlchemy==3.1.1
+SQLAlchemy==2.0.23
 
 # Bootstrap and other frontend utilities
 Flask-Bootstrap==3.3.7.1
@@ -14,13 +14,15 @@ Flask-Mail==0.9.1
 # Environment variables
 python-dotenv==1.0.0
 
-# Gunicorn web server for production
-gunicorn==20.1.0
+# Production server (optional - for local production testing)
+gunicorn==21.2.0
 
-# Optional dependencies for development and testing
-pytest==7.4.0      # For unit testing
-pytest-flask==1.2.0
+# Testing dependencies
+pytest==7.4.3
+pytest-flask==1.3.0
+pytest-cov==4.1.0
 
-# Optional: For styling and linting
-black==23.7.0      # Code formatting
-flake8==6.1.0      # Code linting
+# Modern development tools
+ruff==0.1.6              # Fast Python linter and formatter (replaces black + flake8)
+bandit==1.7.5            # Security linter
+pip-audit==2.6.1         # Security vulnerability scanner

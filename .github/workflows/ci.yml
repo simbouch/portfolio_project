@@ -1,0 +1,171 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  quality-checks:
+    name: Code Quality & Tests
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11", "3.12"]
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ matrix.python-version }}
+        cache: 'pip'
+        cache-dependency-path: 'requirements.txt'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Lint with Ruff
+      run: |
+        # Stop the build if there are Python syntax errors or undefined names
+        ruff check . --select=E9,F63,F7,F82 --show-source
+        # Check all other rules but don't fail the build
+        ruff check . --exit-zero
+
+    - name: Format check with Ruff
+      run: |
+        ruff format --check .
+
+    - name: Type checking with mypy (if configured)
+      run: |
+        if [ -f "pyproject.toml" ] && grep -q "mypy" requirements.txt; then
+          mypy .
+        else
+          echo "Skipping mypy - not configured"
+        fi
+      continue-on-error: true
+
+    - name: Run tests with pytest
+      run: |
+        # Create test database for testing
+        export FLASK_ENV=testing
+        export SECRET_KEY=test-secret-key
+        export DATABASE_URL=sqlite:///test.db
+        
+        # Run tests with coverage
+        pytest -v --tb=short
+      env:
+        PYTHONPATH: .
+
+    - name: Security check with bandit
+      run: |
+        bandit -r . -f json -o bandit-report.json || true
+        if [ -f "bandit-report.json" ]; then
+          echo "Security scan completed - check bandit-report.json for details"
+        fi
+      continue-on-error: true
+
+    - name: Check dependencies for security vulnerabilities
+      run: |
+        pip-audit --desc --format=json --output=pip-audit-report.json || true
+        if [ -f "pip-audit-report.json" ]; then
+          echo "Dependency security scan completed"
+        fi
+      continue-on-error: true
+
+  build-test:
+    name: Build & Import Test
+    runs-on: ubuntu-latest
+    needs: quality-checks
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python 3.12
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.12"
+        cache: 'pip'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Test Flask app import
+      run: |
+        export FLASK_ENV=testing
+        export SECRET_KEY=test-secret-key
+        python -c "
+        import sys
+        sys.path.insert(0, '.')
+        try:
+            from app import app
+            print('✅ Flask app imports successfully')
+            
+            # Test basic app functionality
+            with app.test_client() as client:
+                response = client.get('/')
+                print(f'✅ Home page responds with status: {response.status_code}')
+                
+        except Exception as e:
+            print(f'❌ Import failed: {e}')
+            sys.exit(1)
+        "
+
+    - name: Test database initialization
+      run: |
+        export FLASK_ENV=testing
+        export SECRET_KEY=test-secret-key
+        export DATABASE_URL=sqlite:///test_init.db
+        python -c "
+        import sys
+        sys.path.insert(0, '.')
+        try:
+            from portfolio_app import create_app, db
+            app = create_app('config.DevelopmentConfig')
+            with app.app_context():
+                db.create_all()
+                print('✅ Database initialization successful')
+        except Exception as e:
+            print(f'❌ Database initialization failed: {e}')
+            sys.exit(1)
+        "
+
+  summary:
+    name: CI Summary
+    runs-on: ubuntu-latest
+    needs: [quality-checks, build-test]
+    if: always()
+    
+    steps:
+    - name: CI Results Summary
+      run: |
+        echo "## 🚀 CI Pipeline Results" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        
+        if [ "${{ needs.quality-checks.result }}" == "success" ]; then
+          echo "✅ **Code Quality & Tests**: Passed" >> $GITHUB_STEP_SUMMARY
+        else
+          echo "❌ **Code Quality & Tests**: Failed" >> $GITHUB_STEP_SUMMARY
+        fi
+        
+        if [ "${{ needs.build-test.result }}" == "success" ]; then
+          echo "✅ **Build & Import Test**: Passed" >> $GITHUB_STEP_SUMMARY
+        else
+          echo "❌ **Build & Import Test**: Failed" >> $GITHUB_STEP_SUMMARY
+        fi
+        
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "### 🛠️ Tools Used" >> $GITHUB_STEP_SUMMARY
+        echo "- **Linting**: Ruff (fast Python linter)" >> $GITHUB_STEP_SUMMARY
+        echo "- **Formatting**: Ruff formatter" >> $GITHUB_STEP_SUMMARY
+        echo "- **Testing**: pytest" >> $GITHUB_STEP_SUMMARY
+        echo "- **Security**: bandit + pip-audit" >> $GITHUB_STEP_SUMMARY
+        echo "- **Caching**: pip dependencies cached" >> $GITHUB_STEP_SUMMARY
