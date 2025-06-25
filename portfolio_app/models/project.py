@@ -143,6 +143,15 @@ class Project(db.Model):
                 project_type="ai_education",
                 github_url="https://github.com/simbouch/langchain_learning_app_2025",
                 featured=True
+            ),
+            Project(
+                title="IA Continu Solution - Enterprise ML Template",
+                description="Production-ready ML template with complete automation, advanced monitoring, and Discord integration. Features microservices architecture, 30-second automated ML pipeline with drift detection, MLflow tracking, and comprehensive health monitoring across 5 independent services.",
+                technology_used="Docker, FastAPI, MLflow, Prefect, Streamlit, Discord API, JWT Auth, Prometheus, Grafana",
+                duration="8 weeks",
+                project_type="enterprise",
+                github_url="https://github.com/simbouch/ia_continu_solution",
+                featured=True
             )
         ]
 
