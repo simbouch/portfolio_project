@@ -3,15 +3,16 @@
 from datetime import datetime, timezone
 from .. import db
 
+
 class Project(db.Model):
-    __tablename__ = 'projects'
+    __tablename__ = "projects"
 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False)
     description = db.Column(db.Text, nullable=False)
     technology_used = db.Column(db.String(200), nullable=False)
     duration = db.Column(db.String(50), nullable=False)
-    project_type = db.Column(db.String(50), nullable=False, default='general')
+    project_type = db.Column(db.String(50), nullable=False, default="general")
     github_url = db.Column(db.String(200))
     demo_url = db.Column(db.String(200))
     image_url = db.Column(db.String(200))
@@ -19,7 +20,7 @@ class Project(db.Model):
     created_date = db.Column(db.DateTime, default=lambda: datetime.now(timezone.utc))
 
     def __repr__(self):
-        return f'<Project {self.title}>'
+        return f"<Project {self.title}>"
 
     def display_info(self):
         """Displays the basic info of a project."""
@@ -36,7 +37,7 @@ class Project(db.Model):
                 duration="4 weeks",
                 project_type="ai_automation",
                 github_url="https://github.com/simbouch/rpa_1_poc",
-                featured=True
+                featured=True,
             ),
             Project(
                 title="Flashcards Full-Stack Platform with OCR",
@@ -45,7 +46,7 @@ class Project(db.Model):
                 duration="6 weeks",
                 project_type="web",
                 github_url="https://github.com/simbouch/flashcards-projet",
-                featured=True
+                featured=True,
             ),
             Project(
                 title="Audio Analysis Toolkit",
@@ -54,7 +55,7 @@ class Project(db.Model):
                 duration="3 weeks",
                 project_type="data_science",
                 github_url="https://github.com/simbouch/audio-analysis-toolkit",
-                featured=True
+                featured=True,
             ),
             Project(
                 title="Doggy and Cat Adventure Game",
@@ -63,7 +64,7 @@ class Project(db.Model):
                 duration="2 weeks",
                 project_type="game",
                 github_url="https://github.com/simbouch/Doggy-and-Cat-adventure",
-                featured=False
+                featured=False,
             ),
             Project(
                 title="Boston Housing ML Comparison",
@@ -71,7 +72,7 @@ class Project(db.Model):
                 technology_used="Python, Scikit-learn, Pandas, Matplotlib, Seaborn, Jupyter",
                 duration="2 weeks",
                 project_type="machine_learning",
-                github_url="https://github.com/simbouch/boston-housing-ml-comparison"
+                github_url="https://github.com/simbouch/boston-housing-ml-comparison",
             ),
             Project(
                 title="Malaria Detection Application",
@@ -80,7 +81,7 @@ class Project(db.Model):
                 duration="4 weeks",
                 project_type="deep_learning",
                 github_url="https://github.com/simbouch/malaria-detection",
-                featured=True
+                featured=True,
             ),
             Project(
                 title="Clustering Flask Web Application",
@@ -88,7 +89,7 @@ class Project(db.Model):
                 technology_used="Flask, Scikit-learn, PCA, K-Means, Plotly, Pandas, Bootstrap",
                 duration="3 weeks",
                 project_type="machine_learning",
-                github_url="https://github.com/simbouch/clustering-webapp"
+                github_url="https://github.com/simbouch/clustering-webapp",
             ),
             Project(
                 title="NutriScore Prediction App",
@@ -97,7 +98,7 @@ class Project(db.Model):
                 duration="3 weeks",
                 project_type="machine_learning",
                 github_url="https://github.com/simbouch/nutriscore_prediction_app",
-                demo_url="https://nutriscore-prediction.herokuapp.com"
+                demo_url="https://nutriscore-prediction.herokuapp.com",
             ),
             Project(
                 title="KinePasLoin - Movie Ticket Booking",
@@ -106,7 +107,7 @@ class Project(db.Model):
                 duration="2 weeks",
                 project_type="web",
                 github_url="https://github.com/simbouch/kinepasloin",
-                featured=False
+                featured=False,
             ),
             Project(
                 title="Reverso - Business Management System",
@@ -115,7 +116,7 @@ class Project(db.Model):
                 duration="4 weeks",
                 project_type="enterprise",
                 github_url="https://github.com/simbouch/reverso",
-                featured=False
+                featured=False,
             ),
             Project(
                 title="TRAQ Diagnostic Tool",
@@ -124,7 +125,7 @@ class Project(db.Model):
                 duration="3 weeks",
                 project_type="healthcare",
                 github_url="https://github.com/simbouch/traq_diagnostic",
-                featured=True
+                featured=True,
             ),
             Project(
                 title="Malaria Detection Django App",
@@ -133,7 +134,7 @@ class Project(db.Model):
                 duration="4 weeks",
                 project_type="deep_learning",
                 github_url="https://github.com/simbouch/malaria_project_django",
-                featured=True
+                featured=True,
             ),
             Project(
                 title="LangChain Learning App 2025",
@@ -142,7 +143,7 @@ class Project(db.Model):
                 duration="5 weeks",
                 project_type="ai_education",
                 github_url="https://github.com/simbouch/langchain_learning_app_2025",
-                featured=True
+                featured=True,
             ),
             Project(
                 title="IA Continu Solution - Enterprise ML Template",
@@ -151,8 +152,8 @@ class Project(db.Model):
                 duration="8 weeks",
                 project_type="enterprise",
                 github_url="https://github.com/simbouch/ia_continu_solution",
-                featured=True
-            )
+                featured=True,
+            ),
         ]
 
         for project in sample_projects:

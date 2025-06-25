@@ -1,6 +1,7 @@
 from flask import Flask
 from app.controllers.portfolio_controller import bp as portfolio_bp
 
+
 def create_app():
     """
     Application factory to initialize and configure the Flask app.

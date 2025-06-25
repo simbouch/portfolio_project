@@ -1,4 +1,3 @@
-
 # portfolio_project/app/__init__.py
 
 import os
@@ -10,17 +9,17 @@ from datetime import datetime
 db = SQLAlchemy()
 mail = Mail()
 
+
 def format_date(value, format="%Y"):
     """Custom date filter for Jinja2 templates."""
     if isinstance(value, str):
         return value
     return value.strftime(format)
 
+
 def create_app(config_class="config.DevelopmentConfig"):
     # Configure Flask to use templates and static files from the portfolio_app directory
-    app = Flask(__name__,
-                template_folder='templates',
-                static_folder='static')
+    app = Flask(__name__, template_folder="templates", static_folder="static")
     app.config.from_object(config_class)
 
     # Initialize plugins
@@ -28,13 +27,15 @@ def create_app(config_class="config.DevelopmentConfig"):
     mail.init_app(app)
 
     # Log email configuration status
-    if app.config.get('MAIL_CONFIGURED', False):
-        app.logger.info(f"✅ Email configured: {app.config.get('MAIL_USERNAME')} -> {app.config.get('CONTACT_EMAIL')}")
+    if app.config.get("MAIL_CONFIGURED", False):
+        app.logger.info(
+            f"✅ Email configured: {app.config.get('MAIL_USERNAME')} -> {app.config.get('CONTACT_EMAIL')}"
+        )
     else:
         app.logger.warning("⚠️ Email not configured - messages will be logged only")
 
     # Register the custom filter
-    app.jinja_env.filters['date'] = format_date
+    app.jinja_env.filters["date"] = format_date
 
     # Import models to ensure they are registered with SQLAlchemy
     from .models import project, experience, skill
@@ -64,13 +65,17 @@ def create_app(config_class="config.DevelopmentConfig"):
 
         # Get featured projects (limit to 3)
         featured_projects = Project.query.filter_by(featured=True).limit(3).all()
-        recent_experiences = Experience.query.order_by(Experience.start_date.desc()).limit(2).all()
+        recent_experiences = (
+            Experience.query.order_by(Experience.start_date.desc()).limit(2).all()
+        )
         top_skills = Skill.query.filter_by(featured=True).limit(6).all()
 
-        return render_template("index.html",
-                             featured_projects=featured_projects,
-                             recent_experiences=recent_experiences,
-                             top_skills=top_skills)
+        return render_template(
+            "index.html",
+            featured_projects=featured_projects,
+            recent_experiences=recent_experiences,
+            top_skills=top_skills,
+        )
 
     @app.route("/about")
     def about():
@@ -79,18 +84,21 @@ def create_app(config_class="config.DevelopmentConfig"):
     @app.route("/experience")
     def experience():
         from .models.experience import Experience
+
         experiences = Experience.query.order_by(Experience.start_date.desc()).all()
         return render_template("experience.html", experiences=experiences)
 
     @app.route("/projects")
     def projects():
         from .models.project import Project
+
         all_projects = Project.query.order_by(Project.created_date.desc()).all()
         return render_template("projects.html", projects=all_projects)
 
     @app.route("/skills")
     def skills():
         from .models.skill import Skill
+
         all_skills = Skill.query.order_by(Skill.category, Skill.name).all()
 
         # Group skills by category
@@ -117,13 +125,15 @@ def create_app(config_class="config.DevelopmentConfig"):
 
             # Validate email format
             import re
-            email_pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+
+            email_pattern = r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
             if not re.match(email_pattern, email):
                 flash("Please enter a valid email address.", "danger")
                 return redirect(url_for("contact"))
 
             # CRITICAL: Always log the message first to ensure no data loss
             import datetime
+
             timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
             # Log message to application logs (this ensures no message is ever lost)
@@ -143,15 +153,23 @@ User Agent: {request.environ.get('HTTP_USER_AGENT', 'Unknown')}
             # Try to send email if configured
             email_sent = False
             try:
-                if app.config.get('MAIL_CONFIGURED', False):
+                if app.config.get("MAIL_CONFIGURED", False):
                     # Create email subject with proper formatting
-                    email_subject = f"Portfolio Contact: {subject}" if subject else "Portfolio Contact: General Inquiry"
+                    email_subject = (
+                        f"Portfolio Contact: {subject}"
+                        if subject
+                        else "Portfolio Contact: General Inquiry"
+                    )
 
                     msg = Message(
                         subject=email_subject,
-                        sender=app.config.get('MAIL_USERNAME'),
-                        recipients=[app.config.get('CONTACT_EMAIL', 'khribech.chouaib@gmail.com')],
-                        reply_to=email
+                        sender=app.config.get("MAIL_USERNAME"),
+                        recipients=[
+                            app.config.get(
+                                "CONTACT_EMAIL", "khribech.chouaib@gmail.com"
+                            )
+                        ],
+                        reply_to=email,
                     )
 
                     # Create formatted email body
@@ -201,8 +219,13 @@ User Agent: {request.environ.get('HTTP_USER_AGENT', 'Unknown')}"""
 
                     mail.send(msg)
                     email_sent = True
-                    app.logger.info(f"✅ Email sent successfully to {app.config.get('CONTACT_EMAIL')} from {email}")
-                    flash("Your message has been sent successfully! I'll get back to you soon.", "success")
+                    app.logger.info(
+                        f"✅ Email sent successfully to {app.config.get('CONTACT_EMAIL')} from {email}"
+                    )
+                    flash(
+                        "Your message has been sent successfully! I'll get back to you soon.",
+                        "success",
+                    )
 
             except Exception as e:
                 app.logger.error(f"❌ Error sending email: {str(e)}")
@@ -211,7 +234,9 @@ User Agent: {request.environ.get('HTTP_USER_AGENT', 'Unknown')}"""
             # If email failed or not configured, still confirm receipt to user
             if not email_sent:
                 app.logger.warning(f"⚠️ Email not sent, but message logged for: {email}")
-                flash("Your message has been received! I'll get back to you soon.", "info")
+                flash(
+                    "Your message has been received! I'll get back to you soon.", "info"
+                )
 
             return redirect(url_for("contact"))
 
@@ -228,6 +253,7 @@ User Agent: {request.environ.get('HTTP_USER_AGENT', 'Unknown')}"""
     # Register blueprints if they exist
     try:
         from .controllers import portfolio_controller
+
         app.register_blueprint(portfolio_controller.bp)
     except ImportError:
         pass  # Controllers are optional

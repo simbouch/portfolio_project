@@ -3,8 +3,9 @@
 from datetime import datetime, timezone
 from .. import db
 
+
 class Experience(db.Model):
-    __tablename__ = 'experiences'
+    __tablename__ = "experiences"
 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False)
@@ -18,7 +19,7 @@ class Experience(db.Model):
     created_date = db.Column(db.DateTime, default=lambda: datetime.now(timezone.utc))
 
     def __repr__(self):
-        return f'<Experience {self.title} at {self.company}>'
+        return f"<Experience {self.title} at {self.company}>"
 
     @property
     def duration(self):
@@ -66,9 +67,8 @@ class Experience(db.Model):
                 end_date=None,  # Current position
                 description="Work-study program combining intensive AI training with practical application at CHRU de Nancy. Developing healthcare AI solutions with focus on automated robotics, OCR tools, and LLM/NLP applications. Emphasizing ethics and human impact in AI development for healthcare environments.",
                 technologies="Python, TensorFlow, PyTorch, FastAPI, LLM/NLP, OCR (Tesseract, EasyOCR), AI Agents, Azure ML, Docker, MLflow, Automated Robotics, Django, Streamlit",
-                achievements="• Developing automated robotics systems for CHRU de Nancy\n• Building advanced OCR tools for medical document processing\n• Implementing LLM/NLP solutions for healthcare applications\n• Created malaria detection system using CNN and Django\n• Developed TRAQ diagnostic tool for behavioral disorders\n• Built educational AI tools with LangChain and local LLMs\n• Focusing on AI ethics and human-centered design"
+                achievements="• Developing automated robotics systems for CHRU de Nancy\n• Building advanced OCR tools for medical document processing\n• Implementing LLM/NLP solutions for healthcare applications\n• Created malaria detection system using CNN and Django\n• Developed TRAQ diagnostic tool for behavioral disorders\n• Built educational AI tools with LangChain and local LLMs\n• Focusing on AI ethics and human-centered design",
             ),
-
             # Recent Experience
             Experience(
                 title="Data Scientist/Analyst",
@@ -78,9 +78,8 @@ class Experience(db.Model):
                 end_date=date(2024, 7, 31),
                 description="Designed and deployed machine learning models and neural networks using Python for healthcare data analysis. Created Streamlit applications to assist clinical psychologists with diagnostic tools, focusing on high-performance and intuitive user interfaces.",
                 technologies="Python, Machine Learning, Neural Networks, Streamlit, Healthcare Data Analytics, Clinical Psychology Tools",
-                achievements="• Developed clinical diagnostic tools for psychologists\n• Improved workflow efficiency for healthcare professionals\n• Deployed production-ready ML applications\n• Created intuitive user interfaces for complex data analysis"
+                achievements="• Developed clinical diagnostic tools for psychologists\n• Improved workflow efficiency for healthcare professionals\n• Deployed production-ready ML applications\n• Created intuitive user interfaces for complex data analysis",
             ),
-
             Experience(
                 title="Data Scientist",
                 company="DBCALL | Réseau DEF",
@@ -89,9 +88,8 @@ class Experience(db.Model):
                 end_date=date(2023, 12, 31),
                 description="Developed machine learning models in Python, created APIs for data integration, utilized PL/SQL for database operations, and integrated Microsoft ecosystem tools for business intelligence and data management.",
                 technologies="Python, Machine Learning, API Development, PL/SQL, Power BI, Microsoft Dataverse, Azure, Business Intelligence",
-                achievements="• Built scalable ML models for business intelligence\n• Created robust data integration APIs\n• Implemented comprehensive BI solutions\n• Integrated Microsoft ecosystem tools for data management"
+                achievements="• Built scalable ML models for business intelligence\n• Created robust data integration APIs\n• Implemented comprehensive BI solutions\n• Integrated Microsoft ecosystem tools for data management",
             ),
-
             Experience(
                 title="Application Developer/Designer",
                 company="RegiePub",
@@ -100,9 +98,8 @@ class Experience(db.Model):
                 end_date=date(2023, 8, 31),
                 description="Designed, developed, and deployed a complete web application using modern PHP frameworks. Implemented full-stack solution with Symfony backend and responsive frontend integration.",
                 technologies="PHP, Symfony Framework, Full-Stack Development, Web Application Design, Responsive Design",
-                achievements="• Delivered complete web application from concept to deployment\n• Implemented modern PHP architecture with Symfony\n• Created responsive user interfaces\n• Established best practices for full-stack development"
+                achievements="• Delivered complete web application from concept to deployment\n• Implemented modern PHP architecture with Symfony\n• Created responsive user interfaces\n• Established best practices for full-stack development",
             ),
-
             # Long-term Previous Experience
             Experience(
                 title="Director of Scientific and Technical Police Laboratory",
@@ -112,12 +109,14 @@ class Experience(db.Model):
                 end_date=date(2021, 12, 31),
                 description="Led scientific and technical operations for forensic investigations, managed laboratory operations, and supervised analytical processes for criminal investigations. Applied advanced analytical techniques and maintained quality standards for forensic evidence processing.",
                 technologies="Forensic Analysis, Laboratory Management, Scientific Investigation, Quality Control, Analytical Chemistry",
-                achievements="• Managed forensic laboratory operations for 15+ years\n• Supervised complex criminal investigations\n• Maintained high-quality standards for evidence processing\n• Led team of forensic scientists and technicians"
-            )
+                achievements="• Managed forensic laboratory operations for 15+ years\n• Supervised complex criminal investigations\n• Maintained high-quality standards for evidence processing\n• Led team of forensic scientists and technicians",
+            ),
         ]
 
         for experience in sample_experiences:
-            existing = Experience.query.filter_by(title=experience.title, company=experience.company).first()
+            existing = Experience.query.filter_by(
+                title=experience.title, company=experience.company
+            ).first()
             if not existing:
                 db.session.add(experience)
 

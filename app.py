@@ -15,8 +15,8 @@ sys.path.insert(0, str(project_root))
 from portfolio_app import create_app
 
 # Create the Flask application instance for production
-app = create_app(os.environ.get('FLASK_CONFIG', 'config.ProductionConfig'))
+app = create_app(os.environ.get("FLASK_CONFIG", "config.ProductionConfig"))
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # For local development, run the app directly
-    app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)), debug=False)
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)), debug=False)
