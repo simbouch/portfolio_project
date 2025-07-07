@@ -42,12 +42,41 @@ def create_app(config_class="config.DevelopmentConfig"):
 
     # Create database tables and sample data
     with app.app_context():
-        db.create_all()
+        try:
+            # Create all tables (this is safe to run multiple times)
+            db.create_all()
+            app.logger.info("✅ Database tables created/verified")
 
-        # Create sample data if tables are empty
-        from .models.project import Project
-        from .models.experience import Experience
-        from .models.skill import Skill
+            # Import models
+            from .models.project import Project
+            from .models.experience import Experience
+            from .models.skill import Skill
+
+            # Only create sample data if running in development or if tables are empty
+            if app.config.get('ENV') == 'development' or Project.query.count() == 0:
+                try:
+                    Project.create_sample_data()
+                    app.logger.info("✅ Sample projects created")
+                except Exception as project_error:
+                    app.logger.warning(f"Could not create sample projects: {project_error}")
+
+            if app.config.get('ENV') == 'development' or Experience.query.count() == 0:
+                try:
+                    Experience.create_sample_data()
+                    app.logger.info("✅ Sample experiences created")
+                except Exception as exp_error:
+                    app.logger.warning(f"Could not create sample experiences: {exp_error}")
+
+            if app.config.get('ENV') == 'development' or Skill.query.count() == 0:
+                try:
+                    Skill.create_sample_data()
+                    app.logger.info("✅ Sample skills created")
+                except Exception as skill_error:
+                    app.logger.warning(f"Could not create sample skills: {skill_error}")
+
+        except Exception as e:
+            app.logger.error(f"Database initialization error: {e}")
+            # Continue without database initialization if it fails
 
         if Project.query.count() == 0:
             Project.create_sample_data()

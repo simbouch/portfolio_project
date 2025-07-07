@@ -16,7 +16,7 @@ class Project(db.Model):
     github_url = db.Column(db.String(200))
     demo_url = db.Column(db.String(200))
     image_url = db.Column(db.String(200))
-    owner_avatar_url = db.Column(db.String(200))
+    owner_avatar_url = db.Column(db.String(200), default="https://avatars.githubusercontent.com/u/183075384?v=4")
     featured = db.Column(db.Boolean, default=False)
     created_date = db.Column(db.DateTime, default=lambda: datetime.now(timezone.utc))
 
