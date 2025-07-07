@@ -44,9 +44,17 @@
                     <div class="project-type-badge project-type-{{ project.project_type }}">
                         {{ project.project_type.replace('_', ' ').title() }}
                     </div>
-                    
+
+                    <!-- Project Owner Avatar -->
+                    {% if project.owner_avatar_url %}
+                    <div class="project-owner-avatar mt-3 d-flex align-items-center">
+                        <img src="{{ project.owner_avatar_url }}" alt="Project Owner" class="rounded-circle me-2" width="28" height="28">
+                        <small class="text-muted">by {{ project.github_url.split('/')[-2] if project.github_url else 'simbouch' }}</small>
+                    </div>
+                    {% endif %}
+
                     <!-- Project Content -->
-                    <h5 class="card-title mt-4 mb-3">{{ project.title }}</h5>
+                    <h5 class="card-title mt-3 mb-3">{{ project.title }}</h5>
                     <p class="card-text text-muted mb-3">{{ project.description }}</p>
                     
                     <!-- Technologies -->
@@ -99,11 +107,23 @@
         <div class="col-lg-6 mb-4">
             <div class="card project-card h-100 border-primary loading">
                 <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-start mb-3">
+                    <!-- Project Owner Avatar for Featured -->
+                    {% if project.owner_avatar_url %}
+                    <div class="project-owner-avatar mb-3 d-flex align-items-center">
+                        <img src="{{ project.owner_avatar_url }}" alt="Project Owner" class="rounded-circle me-2" width="32" height="32">
+                        <small class="text-muted">by {{ project.github_url.split('/')[-2] if project.github_url else 'simbouch' }}</small>
+                        <span class="badge bg-warning text-dark ms-auto">Featured</span>
+                    </div>
+                    {% else %}
+                    <div class="d-flex justify-content-end mb-3">
+                        <span class="badge bg-warning text-dark">Featured</span>
+                    </div>
+                    {% endif %}
+
+                    <div class="mb-3">
                         <h5 class="card-title text-primary">
                             <i class="fas fa-star me-2"></i>{{ project.title }}
                         </h5>
-                        <span class="badge bg-warning text-dark">Featured</span>
                     </div>
                     <p class="card-text">{{ project.description }}</p>
                     

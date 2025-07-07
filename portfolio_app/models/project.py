@@ -16,6 +16,7 @@ class Project(db.Model):
     github_url = db.Column(db.String(200))
     demo_url = db.Column(db.String(200))
     image_url = db.Column(db.String(200))
+    owner_avatar_url = db.Column(db.String(200))
     featured = db.Column(db.Boolean, default=False)
     created_date = db.Column(db.DateTime, default=lambda: datetime.now(timezone.utc))
 
@@ -37,6 +38,7 @@ class Project(db.Model):
                 duration="4 weeks",
                 project_type="ai_automation",
                 github_url="https://github.com/simbouch/rpa_1_poc",
+                owner_avatar_url="https://avatars.githubusercontent.com/u/183075384?v=4",
                 featured=True,
             ),
             Project(
@@ -46,6 +48,7 @@ class Project(db.Model):
                 duration="6 weeks",
                 project_type="web",
                 github_url="https://github.com/simbouch/flashcards-projet",
+                owner_avatar_url="https://avatars.githubusercontent.com/u/183075384?v=4",
                 featured=True,
             ),
             Project(
@@ -55,6 +58,7 @@ class Project(db.Model):
                 duration="3 weeks",
                 project_type="data_science",
                 github_url="https://github.com/simbouch/audio-analysis-toolkit",
+                owner_avatar_url="https://avatars.githubusercontent.com/u/183075384?v=4",
                 featured=True,
             ),
             Project(
@@ -64,6 +68,7 @@ class Project(db.Model):
                 duration="2 weeks",
                 project_type="game",
                 github_url="https://github.com/simbouch/Doggy-and-Cat-adventure",
+                owner_avatar_url="https://avatars.githubusercontent.com/u/183075384?v=4",
                 featured=False,
             ),
             Project(
@@ -73,6 +78,7 @@ class Project(db.Model):
                 duration="2 weeks",
                 project_type="machine_learning",
                 github_url="https://github.com/simbouch/boston-housing-ml-comparison",
+                owner_avatar_url="https://avatars.githubusercontent.com/u/183075384?v=4",
             ),
             Project(
                 title="Malaria Detection Application",
@@ -81,6 +87,7 @@ class Project(db.Model):
                 duration="4 weeks",
                 project_type="deep_learning",
                 github_url="https://github.com/simbouch/malaria-detection",
+                owner_avatar_url="https://avatars.githubusercontent.com/u/183075384?v=4",
                 featured=True,
             ),
             Project(
@@ -90,6 +97,7 @@ class Project(db.Model):
                 duration="3 weeks",
                 project_type="machine_learning",
                 github_url="https://github.com/simbouch/clustering-webapp",
+                owner_avatar_url="https://avatars.githubusercontent.com/u/183075384?v=4",
             ),
             Project(
                 title="NutriScore Prediction App",
@@ -99,6 +107,7 @@ class Project(db.Model):
                 project_type="machine_learning",
                 github_url="https://github.com/simbouch/nutriscore_prediction_app",
                 demo_url="https://nutriscore-prediction.herokuapp.com",
+                owner_avatar_url="https://avatars.githubusercontent.com/u/183075384?v=4",
             ),
             Project(
                 title="KinePasLoin - Movie Ticket Booking",
@@ -107,6 +116,7 @@ class Project(db.Model):
                 duration="2 weeks",
                 project_type="web",
                 github_url="https://github.com/simbouch/kinepasloin",
+                owner_avatar_url="https://avatars.githubusercontent.com/u/183075384?v=4",
                 featured=False,
             ),
             Project(
@@ -116,6 +126,7 @@ class Project(db.Model):
                 duration="4 weeks",
                 project_type="enterprise",
                 github_url="https://github.com/simbouch/reverso",
+                owner_avatar_url="https://avatars.githubusercontent.com/u/183075384?v=4",
                 featured=False,
             ),
             Project(
@@ -125,6 +136,7 @@ class Project(db.Model):
                 duration="3 weeks",
                 project_type="healthcare",
                 github_url="https://github.com/simbouch/traq_diagnostic",
+                owner_avatar_url="https://avatars.githubusercontent.com/u/183075384?v=4",
                 featured=True,
             ),
             Project(
@@ -134,6 +146,7 @@ class Project(db.Model):
                 duration="4 weeks",
                 project_type="deep_learning",
                 github_url="https://github.com/simbouch/malaria_project_django",
+                owner_avatar_url="https://avatars.githubusercontent.com/u/183075384?v=4",
                 featured=True,
             ),
             Project(
@@ -143,6 +156,7 @@ class Project(db.Model):
                 duration="5 weeks",
                 project_type="ai_education",
                 github_url="https://github.com/simbouch/langchain_learning_app_2025",
+                owner_avatar_url="https://avatars.githubusercontent.com/u/183075384?v=4",
                 featured=True,
             ),
             Project(
@@ -152,6 +166,17 @@ class Project(db.Model):
                 duration="8 weeks",
                 project_type="enterprise",
                 github_url="https://github.com/simbouch/ia_continu_solution",
+                owner_avatar_url="https://avatars.githubusercontent.com/u/183075384?v=4",
+                featured=True,
+            ),
+            Project(
+                title="ML Optimization Framework with Optuna",
+                description="Educational project demonstrating Optuna's hyperparameter optimization capabilities through interactive examples and comprehensive tutorials. Features 6 different optimization studies, interactive dashboard, TPE sampling, pruning techniques, and multi-objective optimization with real ML models.",
+                technology_used="Python, Optuna, Docker, Scikit-learn, SQLite, Interactive Dashboard, TPE Sampling, Pruning",
+                duration="4 weeks",
+                project_type="machine_learning",
+                github_url="https://github.com/simbouch/ml-optimization-framework",
+                owner_avatar_url="https://avatars.githubusercontent.com/u/183075384?v=4",
                 featured=True,
             ),
         ]

@@ -81,7 +81,16 @@
                         <div class="project-type-badge project-type-{{ project.project_type }}">
                             {{ project.project_type.replace('_', ' ').title() }}
                         </div>
-                        <h5 class="card-title mt-4">{{ project.title }}</h5>
+
+                        <!-- Project Owner Avatar -->
+                        {% if project.owner_avatar_url %}
+                        <div class="project-owner-avatar mt-3 d-flex align-items-center">
+                            <img src="{{ project.owner_avatar_url }}" alt="Project Owner" class="rounded-circle me-2" width="24" height="24">
+                            <small class="text-muted">by {{ project.github_url.split('/')[-2] if project.github_url else 'simbouch' }}</small>
+                        </div>
+                        {% endif %}
+
+                        <h5 class="card-title mt-3">{{ project.title }}</h5>
                         <p class="card-text text-muted">{{ project.description[:100] }}...</p>
                         <div class="mb-3">
                             {% for tech in project.technology_used.split(', ')[:3] %}
