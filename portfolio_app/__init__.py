@@ -312,4 +312,10 @@ User Agent: {request.environ.get('HTTP_USER_AGENT', 'Unknown')}"""
     except ImportError:
         pass  # Controllers are optional
 
+    # Health check endpoint for deployment monitoring
+    @app.route('/health')
+    def health_check():
+        """Health check endpoint for deployment monitoring"""
+        return {'status': 'healthy', 'message': 'Portfolio app is running'}, 200
+
     return app
