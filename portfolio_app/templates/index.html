@@ -84,8 +84,8 @@
 
                         <!-- Project Owner Avatar -->
                         <div class="project-owner-avatar mt-3 d-flex align-items-center">
-                            <img src="{{ project.safe_owner_avatar_url }}" alt="Project Owner" class="rounded-circle me-2" width="24" height="24">
-                            <small class="text-muted">by {{ project.github_username }}</small>
+                            <img src="https://github.com/simbouch.png" alt="Project Owner" class="rounded-circle me-2" width="24" height="24">
+                            <small class="text-muted">by simbouch</small>
                         </div>
 
                         <h5 class="card-title mt-3">{{ project.title }}</h5>
@@ -96,7 +96,7 @@
                             {% endfor %}
                         </div>
                         <div class="d-flex justify-content-between align-items-center">
-                            <a href="{{ project.safe_github_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-outline-primary btn-sm">
+                            <a href="{{ project.github_url or 'https://github.com/simbouch' }}" target="_blank" rel="noopener noreferrer" class="btn btn-outline-primary btn-sm">
                                 <i class="fab fa-github me-1"></i>View Code
                             </a>
                             {% if project.demo_url %}
