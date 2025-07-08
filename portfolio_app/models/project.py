@@ -16,7 +16,6 @@ class Project(db.Model):
     github_url = db.Column(db.String(200))
     demo_url = db.Column(db.String(200))
     image_url = db.Column(db.String(200))
-    owner_avatar_url = db.Column(db.String(200), default="https://avatars.githubusercontent.com/u/183075384?v=4")
     featured = db.Column(db.Boolean, default=False)
     created_date = db.Column(db.DateTime, default=lambda: datetime.now(timezone.utc))
 
@@ -26,6 +25,11 @@ class Project(db.Model):
     def display_info(self):
         """Displays the basic info of a project."""
         return f"Project: {self.title}, Technologies: {self.technology_used}, Duration: {self.duration}"
+
+    @property
+    def owner_avatar_url(self):
+        """Returns the project owner's avatar URL."""
+        return "https://avatars.githubusercontent.com/u/183075384?v=4"
 
     @staticmethod
     def create_sample_data():
@@ -38,8 +42,7 @@ class Project(db.Model):
                 duration="4 weeks",
                 project_type="ai_automation",
                 github_url="https://github.com/simbouch/rpa_1_poc",
-                owner_avatar_url="https://avatars.githubusercontent.com/u/183075384?v=4",
-                featured=True,
+                featured=True
             ),
             Project(
                 title="Flashcards Full-Stack Platform with OCR",
@@ -48,8 +51,7 @@ class Project(db.Model):
                 duration="6 weeks",
                 project_type="web",
                 github_url="https://github.com/simbouch/flashcards-projet",
-                owner_avatar_url="https://avatars.githubusercontent.com/u/183075384?v=4",
-                featured=True,
+                featured=True
             ),
             Project(
                 title="Audio Analysis Toolkit",
@@ -57,9 +59,7 @@ class Project(db.Model):
                 technology_used="Python, Librosa, Streamlit, NumPy, Matplotlib, Scikit-learn",
                 duration="3 weeks",
                 project_type="data_science",
-                github_url="https://github.com/simbouch/audio-analysis-toolkit",
-                owner_avatar_url="https://avatars.githubusercontent.com/u/183075384?v=4",
-                featured=True,
+                github_url="https://github.com/simbouch/audio-analysis-toolkit",                featured=True
             ),
             Project(
                 title="Doggy and Cat Adventure Game",
@@ -67,9 +67,7 @@ class Project(db.Model):
                 technology_used="Python, Game Development, Interactive Design",
                 duration="2 weeks",
                 project_type="game",
-                github_url="https://github.com/simbouch/Doggy-and-Cat-adventure",
-                owner_avatar_url="https://avatars.githubusercontent.com/u/183075384?v=4",
-                featured=False,
+                github_url="https://github.com/simbouch/Doggy-and-Cat-adventure",                featured=False
             ),
             Project(
                 title="Boston Housing ML Comparison",
@@ -77,18 +75,14 @@ class Project(db.Model):
                 technology_used="Python, Scikit-learn, Pandas, Matplotlib, Seaborn, Jupyter",
                 duration="2 weeks",
                 project_type="machine_learning",
-                github_url="https://github.com/simbouch/boston-housing-ml-comparison",
-                owner_avatar_url="https://avatars.githubusercontent.com/u/183075384?v=4",
-            ),
+                github_url="https://github.com/simbouch/boston-housing-ml-comparison"            ),
             Project(
                 title="Malaria Detection Application",
                 description="Deep learning application using CNN for malaria detection from blood cell images. Built with Django framework and TensorFlow for medical image classification.",
                 technology_used="Django, TensorFlow, CNN, Computer Vision, Python, HTML/CSS",
                 duration="4 weeks",
                 project_type="deep_learning",
-                github_url="https://github.com/simbouch/malaria-detection",
-                owner_avatar_url="https://avatars.githubusercontent.com/u/183075384?v=4",
-                featured=True,
+                github_url="https://github.com/simbouch/malaria-detection",                featured=True
             ),
             Project(
                 title="Clustering Flask Web Application",
@@ -96,9 +90,7 @@ class Project(db.Model):
                 technology_used="Flask, Scikit-learn, PCA, K-Means, Plotly, Pandas, Bootstrap",
                 duration="3 weeks",
                 project_type="machine_learning",
-                github_url="https://github.com/simbouch/clustering-webapp",
-                owner_avatar_url="https://avatars.githubusercontent.com/u/183075384?v=4",
-            ),
+                github_url="https://github.com/simbouch/clustering-webapp"            ),
             Project(
                 title="NutriScore Prediction App",
                 description="Machine learning web application for predicting NutriScore grades based on nutritional values. Features real-time predictions, data visualization, and nutritional analysis.",
@@ -106,18 +98,14 @@ class Project(db.Model):
                 duration="3 weeks",
                 project_type="machine_learning",
                 github_url="https://github.com/simbouch/nutriscore_prediction_app",
-                demo_url="https://nutriscore-prediction.herokuapp.com",
-                owner_avatar_url="https://avatars.githubusercontent.com/u/183075384?v=4",
-            ),
+                demo_url="https://nutriscore-prediction.herokuapp.com"            ),
             Project(
                 title="KinePasLoin - Movie Ticket Booking",
                 description="Personal project for a simple movie ticket booking application. Integrates with OMDB API to fetch and display movie details, allows users to calculate ticket costs, and manages bookings.",
                 technology_used="HTML, JavaScript, API Integration, OMDB API",
                 duration="2 weeks",
                 project_type="web",
-                github_url="https://github.com/simbouch/kinepasloin",
-                owner_avatar_url="https://avatars.githubusercontent.com/u/183075384?v=4",
-                featured=False,
+                github_url="https://github.com/simbouch/kinepasloin",                featured=False
             ),
             Project(
                 title="Reverso - Business Management System",
@@ -125,9 +113,7 @@ class Project(db.Model):
                 technology_used="Java, Database Management, OOP, SQL",
                 duration="4 weeks",
                 project_type="enterprise",
-                github_url="https://github.com/simbouch/reverso",
-                owner_avatar_url="https://avatars.githubusercontent.com/u/183075384?v=4",
-                featured=False,
+                github_url="https://github.com/simbouch/reverso",                featured=False
             ),
             Project(
                 title="TRAQ Diagnostic Tool",
@@ -135,9 +121,7 @@ class Project(db.Model):
                 technology_used="Python, Streamlit, Healthcare Analytics, Data Analysis",
                 duration="3 weeks",
                 project_type="healthcare",
-                github_url="https://github.com/simbouch/traq_diagnostic",
-                owner_avatar_url="https://avatars.githubusercontent.com/u/183075384?v=4",
-                featured=True,
+                github_url="https://github.com/simbouch/traq_diagnostic",                featured=True
             ),
             Project(
                 title="Malaria Detection Django App",
@@ -145,9 +129,7 @@ class Project(db.Model):
                 technology_used="Django, JavaScript, CNN, Computer Vision, Medical AI, TensorFlow",
                 duration="4 weeks",
                 project_type="deep_learning",
-                github_url="https://github.com/simbouch/malaria_project_django",
-                owner_avatar_url="https://avatars.githubusercontent.com/u/183075384?v=4",
-                featured=True,
+                github_url="https://github.com/simbouch/malaria_project_django",                featured=True
             ),
             Project(
                 title="LangChain Learning App 2025",
@@ -155,9 +137,7 @@ class Project(db.Model):
                 technology_used="LangChain, Streamlit, Ollama, Phi, NLP, Educational AI, Local LLM",
                 duration="5 weeks",
                 project_type="ai_education",
-                github_url="https://github.com/simbouch/langchain_learning_app_2025",
-                owner_avatar_url="https://avatars.githubusercontent.com/u/183075384?v=4",
-                featured=True,
+                github_url="https://github.com/simbouch/langchain_learning_app_2025",                featured=True
             ),
             Project(
                 title="IA Continu Solution - Enterprise ML Template",
@@ -165,9 +145,7 @@ class Project(db.Model):
                 technology_used="Docker, FastAPI, MLflow, Prefect, Streamlit, Discord API, JWT Auth, Prometheus, Grafana",
                 duration="8 weeks",
                 project_type="enterprise",
-                github_url="https://github.com/simbouch/ia_continu_solution",
-                owner_avatar_url="https://avatars.githubusercontent.com/u/183075384?v=4",
-                featured=True,
+                github_url="https://github.com/simbouch/ia_continu_solution",                featured=True
             ),
             Project(
                 title="ML Optimization Framework with Optuna",
@@ -175,9 +153,7 @@ class Project(db.Model):
                 technology_used="Python, Optuna, Docker, Scikit-learn, SQLite, Interactive Dashboard, TPE Sampling, Pruning",
                 duration="4 weeks",
                 project_type="machine_learning",
-                github_url="https://github.com/simbouch/ml-optimization-framework",
-                owner_avatar_url="https://avatars.githubusercontent.com/u/183075384?v=4",
-                featured=True,
+                github_url="https://github.com/simbouch/ml-optimization-framework",                featured=True
             ),
         ]
 

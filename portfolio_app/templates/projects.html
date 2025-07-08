@@ -47,7 +47,7 @@
 
                     <!-- Project Owner Avatar -->
                     <div class="project-owner-avatar mt-3 d-flex align-items-center">
-                        <img src="{{ project.owner_avatar_url or 'https://avatars.githubusercontent.com/u/183075384?v=4' }}" alt="Project Owner" class="rounded-circle me-2" width="28" height="28">
+                        <img src="{{ project.owner_avatar_url }}" alt="Project Owner" class="rounded-circle me-2" width="28" height="28">
                         <small class="text-muted">by {{ project.github_url.split('/')[-2] if project.github_url else 'simbouch' }}</small>
                     </div>
 
@@ -107,7 +107,7 @@
                 <div class="card-body">
                     <!-- Project Owner Avatar for Featured -->
                     <div class="project-owner-avatar mb-3 d-flex align-items-center">
-                        <img src="{{ project.owner_avatar_url or 'https://avatars.githubusercontent.com/u/183075384?v=4' }}" alt="Project Owner" class="rounded-circle me-2" width="32" height="32">
+                        <img src="{{ project.owner_avatar_url }}" alt="Project Owner" class="rounded-circle me-2" width="32" height="32">
                         <small class="text-muted">by {{ project.github_url.split('/')[-2] if project.github_url else 'simbouch' }}</small>
                         <span class="badge bg-warning text-dark ms-auto">Featured</span>
                     </div>
