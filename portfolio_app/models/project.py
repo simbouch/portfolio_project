@@ -23,25 +23,15 @@ class Project(db.Model):
         return f"<Project {self.title}>"
 
     @property
-    def safe_github_url(self):
-        """Return github_url or a default GitHub profile URL"""
-        return self.github_url or "https://github.com/simbouch"
-
-    @property
-    def safe_owner_avatar_url(self):
-        """Generate avatar URL from GitHub username"""
-        username = self.github_username
-        return f"https://github.com/{username}.png"
-
-    @property
-    def github_username(self):
-        """Extract username from GitHub URL"""
-        if self.github_url:
+    def owner_avatar_url(self):
+        """Generate avatar URL from GitHub username or default to simbouch"""
+        if self.github_url and 'github.com' in self.github_url:
             try:
-                return self.github_url.split('/')[-2]
+                username = self.github_url.split('/')[-2]
+                return f"https://github.com/{username}.png"
             except:
-                return 'simbouch'
-        return 'simbouch'
+                pass
+        return "https://github.com/simbouch.png"
 
     def display_info(self):
         """Displays the basic info of a project."""
