@@ -2,8 +2,6 @@
 
 {% block title %}Interests - Bouchaib Khribech{% endblock %}
 
-{% block extra_css %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/advanced-gallery.css') }}">
 {% endblock %}
 
 {% block content %}
@@ -368,139 +366,8 @@
 </style>
 </div>
 
-<!-- Advanced Photo Gallery Section -->
-<section class="py-5 bg-light">
-    <div class="container">
-        <div class="text-center mb-5">
-            <h2 class="section-title loading animate-slide-up">
-                <i class="fas fa-camera me-2"></i>Photo Gallery
-            </h2>
-            <p class="lead text-muted loading animate-fade-scale animate-delay-1">
-                Capturing moments from my adventures and travels
-            </p>
-        </div>
 
-        <!-- Photo Filters -->
-        <div class="photo-filters loading animate-slide-up animate-delay-2">
-            <button class="filter-btn" data-filter="all">
-                <i class="fas fa-th me-1"></i>All Photos
-            </button>
-            <button class="filter-btn" data-filter="kitesurfing">
-                <i class="fas fa-wind me-1"></i>Kitesurfing
-            </button>
-            <button class="filter-btn" data-filter="snowboarding">
-                <i class="fas fa-snowflake me-1"></i>Snowboarding
-            </button>
-            <button class="filter-btn" data-filter="travel">
-                <i class="fas fa-plane me-1"></i>Travel
-            </button>
-            <button class="filter-btn" data-filter="beekeeping">
-                <i class="fas fa-leaf me-1"></i>Beekeeping
-            </button>
-        </div>
-
-        <!-- Gallery Grid -->
-        <div class="gallery-grid">
-            <!-- Kitesurfing Photos -->
-            <div class="gallery-item loading" data-category="kitesurfing">
-                <img src="{{ url_for('static', filename='images/image10.jpg') }}"
-                     alt="Kitesurfing adventure on the water">
-                <div class="gallery-overlay">
-                    <h5><i class="fas fa-wind me-2"></i>Kitesurfing Session</h5>
-                    <p>Perfect wind conditions for an amazing kitesurfing session. The combination of wind, water, and adrenaline creates the perfect escape.</p>
-                </div>
-            </div>
-
-            <div class="gallery-item loading" data-category="kitesurfing">
-                <img src="{{ url_for('static', filename='images/image11.jpg') }}"
-                     alt="Kitesurfing equipment and setup">
-                <div class="gallery-overlay">
-                    <h5><i class="fas fa-wind me-2"></i>Equipment Ready</h5>
-                    <p>Setting up the kite and board for another thrilling session on the water. Preparation is key to safety and enjoyment.</p>
-                </div>
-            </div>
-
-            <!-- Snowboarding Photos -->
-            <div class="gallery-item loading" data-category="snowboarding">
-                <img src="{{ url_for('static', filename='images/image12.jpg') }}"
-                     alt="Snowboarding on fresh powder">
-                <div class="gallery-overlay">
-                    <h5><i class="fas fa-snowflake me-2"></i>Fresh Powder</h5>
-                    <p>Nothing beats the feeling of carving through fresh powder snow. The mountains provide the perfect playground for adventure.</p>
-                </div>
-            </div>
-
-            <div class="gallery-item loading" data-category="snowboarding">
-                <img src="{{ url_for('static', filename='images/image13.jpg') }}"
-                     alt="Mountain snowboarding landscape">
-                <div class="gallery-overlay">
-                    <h5><i class="fas fa-mountain me-2"></i>Mountain Views</h5>
-                    <p>Breathtaking mountain landscapes while snowboarding. These moments remind me why I love adventure sports.</p>
-                </div>
-            </div>
-
-            <!-- Travel Photos -->
-            <div class="gallery-item loading" data-category="travel">
-                <img src="{{ url_for('static', filename='images/image14.jpg') }}"
-                     alt="Travel destination landscape">
-                <div class="gallery-overlay">
-                    <h5><i class="fas fa-plane me-2"></i>Travel Discovery</h5>
-                    <p>Exploring new destinations and cultures. Each journey brings new perspectives and inspiration for both life and work.</p>
-                </div>
-            </div>
-
-            <div class="gallery-item loading" data-category="travel">
-                <img src="{{ url_for('static', filename='images/image15.jpg') }}"
-                     alt="Cultural travel experience">
-                <div class="gallery-overlay">
-                    <h5><i class="fas fa-globe me-2"></i>Cultural Immersion</h5>
-                    <p>Immersing myself in different cultures and traditions. Travel broadens the mind and enhances creativity.</p>
-                </div>
-            </div>
-
-            <!-- Beekeeping Photos -->
-            <div class="gallery-item loading" data-category="beekeeping">
-                <img src="{{ url_for('static', filename='images/image16.jpg') }}"
-                     alt="Beekeeping hive inspection">
-                <div class="gallery-overlay">
-                    <h5><i class="fas fa-leaf me-2"></i>Hive Inspection</h5>
-                    <p>Peaceful moments with the bees during hive inspection. Beekeeping teaches patience, observation, and respect for nature.</p>
-                </div>
-            </div>
-
-            <div class="gallery-item loading" data-category="beekeeping">
-                <img src="{{ url_for('static', filename='images/image17.jpg') }}"
-                     alt="Honey harvest time">
-                <div class="gallery-overlay">
-                    <h5><i class="fas fa-honey-pot me-2"></i>Honey Harvest</h5>
-                    <p>The rewarding moment of honey harvest. The sweet result of the bees' hard work and careful hive management.</p>
-                </div>
-            </div>
-
-            <!-- Additional Mixed Photos -->
-            <div class="gallery-item loading" data-category="travel">
-                <img src="{{ url_for('static', filename='images/image18.jpg') }}"
-                     alt="Sunset travel moment">
-                <div class="gallery-overlay">
-                    <h5><i class="fas fa-sun me-2"></i>Golden Hour</h5>
-                    <p>Capturing the perfect golden hour during travels. These magical moments inspire creativity and reflection.</p>
-                </div>
-            </div>
-
-            <div class="gallery-item loading" data-category="kitesurfing">
-                <img src="{{ url_for('static', filename='images/image19.jpg') }}"
-                     alt="Kitesurfing action shot">
-                <div class="gallery-overlay">
-                    <h5><i class="fas fa-water me-2"></i>Action Shot</h5>
-                    <p>Mid-air action during a kitesurfing session. The perfect combination of skill, wind, and timing.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
 {% endblock %}
 
-{% block extra_js %}
-<script src="{{ url_for('static', filename='js/advanced-gallery.js') }}"></script>
 {% endblock %}
