@@ -2,6 +2,10 @@
 
 {% block title %}Photo Gallery - Bouchaib Khribech{% endblock %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/advanced-gallery.css') }}">
+{% endblock %}
+
 {% block content %}
 <div class="container py-5 mt-5">
     <!-- Hero Section -->
@@ -43,50 +47,146 @@
     <div class="row mb-4">
         <div class="col-12 text-center">
             <h3 class="text-primary mb-4">Photo Collections</h3>
-            <div class="btn-group" role="group" aria-label="Photo categories">
-                <button type="button" class="btn btn-outline-primary active" data-filter="all">
+            <div class="photo-filters loading animate-fade-scale animate-delay-1">
+                <button class="filter-btn" data-filter="all">
                     <i class="fas fa-th me-1"></i>All Photos
                 </button>
-                <button type="button" class="btn btn-outline-primary" data-filter="travel">
+                <button class="filter-btn" data-filter="travel">
                     <i class="fas fa-globe me-1"></i>Travel
                 </button>
-                <button type="button" class="btn btn-outline-primary" data-filter="nature">
+                <button class="filter-btn" data-filter="nature">
                     <i class="fas fa-leaf me-1"></i>Nature
                 </button>
-                <button type="button" class="btn btn-outline-primary" data-filter="adventure">
+                <button class="filter-btn" data-filter="adventure">
                     <i class="fas fa-mountain me-1"></i>Adventure
+                </button>
+                <button class="filter-btn" data-filter="kitesurfing">
+                    <i class="fas fa-wind me-1"></i>Kitesurfing
+                </button>
+                <button class="filter-btn" data-filter="snowboarding">
+                    <i class="fas fa-snowflake me-1"></i>Snowboarding
                 </button>
             </div>
         </div>
     </div>
 
-    <!-- Photo Grid -->
-    <div class="row" id="photo-gallery">
+    <!-- Advanced Photo Gallery -->
+    <div class="gallery-grid">
         <!-- Adventure Photos -->
-        <div class="col-lg-4 col-md-6 mb-4 photo-item" data-category="adventure">
-            <div class="card gallery-card loading">
-                <div class="gallery-img-container">
-                    <img src="{{ url_for('static', filename='images/image4.jpg') }}"
-                         class="card-img-top gallery-image lightbox-trigger"
-                         alt="Adventure photography - sandboarding action"
-                         data-src="{{ url_for('static', filename='images/image4.jpg') }}"
-                         data-title="Sandboarding Adventure"
-                         data-description="Capturing the thrill and excitement of sandboarding - dynamic action moments in desert landscapes."
-                         data-category="adventure">
-                    <div class="gallery-overlay">
-                        <div class="gallery-overlay-content">
-                            <h6 class="text-white mb-1">Sandboarding Adventure</h6>
-                            <p class="text-white-50 small mb-0">Adventure Photography</p>
-                        </div>
-                    </div>
-                </div>
+        <div class="gallery-item loading" data-category="adventure">
+            <img src="{{ url_for('static', filename='images/image4.jpg') }}"
+                 alt="Adventure photography - sandboarding action">
+            <div class="gallery-overlay">
+                <h5><i class="fas fa-mountain me-2"></i>Sandboarding Adventure</h5>
+                <p>Capturing the thrill and excitement of sandboarding - dynamic action moments in desert landscapes that showcase the beauty of extreme sports.</p>
             </div>
         </div>
 
-        <div class="col-lg-4 col-md-6 mb-4 photo-item" data-category="adventure">
-            <div class="card gallery-card loading">
-                <div class="gallery-img-container">
-                    <img src="{{ url_for('static', filename='images/image10.jpg') }}"
+        <div class="gallery-item loading" data-category="kitesurfing">
+            <img src="{{ url_for('static', filename='images/image10.jpg') }}"
+                 alt="Kitesurfing action on the water">
+            <div class="gallery-overlay">
+                <h5><i class="fas fa-wind me-2"></i>Kitesurfing Action</h5>
+                <p>High-energy kitesurfing moments showcasing wind and water sports mastery. The perfect combination of skill, wind, and timing.</p>
+            </div>
+        </div>
+
+        <div class="gallery-item loading" data-category="travel">
+            <img src="{{ url_for('static', filename='images/image5.jpg') }}"
+                 alt="Travel photography - cultural exploration">
+            <div class="gallery-overlay">
+                <h5><i class="fas fa-globe me-2"></i>Cultural Exploration</h5>
+                <p>Documenting cultural experiences and architectural beauty during travels. Each destination offers unique perspectives and learning opportunities.</p>
+            </div>
+        </div>
+
+        <div class="gallery-item loading" data-category="nature">
+            <img src="{{ url_for('static', filename='images/image6.jpg') }}"
+                 alt="Nature photography - landscape beauty">
+            <div class="gallery-overlay">
+                <h5><i class="fas fa-leaf me-2"></i>Natural Landscapes</h5>
+                <p>Capturing the serene beauty of natural landscapes. These moments of tranquility provide inspiration and perspective for daily life.</p>
+            </div>
+        </div>
+
+        <div class="gallery-item loading" data-category="snowboarding">
+            <img src="{{ url_for('static', filename='images/image12.jpg') }}"
+                 alt="Snowboarding on mountain slopes">
+            <div class="gallery-overlay">
+                <h5><i class="fas fa-snowflake me-2"></i>Mountain Snowboarding</h5>
+                <p>Carving through fresh powder on mountain slopes. The precision and flow of snowboarding mirrors the focus needed in AI development.</p>
+            </div>
+        </div>
+
+        <div class="gallery-item loading" data-category="travel">
+            <img src="{{ url_for('static', filename='images/image7.jpg') }}"
+                 alt="Travel destination sunset">
+            <div class="gallery-overlay">
+                <h5><i class="fas fa-sun me-2"></i>Golden Hour Travel</h5>
+                <p>Capturing magical golden hour moments during travels. These experiences fuel creativity and provide fresh perspectives for professional work.</p>
+            </div>
+        </div>
+
+        <div class="gallery-item loading" data-category="adventure">
+            <img src="{{ url_for('static', filename='images/image8.jpg') }}"
+                 alt="Adventure sports equipment">
+            <div class="gallery-overlay">
+                <h5><i class="fas fa-tools me-2"></i>Adventure Gear</h5>
+                <p>The tools and equipment that make adventures possible. Proper preparation and quality gear are essential for safe and enjoyable experiences.</p>
+            </div>
+        </div>
+
+        <div class="gallery-item loading" data-category="nature">
+            <img src="{{ url_for('static', filename='images/image9.jpg') }}"
+                 alt="Nature close-up photography">
+            <div class="gallery-overlay">
+                <h5><i class="fas fa-camera me-2"></i>Nature Details</h5>
+                <p>Close-up photography revealing the intricate details of nature. This attention to detail translates directly to precision in AI development.</p>
+            </div>
+        </div>
+
+        <div class="gallery-item loading" data-category="kitesurfing">
+            <img src="{{ url_for('static', filename='images/image11.jpg') }}"
+                 alt="Kitesurfing equipment setup">
+            <div class="gallery-overlay">
+                <h5><i class="fas fa-wind me-2"></i>Equipment Setup</h5>
+                <p>Preparing kitesurfing equipment for another session. The methodical setup process teaches patience and attention to safety details.</p>
+            </div>
+        </div>
+
+        <div class="gallery-item loading" data-category="travel">
+            <img src="{{ url_for('static', filename='images/image14.jpg') }}"
+                 alt="Travel landscape photography">
+            <div class="gallery-overlay">
+                <h5><i class="fas fa-map me-2"></i>Landscape Discovery</h5>
+                <p>Discovering breathtaking landscapes during travels. Each new destination offers unique photographic opportunities and cultural insights.</p>
+            </div>
+        </div>
+
+        <div class="gallery-item loading" data-category="nature">
+            <img src="{{ url_for('static', filename='images/image16.jpg') }}"
+                 alt="Beekeeping and nature connection">
+            <div class="gallery-overlay">
+                <h5><i class="fas fa-leaf me-2"></i>Beekeeping Harmony</h5>
+                <p>The peaceful practice of beekeeping connects me with nature's rhythms. This meditative hobby enhances focus and patience in professional work.</p>
+            </div>
+        </div>
+
+        <div class="gallery-item loading" data-category="adventure">
+            <img src="{{ url_for('static', filename='images/image13.jpg') }}"
+                 alt="Mountain adventure landscape">
+            <div class="gallery-overlay">
+                <h5><i class="fas fa-mountain me-2"></i>Mountain Adventures</h5>
+                <p>Exploring mountain landscapes through adventure sports. These challenging environments build resilience and problem-solving skills.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/advanced-gallery.js') }}"></script>
+{% endblock %}
                          class="card-img-top gallery-image lightbox-trigger"
                          alt="Adventure photography - kitesurfing action"
                          data-src="{{ url_for('static', filename='images/image10.jpg') }}"
