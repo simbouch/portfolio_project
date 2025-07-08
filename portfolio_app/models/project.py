@@ -22,16 +22,7 @@ class Project(db.Model):
     def __repr__(self):
         return f"<Project {self.title}>"
 
-    @property
-    def owner_avatar_url(self):
-        """Generate avatar URL from GitHub username or default to simbouch"""
-        if self.github_url and 'github.com' in self.github_url:
-            try:
-                username = self.github_url.split('/')[-2]
-                return f"https://github.com/{username}.png"
-            except:
-                pass
-        return "https://github.com/simbouch.png"
+
 
     def display_info(self):
         """Displays the basic info of a project."""
