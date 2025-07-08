@@ -156,10 +156,60 @@ class ProjectFilter {
 document.addEventListener('DOMContentLoaded', () => {
     // Only initialize if we're on the projects page
     if (document.querySelector('.project-card')) {
+        console.log('Initializing project filtering...');
         new ProjectFilter();
         console.log('Project filtering initialized');
+    } else {
+        console.log('No project cards found, skipping project filter initialization');
     }
 });
+
+// Simple fallback project filtering
+function simpleProjectFilter() {
+    console.log('Setting up simple project filter...');
+
+    document.querySelectorAll('.filter-btn').forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            const filter = this.dataset.filter;
+            console.log('Simple project filter clicked:', filter);
+
+            // Update active button
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active', 'btn-primary');
+                btn.classList.add('btn-outline-primary');
+            });
+            this.classList.add('active', 'btn-primary');
+            this.classList.remove('btn-outline-primary');
+
+            // Filter project cards
+            document.querySelectorAll('.project-card').forEach(card => {
+                const type = card.dataset.type;
+                const shouldShow = filter === 'all' || type === filter;
+
+                if (shouldShow) {
+                    card.style.display = 'block';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                } else {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    setTimeout(() => {
+                        card.style.display = 'none';
+                    }, 300);
+                }
+            });
+        });
+    });
+}
+
+// Initialize simple filter as backup
+setTimeout(() => {
+    if (document.querySelector('.project-card') && document.querySelector('.filter-btn')) {
+        simpleProjectFilter();
+        console.log('Simple project filter initialized as backup');
+    }
+}, 1500);
 
 // Add some additional CSS for smooth transitions
 const style = document.createElement('style');

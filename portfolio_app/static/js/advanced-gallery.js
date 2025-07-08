@@ -335,7 +335,13 @@ class AdvancedGallery {
 
 // Initialize gallery when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    new AdvancedGallery();
+    // Only initialize if we're on a page with gallery items
+    if (document.querySelector('.gallery-item')) {
+        console.log('Initializing Advanced Gallery...');
+        new AdvancedGallery();
+    } else {
+        console.log('No gallery items found, skipping gallery initialization');
+    }
 });
 
 // Add some CSS for smooth transitions
@@ -344,9 +350,64 @@ style.textContent = `
     .lightbox-image {
         transition: opacity 0.3s ease;
     }
-    
+
     .gallery-item {
         transition: opacity 0.3s ease, transform 0.3s ease;
     }
 `;
 document.head.appendChild(style);
+
+// Simple fallback filtering system
+function simpleGalleryFilter() {
+    console.log('Setting up simple gallery filter...');
+
+    // Add click listeners to filter buttons
+    document.querySelectorAll('.filter-btn').forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            const filter = this.dataset.filter;
+            console.log('Simple filter clicked:', filter);
+
+            // Update active button
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            this.classList.add('active');
+
+            // Filter gallery items
+            document.querySelectorAll('.gallery-item').forEach(item => {
+                const category = item.dataset.category;
+                const shouldShow = filter === 'all' || category === filter;
+
+                if (shouldShow) {
+                    item.style.display = 'block';
+                    item.style.opacity = '1';
+                    item.style.transform = 'translateY(0)';
+                } else {
+                    item.style.opacity = '0';
+                    item.style.transform = 'translateY(20px)';
+                    setTimeout(() => {
+                        item.style.display = 'none';
+                    }, 300);
+                }
+            });
+        });
+    });
+
+    // Set initial active state
+    const allButton = document.querySelector('.filter-btn[data-filter="all"]');
+    if (allButton) {
+        allButton.classList.add('active');
+    }
+}
+
+// Initialize simple filter as backup
+document.addEventListener('DOMContentLoaded', () => {
+    // Wait a bit for the main gallery to initialize
+    setTimeout(() => {
+        if (document.querySelector('.gallery-item') && document.querySelector('.filter-btn')) {
+            simpleGalleryFilter();
+            console.log('Simple gallery filter initialized as backup');
+        }
+    }, 1000);
+});
