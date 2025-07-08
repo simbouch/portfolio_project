@@ -52,38 +52,37 @@ def create_app(config_class="config.DevelopmentConfig"):
             from .models.experience import Experience
             from .models.skill import Skill
 
-            # Only create sample data if running in development or if tables are empty
-            if app.config.get('ENV') == 'development' or Project.query.count() == 0:
-                try:
+            # Force update sample data to reflect changes
+            try:
+                # Clear existing data and recreate
+                Project.query.delete()
+                Experience.query.delete()
+                Skill.query.delete()
+                db.session.commit()
+                app.logger.info("✅ Cleared existing data")
+
+                Project.create_sample_data()
+                app.logger.info("✅ Sample projects created")
+
+                Experience.create_sample_data()
+                app.logger.info("✅ Sample experiences created")
+
+                Skill.create_sample_data()
+                app.logger.info("✅ Sample skills created")
+
+            except Exception as data_error:
+                app.logger.warning(f"Could not update sample data: {data_error}")
+                # Fallback: only create if empty
+                if Project.query.count() == 0:
                     Project.create_sample_data()
-                    app.logger.info("✅ Sample projects created")
-                except Exception as project_error:
-                    app.logger.warning(f"Could not create sample projects: {project_error}")
-
-            if app.config.get('ENV') == 'development' or Experience.query.count() == 0:
-                try:
+                if Experience.query.count() == 0:
                     Experience.create_sample_data()
-                    app.logger.info("✅ Sample experiences created")
-                except Exception as exp_error:
-                    app.logger.warning(f"Could not create sample experiences: {exp_error}")
-
-            if app.config.get('ENV') == 'development' or Skill.query.count() == 0:
-                try:
+                if Skill.query.count() == 0:
                     Skill.create_sample_data()
-                    app.logger.info("✅ Sample skills created")
-                except Exception as skill_error:
-                    app.logger.warning(f"Could not create sample skills: {skill_error}")
 
         except Exception as e:
             app.logger.error(f"Database initialization error: {e}")
             # Continue without database initialization if it fails
-
-        if Project.query.count() == 0:
-            Project.create_sample_data()
-        if Experience.query.count() == 0:
-            Experience.create_sample_data()
-        if Skill.query.count() == 0:
-            Skill.create_sample_data()
 
     # Register main routes
     @app.route("/")
@@ -109,6 +108,32 @@ def create_app(config_class="config.DevelopmentConfig"):
     @app.route("/about")
     def about():
         return render_template("about.html")
+
+    @app.route("/reset-data")
+    def reset_data():
+        """Reset sample data - for development use."""
+        try:
+            from .models.project import Project
+            from .models.experience import Experience
+            from .models.skill import Skill
+
+            # Clear existing data
+            Project.query.delete()
+            Experience.query.delete()
+            Skill.query.delete()
+            db.session.commit()
+
+            # Create new sample data
+            Project.create_sample_data()
+            Experience.create_sample_data()
+            Skill.create_sample_data()
+
+            flash("✅ Sample data has been reset successfully!", "success")
+            return redirect(url_for("index"))
+
+        except Exception as e:
+            flash(f"❌ Error resetting data: {e}", "error")
+            return redirect(url_for("index"))
 
     @app.route("/experience")
     def experience():
