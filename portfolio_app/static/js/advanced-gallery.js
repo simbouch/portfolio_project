@@ -86,10 +86,12 @@ class AdvancedGallery {
 
         // Filter buttons
         document.addEventListener('click', (e) => {
-            if (e.target.closest('.filter-btn')) {
-                const filter = e.target.dataset.filter;
+            const filterBtn = e.target.closest('.filter-btn');
+            if (filterBtn) {
+                const filter = filterBtn.dataset.filter;
+                console.log('Filter button clicked:', filter); // Debug log
                 this.filterImages(filter);
-                this.updateFilterButtons(e.target);
+                this.updateFilterButtons(filterBtn);
             }
         });
 
@@ -99,14 +101,18 @@ class AdvancedGallery {
 
     loadGalleryImages() {
         const galleryItems = document.querySelectorAll('.gallery-item');
+        console.log('Found gallery items:', galleryItems.length); // Debug log
+
         this.images = Array.from(galleryItems).map((item, index) => {
             const img = item.querySelector('img');
             const title = item.querySelector('.gallery-overlay h5')?.textContent || 'Untitled';
             const description = item.querySelector('.gallery-overlay p')?.textContent || '';
             const category = item.dataset.category || 'all';
-            
+
+            console.log(`Image ${index}: category="${category}", title="${title}"`); // Debug log
+
             item.dataset.index = index;
-            
+
             return {
                 src: img.src,
                 alt: img.alt,
@@ -116,8 +122,9 @@ class AdvancedGallery {
                 element: item
             };
         });
-        
+
         this.filteredImages = [...this.images];
+        console.log('Total images loaded:', this.images.length); // Debug log
     }
 
     openLightbox(index) {
@@ -214,33 +221,43 @@ class AdvancedGallery {
 
     filterImages(filter) {
         this.currentFilter = filter;
-        
+        console.log('Filtering by:', filter); // Debug log
+
         if (filter === 'all') {
             this.filteredImages = [...this.images];
         } else {
             this.filteredImages = this.images.filter(img => img.category === filter);
         }
-        
-        // Update gallery display
+
+        console.log('Filtered images:', this.filteredImages.length); // Debug log
+
+        // Update gallery display with improved animation
         this.images.forEach((image, index) => {
             const shouldShow = filter === 'all' || image.category === filter;
             const element = image.element;
-            
+
+            // Reset any existing transitions
+            element.style.transition = 'all 0.3s ease';
+
             if (shouldShow) {
                 element.style.display = 'block';
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px) scale(0.9)';
+
+                // Animate in with staggered delay
                 setTimeout(() => {
                     element.style.opacity = '1';
-                    element.style.transform = 'translateY(0)';
-                }, index * 50);
+                    element.style.transform = 'translateY(0) scale(1)';
+                }, index * 100);
             } else {
                 element.style.opacity = '0';
-                element.style.transform = 'translateY(20px)';
+                element.style.transform = 'translateY(-20px) scale(0.9)';
                 setTimeout(() => {
                     element.style.display = 'none';
                 }, 300);
             }
         });
-        
+
         // Update filtered image indexes
         this.updateFilteredIndexes();
     }
