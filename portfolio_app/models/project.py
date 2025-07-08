@@ -16,7 +16,6 @@ class Project(db.Model):
     github_url = db.Column(db.String(200))
     demo_url = db.Column(db.String(200))
     image_url = db.Column(db.String(200))
-    owner_avatar_url = db.Column(db.String(200))
     featured = db.Column(db.Boolean, default=False)
     created_date = db.Column(db.DateTime, default=lambda: datetime.now(timezone.utc))
 
@@ -30,8 +29,9 @@ class Project(db.Model):
 
     @property
     def safe_owner_avatar_url(self):
-        """Return owner_avatar_url or a default avatar"""
-        return self.owner_avatar_url or "https://github.com/simbouch.png"
+        """Generate avatar URL from GitHub username"""
+        username = self.github_username
+        return f"https://github.com/{username}.png"
 
     @property
     def github_username(self):
@@ -63,7 +63,6 @@ class Project(db.Model):
                 duration="8 weeks",
                 project_type="enterprise",
                 github_url="https://github.com/simbouch/ia_continu_solution",
-                owner_avatar_url="https://github.com/simbouch.png",
                 featured=True,
             ),
             Project(
@@ -73,7 +72,6 @@ class Project(db.Model):
                 duration="6 weeks",
                 project_type="web",
                 github_url="https://github.com/simbouch/flashcards-projet",
-                owner_avatar_url="https://github.com/simbouch.png",
                 featured=True,
             ),
             Project(
