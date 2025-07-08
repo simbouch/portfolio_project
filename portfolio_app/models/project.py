@@ -16,11 +16,32 @@ class Project(db.Model):
     github_url = db.Column(db.String(200))
     demo_url = db.Column(db.String(200))
     image_url = db.Column(db.String(200))
+    owner_avatar_url = db.Column(db.String(200))
     featured = db.Column(db.Boolean, default=False)
     created_date = db.Column(db.DateTime, default=lambda: datetime.now(timezone.utc))
 
     def __repr__(self):
         return f"<Project {self.title}>"
+
+    @property
+    def safe_github_url(self):
+        """Return github_url or a default GitHub profile URL"""
+        return self.github_url or "https://github.com/simbouch"
+
+    @property
+    def safe_owner_avatar_url(self):
+        """Return owner_avatar_url or a default avatar"""
+        return self.owner_avatar_url or "https://github.com/simbouch.png"
+
+    @property
+    def github_username(self):
+        """Extract username from GitHub URL"""
+        if self.github_url:
+            try:
+                return self.github_url.split('/')[-2]
+            except:
+                return 'simbouch'
+        return 'simbouch'
 
     def display_info(self):
         """Displays the basic info of a project."""
@@ -42,6 +63,7 @@ class Project(db.Model):
                 duration="8 weeks",
                 project_type="enterprise",
                 github_url="https://github.com/simbouch/ia_continu_solution",
+                owner_avatar_url="https://github.com/simbouch.png",
                 featured=True,
             ),
             Project(
@@ -51,6 +73,7 @@ class Project(db.Model):
                 duration="6 weeks",
                 project_type="web",
                 github_url="https://github.com/simbouch/flashcards-projet",
+                owner_avatar_url="https://github.com/simbouch.png",
                 featured=True,
             ),
             Project(
