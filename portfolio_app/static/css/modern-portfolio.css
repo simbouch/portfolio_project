@@ -94,41 +94,78 @@ h1, h2, h3, h4, h5, h6 {
     50% { transform: translateY(-10px); }
 }
 
-/* Navigation */
+/* Enhanced Navigation with Advanced Animations */
 .navbar {
     background: rgba(255, 255, 255, 0.95) !important;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(15px);
     box-shadow: var(--shadow-light);
-    transition: var(--transition);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border-bottom: 1px solid rgba(52, 152, 219, 0.1);
+}
+
+.navbar.scrolled {
+    background: rgba(255, 255, 255, 0.98) !important;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
 }
 
 .navbar-brand {
     font-weight: 700;
     font-size: 1.5rem;
     color: var(--primary-color) !important;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.navbar-brand:hover {
+    transform: scale(1.05);
+    color: var(--secondary-color) !important;
 }
 
 .navbar-nav .nav-link {
     font-weight: 500;
     color: var(--text-primary) !important;
-    transition: var(--transition);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
+    padding: 0.5rem 1rem !important;
+    border-radius: 8px;
+    margin: 0 0.2rem;
 }
 
 .navbar-nav .nav-link:hover {
     color: var(--secondary-color) !important;
-    transform: translateY(-2px);
+    transform: translateY(-3px) scale(1.05);
+    background: rgba(52, 152, 219, 0.1);
+}
+
+.navbar-nav .nav-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, var(--secondary-color), var(--accent-color));
+    opacity: 0;
+    border-radius: 8px;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+}
+
+.navbar-nav .nav-link:hover::before {
+    opacity: 0.1;
 }
 
 .navbar-nav .nav-link::after {
     content: '';
     position: absolute;
     width: 0;
-    height: 2px;
-    bottom: 0;
+    height: 3px;
+    bottom: -2px;
     left: 50%;
-    background: var(--secondary-color);
-    transition: var(--transition);
+    background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 2px;
 }
 
 .navbar-nav .nav-link:hover::after {
@@ -136,9 +173,14 @@ h1, h2, h3, h4, h5, h6 {
     left: 0;
 }
 
+.navbar-nav .nav-link.active::after {
+    width: 100%;
+    left: 0;
+}
+
 /* Hero Section */
 .hero-section {
-    background: linear-gradient(135deg, rgba(44, 62, 80, 0.95) 0%, rgba(52, 152, 219, 0.95) 100%);
+    background: linear-gradient(135deg, rgba(44, 62, 80, 0.95) 0%, rgba(52, 152, 219, 0.95) 50%, rgba(231, 76, 60, 0.85) 100%);
     color: var(--white);
     padding: 100px 0;
     position: relative;
@@ -153,7 +195,11 @@ h1, h2, h3, h4, h5, h6 {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.3);
+    background:
+        radial-gradient(circle at 20% 80%, rgba(52, 152, 219, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(231, 76, 60, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(243, 156, 18, 0.2) 0%, transparent 50%);
+    animation: float 8s ease-in-out infinite;
     z-index: 1;
 }
 
@@ -164,8 +210,9 @@ h1, h2, h3, h4, h5, h6 {
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
-    opacity: 0.1;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="0.5" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+    opacity: 0.2;
+    animation: float 10s ease-in-out infinite reverse;
     z-index: 1;
 }
 
@@ -298,16 +345,52 @@ h1, h2, h3, h4, h5, h6 {
 /* Project Cards */
 .project-card {
     background: var(--white);
-    border-radius: var(--border-radius);
+    border-radius: 15px;
     overflow: hidden;
     box-shadow: var(--shadow-light);
-    transition: var(--transition);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+    transform: scaleX(0);
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1;
+}
+
+.project-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(52, 152, 219, 0.05), rgba(231, 76, 60, 0.05));
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 0;
 }
 
 .project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-heavy);
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.project-card:hover::before {
+    transform: scaleX(1);
+}
+
+.project-card:hover::after {
+    opacity: 1;
 }
 
 /* Project Owner Avatar Styles */
@@ -326,8 +409,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .project-owner-avatar img:hover {
-    transform: scale(1.1);
-    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+    transform: scale(1.15) rotate(5deg);
+    box-shadow: 0 8px 20px rgba(52, 152, 219, 0.4);
+}
+
+.project-card:hover .project-owner-avatar img {
+    transform: scale(1.1) rotate(2deg);
+    box-shadow: 0 6px 15px rgba(52, 152, 219, 0.3);
 }
 
 .project-owner-avatar small {
@@ -590,7 +678,7 @@ a:focus {
     }
 }
 
-/* Enhanced Button Styles */
+/* Enhanced Button Styles with Advanced Animations */
 .btn {
     border-radius: 25px;
     padding: 0.75rem 1.5rem;
@@ -598,6 +686,9 @@ a:focus {
     transition: var(--transition);
     position: relative;
     overflow: hidden;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    cursor: pointer;
 }
 
 .btn::before {
@@ -615,25 +706,323 @@ a:focus {
     left: 100%;
 }
 
+.btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn:active::after {
+    width: 300px;
+    height: 300px;
+}
+
 .btn-primary {
     background: linear-gradient(135deg, var(--secondary-color), #2980b9);
     border: none;
     box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+    position: relative;
 }
 
 .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(52, 152, 219, 0.4);
+    background: linear-gradient(135deg, #2980b9, var(--secondary-color));
 }
 
 .btn-outline-primary {
     border: 2px solid var(--secondary-color);
     color: var(--secondary-color);
     background: transparent;
+    position: relative;
 }
 
 .btn-outline-primary:hover {
     background: var(--secondary-color);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+    color: white;
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 6px 20px rgba(52, 152, 219, 0.3);
+}
+
+/* Floating Animation for Buttons */
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-5px); }
+}
+
+.btn-floating {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Pulse Animation for Important Buttons */
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(52, 152, 219, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(52, 152, 219, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(52, 152, 219, 0); }
+}
+
+.btn-pulse {
+    animation: pulse 2s infinite;
+}
+
+/* ========================================
+   ADVANCED ANIMATIONS & EFFECTS
+======================================== */
+
+/* Smooth Scroll Reveal Animations */
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes rotateIn {
+    from {
+        opacity: 0;
+        transform: rotate(-10deg) scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: rotate(0deg) scale(1);
+    }
+}
+
+/* Animation Classes */
+.animate-slide-up {
+    animation: slideInUp 0.8s ease-out forwards;
+}
+
+.animate-slide-left {
+    animation: slideInLeft 0.8s ease-out forwards;
+}
+
+.animate-slide-right {
+    animation: slideInRight 0.8s ease-out forwards;
+}
+
+.animate-fade-scale {
+    animation: fadeInScale 0.8s ease-out forwards;
+}
+
+.animate-rotate-in {
+    animation: rotateIn 0.8s ease-out forwards;
+}
+
+/* Staggered Animation Delays */
+.animate-delay-1 { animation-delay: 0.1s; }
+.animate-delay-2 { animation-delay: 0.2s; }
+.animate-delay-3 { animation-delay: 0.3s; }
+.animate-delay-4 { animation-delay: 0.4s; }
+.animate-delay-5 { animation-delay: 0.5s; }
+.animate-delay-6 { animation-delay: 0.6s; }
+
+/* Hover Animations for Cards */
+.card-hover-lift {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.card-hover-lift:hover {
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.card-hover-tilt {
+    transition: all 0.3s ease;
+}
+
+.card-hover-tilt:hover {
+    transform: perspective(1000px) rotateX(5deg) rotateY(5deg) translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+
+/* Glowing Border Animation */
+@keyframes glow {
+    0%, 100% {
+        box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(52, 152, 219, 0.8), 0 0 30px rgba(52, 152, 219, 0.6);
+    }
+}
+
+.glow-border {
+    animation: glow 2s ease-in-out infinite;
+}
+
+/* Typing Animation */
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink {
+    0%, 50% { border-color: transparent; }
+    51%, 100% { border-color: var(--secondary-color); }
+}
+
+.typing-animation {
+    overflow: hidden;
+    border-right: 2px solid var(--secondary-color);
+    white-space: nowrap;
+    animation: typing 3s steps(40, end), blink 1s step-end infinite;
+}
+
+/* Gradient Text Animation */
+@keyframes gradient-shift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.gradient-text {
+    background: linear-gradient(-45deg, #3498db, #e74c3c, #f39c12, #27ae60);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradient-shift 4s ease infinite;
+}
+
+/* Particle Background Effect */
+.particles-bg {
+    position: relative;
+    overflow: hidden;
+}
+
+.particles-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        radial-gradient(circle at 20% 80%, rgba(52, 152, 219, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(231, 76, 60, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(243, 156, 18, 0.1) 0%, transparent 50%);
+    animation: float 6s ease-in-out infinite;
+    pointer-events: none;
+}
+
+/* Loading Spinner */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading-spinner {
+    border: 3px solid rgba(52, 152, 219, 0.3);
+    border-top: 3px solid var(--secondary-color);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
+}
+
+/* Morphing Shapes */
+@keyframes morph {
+    0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+    50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+}
+
+.morphing-shape {
+    animation: morph 8s ease-in-out infinite;
+    background: linear-gradient(45deg, var(--secondary-color), var(--accent-color));
+}
+
+/* Parallax Effect */
+.parallax-element {
+    transform: translateZ(0);
+    transition: transform 0.1s ease-out;
+}
+
+/* Neon Glow Effect */
+.neon-glow {
+    text-shadow:
+        0 0 5px var(--secondary-color),
+        0 0 10px var(--secondary-color),
+        0 0 15px var(--secondary-color),
+        0 0 20px var(--secondary-color);
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+/* Bouncing Arrow */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+}
+
+.bounce-arrow {
+    animation: bounce 2s infinite;
+}
+
+/* Ripple Effect */
+.ripple {
+    position: relative;
+    overflow: hidden;
+}
+
+.ripple::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.ripple:hover::before {
+    width: 300px;
+    height: 300px;
 }
