@@ -60,14 +60,25 @@ class Experience(db.Model):
         sample_experiences = [
             # Current Position
             Experience(
-                title="AI Developer (Alternance/Apprentissage)",
-                company="CHRU de Nancy & Simplon Microsoft AI School",
+                title="AI Developer/Engineer",
+                company="CHRU de Nancy",
+                location="Nancy, Grand Est, France",
+                start_date=date(2025, 2, 1),
+                end_date=None,  # Current position
+                description="Designing and developing AI solutions to address real-world healthcare challenges, with a strong emphasis on ethics and human-centered design. Focus on intelligent automation, document processing, and clinical data workflows using advanced technologies such as computer vision, OCR, NLP, and Large Language Models (LLMs). Projects include building AI-powered robotics systems, medical document digitization tools, and custom NLP pipelines for healthcare-specific use cases.",
+                technologies="Python, TensorFlow, PyTorch, Computer Vision, OCR (Tesseract, EasyOCR, PaddleOCR), NLP, LLMs, AI Robotics, FastAPI, Docker, Azure ML, Streamlit, Django",
+                achievements="• Developing AI-powered robotics systems for healthcare automation\n• Building medical document digitization and processing tools\n• Implementing custom NLP pipelines for healthcare applications\n• Creating computer vision solutions for medical imaging\n• Focusing on AI ethics and human-centered design principles\n• Delivering production-ready AI solutions for clinical environments",
+            ),
+            # AI Development Training
+            Experience(
+                title="AI Developer - Professional Training",
+                company="Microsoft AI School by Simplon – IRIS CHRU",
                 location="Nancy, France",
                 start_date=date(2024, 9, 1),
-                end_date=None,  # Current position
-                description="Work-study program combining intensive AI training with practical application at CHRU de Nancy. Developing healthcare AI solutions with focus on automated robotics, OCR tools, and LLM/NLP applications. Emphasizing ethics and human impact in AI development for healthcare environments.",
-                technologies="Python, TensorFlow, PyTorch, FastAPI, LLM/NLP, OCR (Tesseract, EasyOCR), AI Agents, Azure ML, Docker, MLflow, Automated Robotics, Django, Streamlit",
-                achievements="• Developing automated robotics systems for CHRU de Nancy\n• Building advanced OCR tools for medical document processing\n• Implementing LLM/NLP solutions for healthcare applications\n• Created malaria detection system using CNN and Django\n• Developed TRAQ diagnostic tool for behavioral disorders\n• Built educational AI tools with LangChain and local LLMs\n• Focusing on AI ethics and human-centered design",
+                end_date=date(2024, 12, 31),
+                description="Specialized professional training in AI development, data science, machine learning, deep learning, and Microsoft cloud computing with a focus on AI application development. Intensive program covering modern AI technologies and practical implementation.",
+                technologies="Python, TensorFlow, PyTorch, Azure ML, Microsoft Cloud, Deep Learning, Machine Learning, AI Application Development",
+                achievements="• Completed intensive AI development certification program\n• Mastered Microsoft cloud computing and Azure ML\n• Developed expertise in deep learning and neural networks\n• Built practical AI applications and solutions\n• Specialized in healthcare AI applications",
             ),
             # Recent Experience
             Experience(
@@ -76,7 +87,7 @@ class Experience(db.Model):
                 location="Nancy, France",
                 start_date=date(2024, 4, 1),
                 end_date=date(2024, 7, 31),
-                description="Designed and deployed machine learning models and neural networks using Python for healthcare data analysis. Created Streamlit applications to assist clinical psychologists with diagnostic tools, focusing on high-performance and intuitive user interfaces.",
+                description="Designed and deployed machine learning models and neural networks in Python using healthcare data. Developed Streamlit applications to assist psychologists in diagnostics, creating intuitive and high-performance tools.",
                 technologies="Python, Machine Learning, Neural Networks, Streamlit, Healthcare Data Analytics, Clinical Psychology Tools",
                 achievements="• Developed clinical diagnostic tools for psychologists\n• Improved workflow efficiency for healthcare professionals\n• Deployed production-ready ML applications\n• Created intuitive user interfaces for complex data analysis",
             ),
@@ -86,30 +97,30 @@ class Experience(db.Model):
                 location="Roubaix, France",
                 start_date=date(2023, 11, 1),
                 end_date=date(2023, 12, 31),
-                description="Developed machine learning models in Python, created APIs for data integration, utilized PL/SQL for database operations, and integrated Microsoft ecosystem tools for business intelligence and data management.",
+                description="Developed machine learning models in Python, built APIs, and integrated PL/SQL solutions. Implemented Microsoft tools (Power BI, Dataverse, Azure) for data analytics and business intelligence solutions.",
                 technologies="Python, Machine Learning, API Development, PL/SQL, Power BI, Microsoft Dataverse, Azure, Business Intelligence",
                 achievements="• Built scalable ML models for business intelligence\n• Created robust data integration APIs\n• Implemented comprehensive BI solutions\n• Integrated Microsoft ecosystem tools for data management",
             ),
             Experience(
-                title="Application Developer/Designer",
+                title="Application Developer",
                 company="RegiePub",
                 location="Nancy, France",
                 start_date=date(2023, 6, 1),
                 end_date=date(2023, 8, 31),
-                description="Designed, developed, and deployed a complete web application using modern PHP frameworks. Implemented full-stack solution with Symfony backend and responsive frontend integration.",
+                description="Designed, developed, and deployed a full-stack web application using PHP and Symfony. Implemented complete solution from backend architecture to responsive frontend design.",
                 technologies="PHP, Symfony Framework, Full-Stack Development, Web Application Design, Responsive Design",
                 achievements="• Delivered complete web application from concept to deployment\n• Implemented modern PHP architecture with Symfony\n• Created responsive user interfaces\n• Established best practices for full-stack development",
             ),
             # Long-term Previous Experience
             Experience(
-                title="Director of Scientific and Technical Police Laboratory",
-                company="National Police Laboratory",
-                location="France",
+                title="Forensic Science & Technical Laboratory Director",
+                company="Gendarmerie",
+                location="Morocco",
                 start_date=date(2006, 1, 1),
                 end_date=date(2021, 12, 31),
-                description="Led scientific and technical operations for forensic investigations, managed laboratory operations, and supervised analytical processes for criminal investigations. Applied advanced analytical techniques and maintained quality standards for forensic evidence processing.",
-                technologies="Forensic Analysis, Laboratory Management, Scientific Investigation, Quality Control, Analytical Chemistry",
-                achievements="• Managed forensic laboratory operations for 15+ years\n• Supervised complex criminal investigations\n• Maintained high-quality standards for evidence processing\n• Led team of forensic scientists and technicians",
+                description="Led teams in forensic investigations, prepared scientific evidence reports (genetic, fingerprint, ballistic, toxicology, document fraud, digital forensics), and reconstructed crime scenes. Managed comprehensive forensic laboratory operations and supervised analytical processes for criminal investigations.",
+                technologies="Forensic Analysis, Laboratory Management, Scientific Investigation, Quality Control, Analytical Chemistry, Digital Forensics, Genetic Analysis, Ballistics, Toxicology",
+                achievements="• Managed forensic laboratory operations for 15+ years\n• Led teams in complex criminal investigations\n• Prepared scientific evidence reports across multiple forensic disciplines\n• Reconstructed crime scenes and analyzed evidence\n• Maintained high-quality standards for forensic evidence processing\n• Supervised genetic, fingerprint, ballistic, and toxicology analyses\n• Managed digital forensics and document fraud investigations",
             ),
         ]
 
