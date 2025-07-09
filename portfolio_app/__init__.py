@@ -304,13 +304,7 @@ User Agent: {request.environ.get('HTTP_USER_AGENT', 'Unknown')}"""
     def gallery():
         return render_template("gallery.html")
 
-    # Register blueprints if they exist
-    try:
-        from .controllers import portfolio_controller
 
-        app.register_blueprint(portfolio_controller.bp)
-    except ImportError:
-        pass  # Controllers are optional
 
     # Health check endpoint for deployment monitoring
     @app.route('/health')

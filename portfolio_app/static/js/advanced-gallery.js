@@ -89,7 +89,6 @@ class AdvancedGallery {
             const filterBtn = e.target.closest('.filter-btn');
             if (filterBtn) {
                 const filter = filterBtn.dataset.filter;
-                console.log('Filter button clicked:', filter); // Debug log
                 this.filterImages(filter);
                 this.updateFilterButtons(filterBtn);
             }
@@ -101,15 +100,12 @@ class AdvancedGallery {
 
     loadGalleryImages() {
         const galleryItems = document.querySelectorAll('.gallery-item');
-        console.log('Found gallery items:', galleryItems.length); // Debug log
 
         this.images = Array.from(galleryItems).map((item, index) => {
             const img = item.querySelector('img');
             const title = item.querySelector('.gallery-overlay h5')?.textContent || 'Untitled';
             const description = item.querySelector('.gallery-overlay p')?.textContent || '';
             const category = item.dataset.category || 'all';
-
-            console.log(`Image ${index}: category="${category}", title="${title}"`); // Debug log
 
             item.dataset.index = index;
 
@@ -124,7 +120,6 @@ class AdvancedGallery {
         });
 
         this.filteredImages = [...this.images];
-        console.log('Total images loaded:', this.images.length); // Debug log
     }
 
     openLightbox(index) {
@@ -221,15 +216,12 @@ class AdvancedGallery {
 
     filterImages(filter) {
         this.currentFilter = filter;
-        console.log('Filtering by:', filter); // Debug log
 
         if (filter === 'all') {
             this.filteredImages = [...this.images];
         } else {
             this.filteredImages = this.images.filter(img => img.category === filter);
         }
-
-        console.log('Filtered images:', this.filteredImages.length); // Debug log
 
         // Update gallery display with improved animation
         this.images.forEach((image, index) => {
@@ -337,10 +329,7 @@ class AdvancedGallery {
 document.addEventListener('DOMContentLoaded', () => {
     // Only initialize if we're on a page with gallery items
     if (document.querySelector('.gallery-item')) {
-        console.log('Initializing Advanced Gallery...');
         new AdvancedGallery();
-    } else {
-        console.log('No gallery items found, skipping gallery initialization');
     }
 });
 
@@ -359,14 +348,11 @@ document.head.appendChild(style);
 
 // Simple fallback filtering system
 function simpleGalleryFilter() {
-    console.log('Setting up simple gallery filter...');
-
     // Add click listeners to filter buttons
     document.querySelectorAll('.filter-btn').forEach(button => {
         button.addEventListener('click', function(e) {
             e.preventDefault();
             const filter = this.dataset.filter;
-            console.log('Simple filter clicked:', filter);
 
             // Update active button
             document.querySelectorAll('.filter-btn').forEach(btn => {
@@ -407,7 +393,6 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
         if (document.querySelector('.gallery-item') && document.querySelector('.filter-btn')) {
             simpleGalleryFilter();
-            console.log('Simple gallery filter initialized as backup');
         }
     }, 1000);
 });

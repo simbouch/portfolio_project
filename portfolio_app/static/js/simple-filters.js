@@ -1,18 +1,11 @@
 // Simple, Reliable Filtering System for Gallery and Projects
 
-console.log('🔧 Simple Filters Loading...');
-
 // Gallery Filtering System
 function initGalleryFilters() {
-    console.log('🖼️ Initializing Gallery Filters...');
-    
     const filterButtons = document.querySelectorAll('.photo-filters .filter-btn');
     const galleryItems = document.querySelectorAll('.gallery-item');
-    
-    console.log(`Found ${filterButtons.length} filter buttons and ${galleryItems.length} gallery items`);
-    
+
     if (filterButtons.length === 0 || galleryItems.length === 0) {
-        console.log('❌ No gallery elements found, skipping gallery filters');
         return;
     }
     
@@ -23,8 +16,7 @@ function initGalleryFilters() {
             e.stopPropagation();
             
             const filter = this.getAttribute('data-filter');
-            console.log(`🎯 Gallery filter clicked: "${filter}"`);
-            
+
             // Update active button state
             filterButtons.forEach(btn => {
                 btn.classList.remove('active');
@@ -46,9 +38,7 @@ function initGalleryFilters() {
             galleryItems.forEach((item, index) => {
                 const category = item.getAttribute('data-category');
                 const shouldShow = filter === 'all' || category === filter;
-                
-                console.log(`Item ${index}: category="${category}", shouldShow=${shouldShow}`);
-                
+
                 if (shouldShow) {
                     visibleCount++;
                     item.style.display = 'block';
@@ -71,9 +61,7 @@ function initGalleryFilters() {
                     }, 300);
                 }
             });
-            
-            console.log(`✅ Gallery filtered: ${visibleCount} items visible`);
-            
+
             // Update count display
             updateGalleryCount(filter, visibleCount, galleryItems.length);
         });
@@ -85,20 +73,14 @@ function initGalleryFilters() {
         allButton.click();
     }
     
-    console.log('✅ Gallery filters initialized successfully');
 }
 
 // Project Filtering System
 function initProjectFilters() {
-    console.log('📁 Initializing Project Filters...');
-    
     const filterButtons = document.querySelectorAll('.btn-group .filter-btn, .btn-group .btn');
     const projectCards = document.querySelectorAll('.project-card[data-type]');
-    
-    console.log(`Found ${filterButtons.length} filter buttons and ${projectCards.length} project cards`);
-    
+
     if (filterButtons.length === 0 || projectCards.length === 0) {
-        console.log('❌ No project elements found, skipping project filters');
         return;
     }
     
@@ -110,9 +92,7 @@ function initProjectFilters() {
             
             const filter = this.getAttribute('data-filter');
             if (!filter) return; // Skip buttons without data-filter
-            
-            console.log(`🎯 Project filter clicked: "${filter}"`);
-            
+
             // Update active button state
             filterButtons.forEach(btn => {
                 btn.classList.remove('active', 'btn-primary');
@@ -132,9 +112,7 @@ function initProjectFilters() {
             projectCards.forEach((card, index) => {
                 const type = card.getAttribute('data-type');
                 const shouldShow = filter === 'all' || type === filter;
-                
-                console.log(`Project ${index}: type="${type}", shouldShow=${shouldShow}`);
-                
+
                 if (shouldShow) {
                     visibleCount++;
                     card.style.display = 'block';
@@ -157,9 +135,7 @@ function initProjectFilters() {
                     }, 300);
                 }
             });
-            
-            console.log(`✅ Projects filtered: ${visibleCount} items visible`);
-            
+
             // Update count display
             updateProjectCount(filter, visibleCount, projectCards.length);
         });
@@ -171,7 +147,6 @@ function initProjectFilters() {
         allButton.click();
     }
     
-    console.log('✅ Project filters initialized successfully');
 }
 
 // Update gallery count display
@@ -222,21 +197,17 @@ function updateProjectCount(filter, visible, total) {
 
 // Initialize everything when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('🚀 DOM loaded, initializing filters...');
-    
     // Wait a moment for other scripts to load
     setTimeout(() => {
         // Initialize gallery filters if on gallery page
         if (document.querySelector('.gallery-item')) {
             initGalleryFilters();
         }
-        
+
         // Initialize project filters if on projects page
         if (document.querySelector('.project-card[data-type]')) {
             initProjectFilters();
         }
-        
-        console.log('🎉 All filters initialized!');
     }, 500);
 });
 
@@ -244,15 +215,11 @@ document.addEventListener('DOMContentLoaded', function() {
 window.addEventListener('load', function() {
     setTimeout(() => {
         if (document.querySelector('.gallery-item') && !document.querySelector('.gallery-count')) {
-            console.log('🔄 Backup: Initializing gallery filters...');
             initGalleryFilters();
         }
-        
+
         if (document.querySelector('.project-card[data-type]') && !document.querySelector('.project-count')) {
-            console.log('🔄 Backup: Initializing project filters...');
             initProjectFilters();
         }
     }, 1000);
 });
-
-console.log('✅ Simple Filters Script Loaded Successfully!');
