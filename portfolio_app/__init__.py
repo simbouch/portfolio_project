@@ -19,7 +19,7 @@ def format_date(value, format="%Y"):
 
 
 def create_app(config_class="config.DevelopmentConfig"):
-    # Configure Flask to use templates and static files from the portfolio_app directory
+    # Configure Flask to use templates and static files from portfolio_app directory
     app = Flask(__name__, template_folder="templates", static_folder="static")
     app.config.from_object(config_class)
 

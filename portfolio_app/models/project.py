@@ -30,11 +30,6 @@ class Project(db.Model):
             f"Duration: {self.duration}"
         )
 
-    @property
-    def owner_avatar_url(self):
-        """Returns the project owner's avatar URL."""
-        return "https://avatars.githubusercontent.com/u/183075384?v=4"
-
     @staticmethod
     def create_sample_data():
         """Create sample projects for the portfolio."""
