@@ -74,12 +74,11 @@
                     
                     <!-- Action Buttons -->
                     <div class="d-flex justify-content-between align-items-center mt-auto">
-                        <!-- FORCE WORKING BUTTON - ALWAYS WORKS -->
-                        <button type="button" class="btn btn-outline-primary btn-sm" onclick="window.open('{{ project.github_url or "https://github.com/simbouch" }}', '_blank');">
+                        <a href="{{ project.github_url }}" target="_blank" class="btn btn-outline-primary btn-sm">
                             <i class="fab fa-github me-1"></i>View Code
-                        </button>
+                        </a>
                         {% if project.demo_url %}
-                        <a href="{{ project.demo_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm" onclick="window.open('{{ project.demo_url }}', '_blank'); return false;">
+                        <a href="{{ project.demo_url }}" target="_blank" class="btn btn-primary btn-sm">
                             <i class="fas fa-external-link-alt me-1"></i>Live Demo
                         </a>
                         {% else %}
@@ -156,13 +155,11 @@
                     </div>
                     
                     <div class="d-flex justify-content-between align-items-center">
-                        <!-- BULLETPROOF FEATURED BUTTON -->
-                        <button type="button" class="btn btn-primary"
-                                onclick="window.open('{{ project.github_url if project.github_url else "https://github.com/simbouch" }}', '_blank')">
+                        <a href="{{ project.github_url }}" target="_blank" class="btn btn-primary">
                             <i class="fab fa-github me-2"></i>Explore Code
-                        </button>
+                        </a>
                         {% if project.demo_url %}
-                        <a href="{{ project.demo_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-outline-primary" onclick="window.open('{{ project.demo_url }}', '_blank'); return false;">
+                        <a href="{{ project.demo_url }}" target="_blank" class="btn btn-outline-primary">
                             <i class="fas fa-external-link-alt me-2"></i>Live Demo
                         </a>
                         {% endif %}
@@ -237,37 +234,4 @@
 
 {% block extra_js %}
 <script src="{{ url_for('static', filename='js/simple-filters.js') }}"></script>
-<script>
-// Debug script to ensure buttons work
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('🔧 Projects page loaded - checking buttons...');
-
-    // Find all project buttons
-    const buttons = document.querySelectorAll('button[onclick*="github"]');
-    console.log(`Found ${buttons.length} GitHub buttons`);
-
-    // Add extra click handlers as backup
-    buttons.forEach((button, index) => {
-        console.log(`Button ${index + 1}: ${button.textContent.trim()}`);
-
-        // Add backup click handler
-        button.addEventListener('click', function(e) {
-            console.log(`🚀 Button ${index + 1} clicked!`);
-
-            // Extract URL from onclick attribute
-            const onclickAttr = this.getAttribute('onclick');
-            if (onclickAttr) {
-                const urlMatch = onclickAttr.match(/window\.open\('([^']+)'/);
-                if (urlMatch) {
-                    const url = urlMatch[1];
-                    console.log(`Opening URL: ${url}`);
-                    window.open(url, '_blank');
-                }
-            }
-        });
-    });
-
-    console.log('✅ Button debug setup complete');
-});
-</script>
 {% endblock %}
