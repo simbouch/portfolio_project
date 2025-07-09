@@ -1,9 +1,10 @@
-// Advanced Portfolio Animations and Interactive Effects
+// Professional Portfolio Animations and Interactive Effects
+// Enhanced with modern, smooth animations for a premium feel
 
 document.addEventListener('DOMContentLoaded', function() {
-    
+
     // ========================================
-    // SCROLL REVEAL ANIMATIONS
+    // PROFESSIONAL SCROLL REVEAL ANIMATIONS
     // ========================================
     
     // Intersection Observer for scroll animations
@@ -288,3 +289,108 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
+    // ========================================
+    // PROFESSIONAL ENHANCEMENT ANIMATIONS
+    // ========================================
+
+    // Smooth page transitions
+    function initPageTransitions() {
+        // Add page load animation
+        document.body.style.opacity = '0';
+        document.body.style.transform = 'translateY(20px)';
+
+        setTimeout(() => {
+            document.body.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+            document.body.style.opacity = '1';
+            document.body.style.transform = 'translateY(0)';
+        }, 100);
+    }
+
+    // Enhanced typing animation for hero section
+    function initEnhancedTyping() {
+        const heroTitle = document.querySelector('.hero-section h1');
+        const heroSubtitle = document.querySelector('.hero-section .lead');
+
+        if (heroTitle) {
+            heroTitle.style.opacity = '0';
+            heroTitle.style.transform = 'translateY(30px)';
+
+            setTimeout(() => {
+                heroTitle.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+                heroTitle.style.opacity = '1';
+                heroTitle.style.transform = 'translateY(0)';
+            }, 300);
+        }
+
+        if (heroSubtitle) {
+            heroSubtitle.style.opacity = '0';
+            heroSubtitle.style.transform = 'translateY(30px)';
+
+            setTimeout(() => {
+                heroSubtitle.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+                heroSubtitle.style.opacity = '1';
+                heroSubtitle.style.transform = 'translateY(0)';
+            }, 600);
+        }
+    }
+
+    // Professional card hover animations
+    function initCardAnimations() {
+        const cards = document.querySelectorAll('.project-card, .card');
+
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-8px) scale(1.02)';
+                this.style.boxShadow = '0 20px 40px rgba(0,0,0,0.15)';
+                this.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+            });
+
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+                this.style.boxShadow = '';
+            });
+        });
+    }
+
+    // Smooth scroll with easing
+    function initSmoothScroll() {
+        const links = document.querySelectorAll('a[href^="#"]');
+
+        links.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    }
+
+    // Professional loading animations for dynamic content
+    function initLoadingAnimations() {
+        const loadingElements = document.querySelectorAll('.loading');
+
+        loadingElements.forEach((element, index) => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(20px)';
+
+            setTimeout(() => {
+                element.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+                element.style.opacity = '1';
+                element.style.transform = 'translateY(0)';
+            }, index * 100);
+        });
+    }
+
+    // Initialize all professional animations
+    initPageTransitions();
+    initEnhancedTyping();
+    initCardAnimations();
+    initSmoothScroll();
+    initLoadingAnimations();

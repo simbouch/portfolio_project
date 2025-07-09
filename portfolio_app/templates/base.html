@@ -31,14 +31,16 @@
     {% block extra_css %}{% endblock %}
 
     <style>
-        /* Loading Screen */
+        /* Enhanced Loading Screen */
         .loading-screen {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, #2c3e50, #3498db);
+            background: linear-gradient(135deg, #2c3e50, #3498db, #e74c3c);
+            background-size: 400% 400%;
+            animation: gradientShift 3s ease infinite;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -207,6 +209,9 @@
 
     <!-- Advanced Animations JS -->
     <script src="{{ url_for('static', filename='js/animations.js') }}"></script>
+
+    <!-- Professional Animations JS -->
+    <script src="{{ url_for('static', filename='js/professional-animations.js') }}"></script>
 
     <!-- Loading Screen Script -->
     <script>

@@ -4,13 +4,13 @@
 
 {% block content %}
 <div class="container py-5 mt-5">
-    <div class="text-center mb-5">
+    <div class="text-center mb-5 fade-in-up">
         <h1 class="display-4 section-title">My Projects</h1>
         <p class="lead">A showcase of my work in AI, machine learning, and healthcare technology</p>
     </div>
 
     <!-- Project Filters -->
-    <div class="row mb-5">
+    <div class="row mb-5 fade-in-up">
         <div class="col-12">
             <div class="text-center">
                 <div class="btn-group" role="group" aria-label="Project filters">
@@ -37,8 +37,8 @@
     <!-- Projects Grid -->
     <div class="row">
         {% for project in projects %}
-        <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card project-card h-100 loading" data-type="{{ project.project_type }}">
+        <div class="col-lg-4 col-md-6 mb-4 stagger-item">
+            <div class="card project-card h-100 loading hover-lift" data-type="{{ project.project_type }}">
                 <div class="card-body position-relative">
                     <!-- Project Type Badge -->
                     <div class="project-type-badge project-type-{{ project.project_type }}">
@@ -95,15 +95,15 @@
 
     <!-- Featured Projects Section -->
     {% if projects|selectattr("featured")|list %}
-    <div class="row mt-5">
+    <div class="row mt-5 fade-in-up">
         <div class="col-12">
             <h2 class="section-title text-center mb-5">Featured Projects</h2>
         </div>
     </div>
     <div class="row">
         {% for project in projects if project.featured %}
-        <div class="col-lg-6 mb-4">
-            <div class="card project-card h-100 border-primary loading">
+        <div class="col-lg-6 mb-4 scale-in">
+            <div class="card project-card h-100 border-primary loading hover-lift">
                 <div class="card-body">
                     <!-- Project Owner Avatar for Featured -->
                     <div class="project-owner-avatar mb-3 d-flex align-items-center">
