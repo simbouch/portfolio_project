@@ -75,16 +75,16 @@
                     <!-- Action Buttons -->
                     <div class="d-flex justify-content-between align-items-center mt-auto">
                         {% if project.github_url %}
-                        <a href="{{ project.github_url }}" target="_blank" class="btn btn-outline-primary btn-sm">
+                        <a href="{{ project.github_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-outline-primary btn-sm" onclick="window.open('{{ project.github_url }}', '_blank'); return false;">
                             <i class="fab fa-github me-1"></i>View Code
                         </a>
                         {% else %}
-                        <a href="https://github.com/simbouch" target="_blank" class="btn btn-outline-primary btn-sm">
+                        <a href="https://github.com/simbouch" target="_blank" rel="noopener noreferrer" class="btn btn-outline-primary btn-sm" onclick="window.open('https://github.com/simbouch', '_blank'); return false;">
                             <i class="fab fa-github me-1"></i>GitHub Profile
                         </a>
                         {% endif %}
                         {% if project.demo_url %}
-                        <a href="{{ project.demo_url }}" target="_blank" class="btn btn-primary btn-sm">
+                        <a href="{{ project.demo_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm" onclick="window.open('{{ project.demo_url }}', '_blank'); return false;">
                             <i class="fas fa-external-link-alt me-1"></i>Live Demo
                         </a>
                         {% else %}
@@ -162,16 +162,16 @@
                     
                     <div class="d-flex justify-content-between align-items-center">
                         {% if project.github_url %}
-                        <a href="{{ project.github_url }}" target="_blank" class="btn btn-primary">
+                        <a href="{{ project.github_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-primary" onclick="window.open('{{ project.github_url }}', '_blank'); return false;">
                             <i class="fab fa-github me-2"></i>Explore Code
                         </a>
                         {% else %}
-                        <a href="https://github.com/simbouch" target="_blank" class="btn btn-primary">
+                        <a href="https://github.com/simbouch" target="_blank" rel="noopener noreferrer" class="btn btn-primary" onclick="window.open('https://github.com/simbouch', '_blank'); return false;">
                             <i class="fab fa-github me-2"></i>GitHub Profile
                         </a>
                         {% endif %}
                         {% if project.demo_url %}
-                        <a href="{{ project.demo_url }}" target="_blank" class="btn btn-outline-primary">
+                        <a href="{{ project.demo_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-outline-primary" onclick="window.open('{{ project.demo_url }}', '_blank'); return false;">
                             <i class="fas fa-external-link-alt me-2"></i>Live Demo
                         </a>
                         {% endif %}

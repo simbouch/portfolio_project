@@ -275,10 +275,12 @@ User Agent: {request.environ.get('HTTP_USER_AGENT', 'Unknown')}"""
                     mail.send(msg)
                     email_sent = True
                     app.logger.info(
-                        f"✅ Email sent successfully to {app.config.get('CONTACT_EMAIL')} from {email}"
+                        f"✅ Email sent successfully to "
+                        f"{app.config.get('CONTACT_EMAIL')} from {email}"
                     )
                     flash(
-                        "Your message has been sent successfully! I'll get back to you soon.",
+                        "Your message has been sent successfully! "
+                        "I'll get back to you soon.",
                         "success",
                     )
 
@@ -288,9 +290,12 @@ User Agent: {request.environ.get('HTTP_USER_AGENT', 'Unknown')}"""
 
             # If email failed or not configured, still confirm receipt to user
             if not email_sent:
-                app.logger.warning(f"⚠️ Email not sent, but message logged for: {email}")
+                app.logger.warning(
+                    f"⚠️ Email not sent, but message logged for: {email}"
+                )
                 flash(
-                    "Your message has been received! I'll get back to you soon.", "info"
+                    "Your message has been received! I'll get back to you soon.",
+                    "info",
                 )
 
             return redirect(url_for("contact"))
@@ -305,12 +310,10 @@ User Agent: {request.environ.get('HTTP_USER_AGENT', 'Unknown')}"""
     def gallery():
         return render_template("gallery.html")
 
-
-
     # Health check endpoint for deployment monitoring
-    @app.route('/health')
+    @app.route("/health")
     def health_check():
         """Health check endpoint for deployment monitoring"""
-        return {'status': 'healthy', 'message': 'Portfolio app is running'}, 200
+        return {"status": "healthy", "message": "Portfolio app is running"}, 200
 
     return app
