@@ -1026,3 +1026,23 @@ a:focus {
     width: 300px;
     height: 300px;
 }
+
+/* CRITICAL FIX: Ensure project buttons are clickable */
+.project-card .btn,
+.project-card a.btn,
+.btn-outline-primary,
+.btn-primary {
+    position: relative !important;
+    z-index: 10 !important;
+    pointer-events: auto !important;
+    cursor: pointer !important;
+}
+
+.project-card .btn::before,
+.project-card .btn::after,
+.btn-outline-primary::before,
+.btn-outline-primary::after,
+.btn-primary::before,
+.btn-primary::after {
+    pointer-events: none !important;
+}

@@ -44,9 +44,9 @@ class Project(db.Model):
                 description=(
                     "Production-ready ML template with complete automation, advanced "
                     "monitoring, and Discord integration. Features microservices "
-                    "architecture, 30-second automated ML pipeline with drift detection, "
-                    "MLflow tracking, and comprehensive health monitoring across 5 "
-                    "independent services."
+                    "architecture, 30-second automated ML pipeline with drift "
+                    "detection, MLflow tracking, and comprehensive health monitoring "
+                    "across 5 independent services."
                 ),
                 technology_used=(
                     "Docker, FastAPI, MLflow, Prefect, Streamlit, Discord API, "
