@@ -1,10 +1,11 @@
 # portfolio_project/app/__init__.py
 
 import os
+from datetime import datetime
+
 from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
 from flask_mail import Mail, Message
-from datetime import datetime
 
 db = SQLAlchemy()
 mail = Mail()

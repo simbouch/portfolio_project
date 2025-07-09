@@ -1,6 +1,7 @@
 # portfolio_project/app/models/project.py
 
 from datetime import datetime, timezone
+
 from .. import db
 
 
@@ -22,11 +23,12 @@ class Project(db.Model):
     def __repr__(self):
         return f"<Project {self.title}>"
 
-
-
     def display_info(self):
         """Displays the basic info of a project."""
-        return f"Project: {self.title}, Technologies: {self.technology_used}, Duration: {self.duration}"
+        return (
+            f"Project: {self.title}, Technologies: {self.technology_used}, "
+            f"Duration: {self.duration}"
+        )
 
     @property
     def owner_avatar_url(self):
@@ -39,8 +41,17 @@ class Project(db.Model):
         sample_projects = [
             Project(
                 title="IA Continu Solution - Enterprise ML Template",
-                description="Production-ready ML template with complete automation, advanced monitoring, and Discord integration. Features microservices architecture, 30-second automated ML pipeline with drift detection, MLflow tracking, and comprehensive health monitoring across 5 independent services.",
-                technology_used="Docker, FastAPI, MLflow, Prefect, Streamlit, Discord API, JWT Auth, Prometheus, Grafana",
+                description=(
+                    "Production-ready ML template with complete automation, advanced "
+                    "monitoring, and Discord integration. Features microservices "
+                    "architecture, 30-second automated ML pipeline with drift detection, "
+                    "MLflow tracking, and comprehensive health monitoring across 5 "
+                    "independent services."
+                ),
+                technology_used=(
+                    "Docker, FastAPI, MLflow, Prefect, Streamlit, Discord API, "
+                    "JWT Auth, Prometheus, Grafana"
+                ),
                 duration="8 weeks",
                 project_type="enterprise",
                 github_url="https://github.com/simbouch/ia_continu_solution",
@@ -48,8 +59,17 @@ class Project(db.Model):
             ),
             Project(
                 title="Flashcards Full-Stack Platform with OCR",
-                description="Full-stack platform for automatic flashcard generation from PDFs/images. OCR with Tesseract, Q&A via locally fine-tuned French LLM, SQLite storage, FastAPI REST with auth, Vue.js review UI, Dockerized services, CI/CD pipelines, monitoring & GDPR compliance.",
-                technology_used="FastAPI, Vue.js, OCR, French LLM, Python, JavaScript, SQLite, Docker, CI/CD",
+                description=(
+                    "Full-stack platform for automatic flashcard generation from "
+                    "PDFs/images. OCR with Tesseract, Q&A via locally fine-tuned "
+                    "French LLM, SQLite storage, FastAPI REST with auth, Vue.js "
+                    "review UI, Dockerized services, CI/CD pipelines, monitoring "
+                    "& GDPR compliance."
+                ),
+                technology_used=(
+                    "FastAPI, Vue.js, OCR, French LLM, Python, JavaScript, "
+                    "SQLite, Docker, CI/CD"
+                ),
                 duration="6 weeks",
                 project_type="web",
                 github_url="https://github.com/simbouch/flashcards-projet",
@@ -57,8 +77,16 @@ class Project(db.Model):
             ),
             Project(
                 title="RPA POC System for PDF Information Extraction",
-                description="Professional AI-powered system for automated PDF information extraction. Supports 4 specialized models and offers a modern interface with Streamlit. Intelligent RPA system using AI for document processing and data extraction workflows.",
-                technology_used="Python, OCR (Tesseract, EasyOCR, PaddleOCR), AI Agents, Streamlit, TensorFlow",
+                description=(
+                    "Professional AI-powered system for automated PDF information "
+                    "extraction. Supports 4 specialized models and offers a modern "
+                    "interface with Streamlit. Intelligent RPA system using AI for "
+                    "document processing and data extraction workflows."
+                ),
+                technology_used=(
+                    "Python, OCR (Tesseract, EasyOCR, PaddleOCR), AI Agents, "
+                    "Streamlit, TensorFlow"
+                ),
                 duration="4 weeks",
                 project_type="ai_automation",
                 github_url="https://github.com/simbouch/rpa_1_poc",
@@ -66,8 +94,17 @@ class Project(db.Model):
             ),
             Project(
                 title="ML Optimization Framework with Optuna",
-                description="Educational project demonstrating Optuna's hyperparameter optimization capabilities through interactive examples and comprehensive tutorials. Features 6 different optimization studies, interactive dashboard, TPE sampling, pruning techniques, and multi-objective optimization with real ML models.",
-                technology_used="Python, Optuna, Docker, Scikit-learn, SQLite, Interactive Dashboard, TPE Sampling, Pruning",
+                description=(
+                    "Educational project demonstrating Optuna's hyperparameter "
+                    "optimization capabilities through interactive examples and "
+                    "comprehensive tutorials. Features 6 different optimization "
+                    "studies, interactive dashboard, TPE sampling, pruning "
+                    "techniques, and multi-objective optimization with real ML models."
+                ),
+                technology_used=(
+                    "Python, Optuna, Docker, Scikit-learn, SQLite, Interactive "
+                    "Dashboard, TPE Sampling, Pruning"
+                ),
                 duration="4 weeks",
                 project_type="machine_learning",
                 github_url="https://github.com/simbouch/ml-optimization-framework",
