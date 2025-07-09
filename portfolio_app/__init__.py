@@ -30,7 +30,8 @@ def create_app(config_class="config.DevelopmentConfig"):
     # Log email configuration status
     if app.config.get("MAIL_CONFIGURED", False):
         app.logger.info(
-            f"✅ Email configured: {app.config.get('MAIL_USERNAME')} -> {app.config.get('CONTACT_EMAIL')}"
+            f"✅ Email configured: {app.config.get('MAIL_USERNAME')} -> "
+            f"{app.config.get('CONTACT_EMAIL')}"
         )
     else:
         app.logger.warning("⚠️ Email not configured - messages will be logged only")

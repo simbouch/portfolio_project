@@ -298,8 +298,15 @@ class Project(db.Model):
             ),
             Project(
                 title="Credit Risk Classification",
-                description="Machine learning project aimed at building a classification model to predict the eligibility of clients for credit at a bank. Leverages Python-based tools and techniques to evaluate and optimize credit risk assessment.",
-                technology_used="Python, Scikit-learn, Classification, Risk Assessment, Banking",
+                description=(
+                    "Machine learning project aimed at building a classification "
+                    "model to predict the eligibility of clients for credit at a "
+                    "bank. Leverages Python-based tools and techniques to evaluate "
+                    "and optimize credit risk assessment."
+                ),
+                technology_used=(
+                    "Python, Scikit-learn, Classification, Risk Assessment, Banking"
+                ),
                 duration="3 weeks",
                 project_type="machine_learning",
                 github_url="https://github.com/simbouch/classification",
