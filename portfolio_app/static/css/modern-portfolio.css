@@ -1048,6 +1048,283 @@ a:focus {
 }
 
 /* ========================================
+   ENHANCED HERO SECTION ANIMATIONS
+   ======================================== */
+
+/* Advanced Typewriter Animation */
+.typewriter-container {
+    display: inline-block;
+    position: relative;
+}
+
+.typewriter-text,
+.typewriter-name {
+    display: inline-block;
+}
+
+.typewriter-cursor {
+    display: inline-block;
+    color: var(--secondary-color);
+    font-weight: 400;
+    animation: typewriter-blink 1.2s infinite;
+}
+
+@keyframes typewriter-blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+.typewriter-name.name-complete {
+    animation: name-glow 2s ease-in-out;
+}
+
+@keyframes name-glow {
+    0% { text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8); }
+    50% {
+        text-shadow:
+            2px 2px 8px rgba(0, 0, 0, 0.8),
+            0 0 20px rgba(52, 152, 219, 0.6),
+            0 0 30px rgba(52, 152, 219, 0.4);
+    }
+    100% { text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8); }
+}
+
+/* Enhanced Profile Picture Animations */
+.floating-profile-container {
+    position: relative;
+    display: inline-block;
+    animation: gentle-float 6s ease-in-out infinite;
+}
+
+@keyframes gentle-float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    25% { transform: translateY(-8px) rotate(1deg); }
+    50% { transform: translateY(-12px) rotate(0deg); }
+    75% { transform: translateY(-8px) rotate(-1deg); }
+}
+
+.profile-glow-effect {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(52, 152, 219, 0.3) 0%, transparent 70%);
+    opacity: 0.3;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: -1;
+    animation: pulse-glow 4s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+    0%, 100% { transform: scale(1); opacity: 0.3; }
+    50% { transform: scale(1.1); opacity: 0.6; }
+}
+
+.profile-image {
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+    will-change: transform;
+}
+
+/* Enhanced Staggered Animations */
+@keyframes hero-slide-in-left {
+    from {
+        opacity: 0;
+        transform: translateX(-60px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+}
+
+@keyframes hero-slide-in-right {
+    from {
+        opacity: 0;
+        transform: translateX(60px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+}
+
+@keyframes hero-slide-in-up {
+    from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Floating Particles */
+.floating-particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    animation: particle-float 15s linear infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.floating-particle:nth-child(odd) {
+    background: rgba(52, 152, 219, 0.4);
+    animation-duration: 20s;
+}
+
+.floating-particle:nth-child(3n) {
+    background: rgba(243, 156, 18, 0.3);
+    animation-duration: 25s;
+}
+
+@keyframes particle-float {
+    0% {
+        transform: translateY(100vh) translateX(0px) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100px) translateX(100px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Interactive Particle Burst Animation */
+@keyframes particle-burst {
+    0% {
+        transform: scale(0) rotate(0deg);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.5) rotate(180deg);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(3) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Enhanced Button Animations */
+.hero-ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.6);
+    transform: scale(0);
+    animation: hero-ripple-effect 0.6s linear;
+    pointer-events: none;
+}
+
+@keyframes hero-ripple-effect {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+.btn-magnetic {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+}
+
+/* Breathing Animation for Profile Container */
+@keyframes gentle-breathing {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.1;
+    }
+    50% {
+        transform: scale(1.05);
+        opacity: 0.3;
+    }
+}
+
+/* Enhanced Particle Animations */
+.floating-particle {
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
+}
+
+.floating-particle:nth-child(even) {
+    animation-direction: reverse;
+}
+
+.floating-particle:nth-child(4n) {
+    background: rgba(231, 76, 60, 0.4);
+    animation-duration: 18s;
+}
+
+.floating-particle:nth-child(5n) {
+    background: rgba(155, 89, 182, 0.3);
+    animation-duration: 22s;
+    width: 3px;
+    height: 3px;
+}
+
+/* Performance Optimizations */
+.floating-profile-container,
+.floating-particle,
+.profile-image {
+    will-change: transform;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+    .floating-particle {
+        display: none; /* Hide particles on mobile for performance */
+    }
+
+    .typewriter-cursor {
+        animation-duration: 1s; /* Faster cursor on mobile */
+    }
+
+    .floating-profile-container {
+        animation-duration: 8s; /* Slower float on mobile */
+        will-change: auto; /* Reduce GPU usage on mobile */
+    }
+
+    .profile-glow-effect {
+        display: none; /* Reduce effects on mobile */
+    }
+
+    .hero-section::before,
+    .hero-section::after {
+        animation-duration: 12s; /* Slower background animations on mobile */
+    }
+
+    /* Simplify 3D effects on mobile */
+    .profile-image {
+        transform-style: flat !important;
+    }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+    .floating-particle,
+    .floating-profile-container,
+    .typewriter-cursor {
+        animation: none !important;
+    }
+
+    .profile-glow-effect {
+        display: none;
+    }
+}
+
+/* ========================================
    PROFESSIONAL ANIMATIONS & TRANSITIONS
    ======================================== */
 
